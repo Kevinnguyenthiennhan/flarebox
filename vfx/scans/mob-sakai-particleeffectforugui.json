@@ -1,0 +1,335 @@
+{
+ "v": 1,
+ "repo": "mob-sakai/ParticleEffectForUGUI",
+ "url": "https://github.com/mob-sakai/ParticleEffectForUGUI",
+ "branch": "main",
+ "commit": "433071025490c0bcfc5f72508b3e1453f321789c",
+ "private": false,
+ "unityRoot": "",
+ "scanned": "2026-11-07 12:11",
+ "unity": null,
+ "pipeline": "Built-in",
+ "vfxGraphPackage": false,
+ "stats": {
+  "files": 157,
+  "metas": 82,
+  "prefabs": 3,
+  "vfx": 3,
+  "byType": {
+   "Particle System": 3
+  },
+  "byCategory": {
+   "UI Effects": 1,
+   "Fire": 2
+  },
+  "binaryAssets": 0,
+  "binaryPrefabs": 0,
+  "missingDeps": 2,
+  "staleRefs": 0,
+  "vfxWithMissing": 3,
+  "assetsWithoutMeta": 0,
+  "metasWithoutAsset": 0,
+  "duplicateGuids": 0,
+  "seconds": 8.1
+ },
+ "vfx": [
+  {
+   "name": "UIParticle_Demo_Animatable",
+   "path": "Samples~/Demo/Prefabs/UIParticle_Demo_Animatable.prefab",
+   "guid": "fd2938b6280d84e328d330be2aedd18f",
+   "type": "Particle System",
+   "confidence": "high",
+   "category": "UI Effects",
+   "signals": [
+    "1 Particle System",
+    "animated (Animator/Animation)"
+   ],
+   "counts": {
+    "particleSystems": 1,
+    "vfxGraphs": 0,
+    "meshRenderers": 0,
+    "skinnedMeshes": 0,
+    "trails": 0,
+    "lines": 0,
+    "animators": 1
+   },
+   "depCounts": {
+    "script": 2,
+    "mesh": 1,
+    "material": 1,
+    "builtin": 1,
+    "animation": 1,
+    "shader": 1,
+    "texture": 1
+   },
+   "missing": 1,
+   "deps": [
+    {
+     "guid": "16f0b0b6d0b7542bfbd20a3e05b04ff1",
+     "path": "Runtime/UIParticle.cs",
+     "kind": "script",
+     "status": "ok",
+     "via": "Samples~/Demo/Prefabs/UIParticle_Demo_Animatable.prefab"
+    },
+    {
+     "guid": "18072676ec6b73745a69e453143c11ae",
+     "path": null,
+     "kind": "mesh",
+     "status": "missing",
+     "via": "Samples~/Demo/Prefabs/UIParticle_Demo_Animatable.prefab"
+    },
+    {
+     "guid": "96e9806111c7f4ad18c9467cbbe2c4fd",
+     "path": "Samples~/Demo/Materials/UIParticle_Demo_Animatable.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "Samples~/Demo/Prefabs/UIParticle_Demo_Animatable.prefab"
+    },
+    {
+     "guid": "0000000000000000e000000000000000",
+     "path": null,
+     "kind": "builtin",
+     "status": "builtin",
+     "via": "Samples~/Demo/Prefabs/UIParticle_Demo_Animatable.prefab",
+     "note": "Unity built-in resources (meshes)"
+    },
+    {
+     "guid": "23dca587da071cd41ac3a7fc070bea5c",
+     "path": "Samples~/Demo/Animations/UIParticle_Demo_Animatable.controller",
+     "kind": "animation",
+     "status": "ok",
+     "via": "Samples~/Demo/Prefabs/UIParticle_Demo_Animatable.prefab"
+    },
+    {
+     "guid": "da4c2e90ecd3d4dd4a520099c08cf493",
+     "path": "Samples~/Demo/Animations/ColorArrayInjection.cs",
+     "kind": "script",
+     "status": "ok",
+     "via": "Samples~/Demo/Prefabs/UIParticle_Demo_Animatable.prefab"
+    },
+    {
+     "guid": "9cc9ed37ff19d40e684526abbc1d44a6",
+     "path": "Samples~/Demo/Materials/UIAdditive+Color.shader",
+     "kind": "shader",
+     "status": "ok",
+     "via": "Samples~/Demo/Materials/UIParticle_Demo_Animatable.mat"
+    },
+    {
+     "guid": "e834c7963556c9b4cbad7f1bee63f597",
+     "path": "Samples~/Demo/Materials/UIParticle_Demo_Animatable.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "Samples~/Demo/Materials/UIParticle_Demo_Animatable.mat"
+    }
+   ],
+   "variantOf": null
+  },
+  {
+   "name": "UIParticle_Demo_EffectSample_Frame",
+   "path": "Samples~/Demo/Prefabs/UIParticle_Demo_EffectSample_Frame.prefab",
+   "guid": "0ddf94eaac8ad4e0cba66dc25b7fc1f5",
+   "type": "Particle System",
+   "confidence": "high",
+   "category": "Fire",
+   "signals": [
+    "2 Particle Systems"
+   ],
+   "counts": {
+    "particleSystems": 2,
+    "vfxGraphs": 0,
+    "meshRenderers": 0,
+    "skinnedMeshes": 0,
+    "trails": 0,
+    "lines": 0,
+    "animators": 0
+   },
+   "depCounts": {
+    "material": 2,
+    "script": 1,
+    "shader": 1,
+    "texture": 2
+   },
+   "missing": 1,
+   "deps": [
+    {
+     "guid": "e44a36783dcfc43bdab399a1adcef4f5",
+     "path": "Samples~/Demo/Materials/UIParticle_Demo_UIAdditive.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "Samples~/Demo/Prefabs/UIParticle_Demo_EffectSample_Frame.prefab"
+    },
+    {
+     "guid": "16f0b0b6d0b7542bfbd20a3e05b04ff1",
+     "path": "Runtime/UIParticle.cs",
+     "kind": "script",
+     "status": "ok",
+     "via": "Samples~/Demo/Prefabs/UIParticle_Demo_EffectSample_Frame.prefab"
+    },
+    {
+     "guid": "15c6396b976394d68a63d742106293cb",
+     "path": "Samples~/Demo/Materials/UIParticle_Demo_Flame.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "Samples~/Demo/Prefabs/UIParticle_Demo_EffectSample_Frame.prefab"
+    },
+    {
+     "guid": "ecfa8f5732b504ef98fba10aa18d0326",
+     "path": "Shaders/UIAdditive.shader",
+     "kind": "shader",
+     "status": "ok",
+     "via": "Samples~/Demo/Materials/UIParticle_Demo_UIAdditive.mat"
+    },
+    {
+     "guid": "975570a90d56c477582e12d440dc9931",
+     "path": null,
+     "kind": "texture",
+     "status": "missing",
+     "via": "Samples~/Demo/Materials/UIParticle_Demo_UIAdditive.mat"
+    },
+    {
+     "guid": "5b8fd2a34c36a4f1caae000b721312c4",
+     "path": "Samples~/Demo/Materials/UIParticle_Demo_Flame_Atlas.tif",
+     "kind": "texture",
+     "status": "ok",
+     "via": "Samples~/Demo/Materials/UIParticle_Demo_Flame.mat"
+    }
+   ],
+   "variantOf": null
+  },
+  {
+   "name": "UIParticle_Demo_EffectSample_Unity-chan",
+   "path": "Samples~/Demo/Prefabs/UIParticle_Demo_EffectSample_Unity-chan.prefab",
+   "guid": "1da1f7e678e2d4e449f6d46d2d4c4116",
+   "type": "Particle System",
+   "confidence": "high",
+   "category": "Fire",
+   "signals": [
+    "2 Particle Systems"
+   ],
+   "counts": {
+    "particleSystems": 2,
+    "vfxGraphs": 0,
+    "meshRenderers": 0,
+    "skinnedMeshes": 0,
+    "trails": 0,
+    "lines": 0,
+    "animators": 0
+   },
+   "depCounts": {
+    "script": 1,
+    "texture": 4,
+    "material": 2,
+    "builtin": 1,
+    "shader": 1
+   },
+   "missing": 1,
+   "deps": [
+    {
+     "guid": "f70555f144d8491a825f0804e09c671c",
+     "path": null,
+     "kind": "script",
+     "status": "package",
+     "via": "Samples~/Demo/Prefabs/UIParticle_Demo_EffectSample_Unity-chan.prefab",
+     "note": "script GUID not in repo \u2014 likely from a Unity package"
+    },
+    {
+     "guid": "925f66fdcc9764b579413b7408c718f2",
+     "path": "Samples~/Demo/Sprites/UIParticle_Demo_Unity-chan.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "Samples~/Demo/Prefabs/UIParticle_Demo_EffectSample_Unity-chan.prefab"
+    },
+    {
+     "guid": "e44a36783dcfc43bdab399a1adcef4f5",
+     "path": "Samples~/Demo/Materials/UIParticle_Demo_UIAdditive.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "Samples~/Demo/Prefabs/UIParticle_Demo_EffectSample_Unity-chan.prefab"
+    },
+    {
+     "guid": "0000000000000000e000000000000000",
+     "path": null,
+     "kind": "builtin",
+     "status": "builtin",
+     "via": "Samples~/Demo/Prefabs/UIParticle_Demo_EffectSample_Unity-chan.prefab",
+     "note": "Unity built-in resources (meshes)"
+    },
+    {
+     "guid": "077b84be6d052c34d933c79ef500be13",
+     "path": "Samples~/Demo/Sprites/UIParticle_Demo_Light_Frame.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "Samples~/Demo/Prefabs/UIParticle_Demo_EffectSample_Unity-chan.prefab"
+    },
+    {
+     "guid": "57cef6c0f7570214991e091275f08894",
+     "path": "Samples~/Demo/Materials/UIParticle_Demo_Fire.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "Samples~/Demo/Prefabs/UIParticle_Demo_EffectSample_Unity-chan.prefab"
+    },
+    {
+     "guid": "ecfa8f5732b504ef98fba10aa18d0326",
+     "path": "Shaders/UIAdditive.shader",
+     "kind": "shader",
+     "status": "ok",
+     "via": "Samples~/Demo/Materials/UIParticle_Demo_UIAdditive.mat"
+    },
+    {
+     "guid": "975570a90d56c477582e12d440dc9931",
+     "path": null,
+     "kind": "texture",
+     "status": "missing",
+     "via": "Samples~/Demo/Materials/UIParticle_Demo_UIAdditive.mat"
+    },
+    {
+     "guid": "df33a97a787f8a64a82b59ee073e7cd7",
+     "path": "Samples~/Demo/Materials/UIParticle_Demo_Fire_Atlas.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "Samples~/Demo/Materials/UIParticle_Demo_Fire.mat"
+    }
+   ],
+   "variantOf": null,
+   "preview": "mob-sakai-particleeffectforugui-samples-demo-prefabs-uiparticle-demo-effectsample-unity-chan"
+  }
+ ],
+ "missing": [
+  {
+   "guid": "18072676ec6b73745a69e453143c11ae",
+   "path": null,
+   "kind": "mesh",
+   "note": null,
+   "referencedBy": [
+    "Samples~/Demo/Prefabs/UIParticle_Demo_Animatable.prefab"
+   ]
+  },
+  {
+   "guid": "975570a90d56c477582e12d440dc9931",
+   "path": null,
+   "kind": "texture",
+   "note": null,
+   "referencedBy": [
+    "Samples~/Demo/Prefabs/UIParticle_Demo_EffectSample_Frame.prefab",
+    "Samples~/Demo/Prefabs/UIParticle_Demo_EffectSample_Unity-chan.prefab"
+   ]
+  }
+ ],
+ "binary": [],
+ "orphans": {
+  "assetsWithoutMeta": [],
+  "metasWithoutAsset": []
+ },
+ "duplicateGuids": [],
+ "id": "mob-sakai-particleeffectforugui",
+ "preview": {
+  "pack": "mob-sakai/ParticleEffectForUGUI",
+  "base": "vfx/mob-sakai-particleeffectforugui/",
+  "exported": 1,
+  "candidates": 3,
+  "ids": [
+   "mob-sakai-particleeffectforugui-samples-demo-prefabs-uiparticle-demo-effectsample-unity-chan"
+  ]
+ },
+ "collection": "scan-mob-sakai-particleeffectforugui"
+}

@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taskboard – One clear board for your team's work</title>
+<meta name="description" content="Taskboard is a lightweight Kanban task board that runs from a single HTML file: add, edit, move and theme your tasks, no server or sign-up needed.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='9' r='6' fill='%23f06a6a'/%3E%3Ccircle cx='8' cy='21' r='6' fill='%23f06a6a'/%3E%3Ccircle cx='24' cy='21' r='6' fill='%23f06a6a'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --accent: #4573d2;
+    --accent-2: #6a8ff0;
+    --accent-soft: #eef3fd;
+    --coral: #f06a6a;
+    --coral-soft: #fdeeee;
+    --green: #2f9e75;
+    --green-soft: #e6f5ee;
+    --text: #16171a;
+    --text-2: #3e4148;
+    --muted: #6d7079;
+    --line: #e7e8ec;
+    --soft: #f7f8fb;
+    --radius: 16px;
+    --shadow-sm: 0 1px 2px rgba(16,24,40,.06), 0 0 0 1px rgba(16,24,40,.05);
+    --shadow-md: 0 8px 24px rgba(16,24,40,.08), 0 0 0 1px rgba(16,24,40,.05);
+    --shadow-lg: 0 30px 80px -20px rgba(30,45,90,.28), 0 0 0 1px rgba(16,24,40,.06);
+    --max: 1160px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--text); background: #fff; font-size: 16px; line-height: 1.6;
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+  svg { display: block; flex-shrink: 0; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+  section { padding: 120px 0; position: relative; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent);
+  }
+  .eyebrow.coral { color: var(--coral); }
+  .eyebrow.green { color: var(--green); }
+  h1, h2, h3 { letter-spacing: -.02em; line-height: 1.15; }
+  h2 { font-size: clamp(30px, 4vw, 44px); font-weight: 700; margin: 14px 0 16px; }
+  h3 { font-size: 22px; font-weight: 650; }
+  .lead { font-size: 18px; color: var(--muted); max-width: 640px; }
+  .center { text-align: center; }
+  .center .lead { margin: 0 auto; }
+  .grad { background: linear-gradient(92deg, var(--accent) 10%, #8a5cf6 55%, var(--coral) 95%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+  /* ---------- Reveal on scroll ---------- */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); transition-delay: var(--d, 0s); }
+  .reveal.left { transform: translateX(-36px); }
+  .reveal.right { transform: translateX(36px); }
+  .reveal.zoom { transform: scale(.96) translateY(16px); }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    *, *::before, *::after { animation-duration: .001s !important; animation-iteration-count: 1 !important; }
+  }
+
+  /* ---------- Nav ---------- */
+  .progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: linear-gradient(90deg, var(--accent), var(--coral)); z-index: 100; }
+  nav.top {
+    position: sticky; top: 0; z-index: 90; background: rgba(255,255,255,.82);
+    backdrop-filter: saturate(180%) blur(14px); -webkit-backdrop-filter: saturate(180%) blur(14px);
+    border-bottom: 1px solid transparent; transition: border-color .2s;
+  }
+  nav.top.scrolled { border-bottom-color: var(--line); }
+  nav.top .wrap { display: flex; align-items: center; height: 64px; gap: 28px; }
+  .brand { display: flex; align-items: center; gap: 9px; font-weight: 700; font-size: 18px; letter-spacing: -.01em; }
+  .nav-links { display: flex; gap: 26px; font-size: 14.5px; color: var(--text-2); margin-left: 12px; }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta { margin-left: auto; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 10px;
+    font-weight: 600; font-size: 15px; transition: transform .15s, box-shadow .15s, background .15s;
+  }
+  .btn.primary { background: var(--accent); color: #fff; box-shadow: 0 6px 16px -4px rgba(69,115,210,.55); }
+  .btn.primary:hover { background: #3a64bd; transform: translateY(-1px); box-shadow: 0 10px 22px -6px rgba(69,115,210,.6); }
+  .btn.ghost { background: #fff; box-shadow: var(--shadow-sm); color: var(--text); }
+  .btn.ghost:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+  .btn.sm { padding: 8px 14px; font-size: 14px; }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 72px 0 110px; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; inset: -20% -10% auto; height: 760px; z-index: -1;
+    background:
+      radial-gradient(600px 320px at 20% 20%, rgba(69,115,210,.12), transparent 70%),
+      radial-gradient(520px 300px at 85% 10%, rgba(240,106,106,.12), transparent 70%),
+      radial-gradient(520px 300px at 55% 60%, rgba(138,92,246,.08), transparent 70%);
+  }
+  .hero-copy { text-align: center; max-width: 860px; margin: 0 auto; }
+  .pill {
+    display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px 6px 6px; border-radius: 999px;
+    background: #fff; box-shadow: var(--shadow-sm); font-size: 13.5px; color: var(--text-2);
+  }
+  .pill b { background: var(--accent-soft); color: var(--accent); padding: 2px 10px; border-radius: 999px; font-size: 12px; }
+  .hero h1 { font-size: clamp(40px, 6.4vw, 76px); font-weight: 750; margin: 22px 0 22px; letter-spacing: -.035em; }
+  .hero .lead { font-size: clamp(17px, 1.6vw, 20px); margin: 0 auto; max-width: 680px; }
+  .hero-ctas { display: flex; gap: 12px; justify-content: center; margin-top: 34px; flex-wrap: wrap; }
+  .hero-note { margin-top: 16px; font-size: 13.5px; color: var(--muted); display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+  .hero-note span { display: inline-flex; align-items: center; gap: 6px; }
+  .hero-note svg { color: var(--green); }
+  .hero-visual { margin-top: 64px; position: relative; }
+  .float-chip {
+    position: absolute; z-index: 3; background: #fff; border-radius: 12px; box-shadow: var(--shadow-md);
+    padding: 10px 14px; font-size: 13px; display: flex; align-items: center; gap: 10px; font-weight: 500;
+    animation: bob 6s ease-in-out infinite;
+  }
+  .float-chip .ic { width: 30px; height: 30px; border-radius: 8px; display: grid; place-items: center; }
+  .float-chip small { display: block; color: var(--muted); font-weight: 400; font-size: 12px; }
+  .chip-a { left: -28px; top: 34%; }
+  .chip-b { right: -24px; top: 16%; animation-delay: -2s; }
+  .chip-c { left: 24%; bottom: -26px; animation-delay: -4s; }
+  @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+  /* ---------- App mockup (recreates index.html) ---------- */
+  .app-mock { border-radius: 14px; background: #fff; box-shadow: var(--shadow-lg); overflow: hidden; position: relative; }
+  .chrome { height: 34px; background: #f3f4f6; border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 7px; padding: 0 14px; }
+  .chrome i { width: 10px; height: 10px; border-radius: 50%; background: #d9dbe0; }
+  .chrome i:nth-child(1) { background: #ff6058; } .chrome i:nth-child(2) { background: #ffbd2e; } .chrome i:nth-child(3) { background: #28ca42; }
+  .chrome .url { margin: 0 auto; font-size: 11.5px; color: var(--muted); background: #fff; padding: 3px 40px; border-radius: 6px; box-shadow: var(--shadow-sm); }
+  .am { display: grid; grid-template-columns: 168px 1fr; font-size: 12px; color: #1e1f21; }
+  .am-side { background: #2e2e30; color: #e0e0e2; padding: 12px 8px; display: flex; flex-direction: column; gap: 2px; }
+  .am-logo { display: flex; align-items: center; gap: 7px; font-weight: 600; font-size: 13px; padding: 2px 8px 10px; }
+  .am-create { margin: 0 8px 10px; border: 1px solid #6d6e6f; border-radius: 14px; padding: 4px 10px 4px 5px; display: flex; align-items: center; gap: 6px; width: max-content; font-size: 11.5px; }
+  .am-create b { width: 15px; height: 15px; border-radius: 50%; background: var(--coral); display: grid; place-items: center; }
+  .am-nav { display: flex; align-items: center; gap: 9px; padding: 5px 8px; border-radius: 5px; font-size: 11.5px; }
+  .am-nav svg { color: #9ca0a5; }
+  .am-nav.on { background: #47484a; }
+  .am-sec { color: #9ca0a5; font-size: 10.5px; font-weight: 600; padding: 10px 8px 3px; }
+  .sw { width: 9px; height: 9px; border-radius: 2.5px; }
+  .am-main { min-width: 0; display: flex; flex-direction: column; }
+  .am-top { height: 36px; border-bottom: 1px solid var(--line); display: flex; align-items: center; padding: 0 12px; gap: 10px; }
+  .am-search { flex: 1; max-width: 300px; margin: 0 auto; background: #f5f4f4; border-radius: 12px; padding: 4px 10px; color: #8a8b8d; font-size: 11px; display: flex; align-items: center; gap: 6px; }
+  .am-head { padding: 12px 16px 0; border-bottom: 1px solid var(--line); }
+  .am-title-row { display: flex; align-items: center; gap: 9px; }
+  .am-picon { width: 26px; height: 26px; border-radius: 6px; background: #4ecbc4; display: grid; place-items: center; color: #fff; }
+  .am-title { font-size: 15px; font-weight: 500; }
+  .am-status { border: 1px solid var(--line); border-radius: 10px; padding: 1px 8px; font-size: 10.5px; color: #6d6e6f; display: flex; align-items: center; gap: 5px; }
+  .am-status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #58a182; }
+  .am-members { margin-left: auto; display: flex; }
+  .am-members .av { border: 2px solid #fff; margin-left: -5px; }
+  .am-share { background: var(--accent); color: #fff; border-radius: 5px; padding: 3px 9px; font-size: 11px; font-weight: 500; margin-left: 6px; }
+  .am-tabs { display: flex; gap: 14px; margin-top: 8px; font-size: 11.5px; color: #6d6e6f; }
+  .am-tabs span { padding: 5px 0 7px; border-bottom: 2px solid transparent; }
+  .am-tabs span.on { color: #1e1f21; border-bottom-color: #1e1f21; font-weight: 500; }
+  .am-toolbar { display: flex; align-items: center; gap: 10px; padding: 8px 16px; font-size: 11px; color: #6d6e6f; }
+  .am-add { background: var(--accent); color: #fff; border-radius: 5px; padding: 3px 9px; font-weight: 500; display: flex; align-items: center; gap: 4px; }
+  .am-toolbar .sp { flex: 1; }
+  .swap { position: relative; display: inline-block; }
+  .swap > span:last-child { position: absolute; left: 0; top: 0; opacity: 0; }
+
+  /* Mini board shared by every mockup */
+  .mb { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; padding: 4px 12px 14px; background: #f9f8f8; position: relative; }
+  .mb-col { min-width: 0; border-radius: 8px; transition: background .15s; min-height: 60px; }
+  .mb-col.over { background: #e8eefb; }
+  .mb-h { display: flex; align-items: center; gap: 6px; height: 28px; padding: 0 2px; font-weight: 600; font-size: 12px; }
+  .mb-h em { font-style: normal; font-weight: 400; color: #6d6e6f; font-size: 11px; }
+  .mb-h .plus { margin-left: auto; color: #6d6e6f; }
+  .mb-cards { display: flex; flex-direction: column; gap: 8px; min-height: 30px; }
+  .mc {
+    background: #fff; border-radius: 7px; box-shadow: 0 1px 2px rgba(0,0,0,.08), 0 0 0 1px rgba(0,0,0,.06);
+    padding: 9px 10px 8px; font-size: 11.5px; position: relative; transition: box-shadow .15s, opacity .2s;
+  }
+  .mc.done { opacity: .72; }
+  .mc-top { display: flex; align-items: flex-start; gap: 6px; }
+  .chk {
+    width: 13px; height: 13px; border-radius: 50%; border: 1.3px solid #a2a0a2; flex-shrink: 0; margin-top: 1.5px;
+    display: grid; place-items: center; color: transparent; transition: all .2s;
+  }
+  .mc.done .chk { background: #58a182; border-color: #58a182; color: #fff; }
+  .mc-name { flex: 1; min-width: 0; line-height: 1.35; font-weight: 450; }
+  .mc.done .mc-name { color: #6d6e6f; }
+  .mc-desc { color: #6d6e6f; font-size: 10.5px; margin: 3px 0 0 19px; line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .mc-tags { display: flex; gap: 4px; margin: 6px 0 0 19px; flex-wrap: wrap; }
+  .tg { font-size: 9.5px; font-weight: 500; padding: 0 7px; border-radius: 8px; line-height: 1.7; white-space: nowrap; }
+  .tg.p-low { background: #fbd38d; color: #6b4a07; }
+  .tg.p-medium { background: #fd8f4a; color: #fff; }
+  .tg.p-high { background: #f5577d; color: #fff; }
+  .tg.s-todo { background: #fde047; color: #5f4b00; }
+  .tg.s-progress { background: #7fd1e8; color: #0b4a5c; }
+  .tg.s-done { background: #6e95f0; color: #fff; }
+  .mc-meta { display: flex; align-items: center; gap: 5px; margin: 7px 0 0 19px; color: #6d6e6f; font-size: 10.5px; }
+  .mc-meta .who { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .due { margin-left: auto; display: flex; align-items: center; gap: 3px; white-space: nowrap; }
+  .due.today { color: #58a182; font-weight: 600; }
+  .due.overdue { color: #c92f54; }
+  .av { width: 17px; height: 17px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-size: 7.5px; font-weight: 700; flex-shrink: 0; text-transform: uppercase; }
+  .av.lg { width: 22px; height: 22px; font-size: 9px; }
+  .mb-add { color: #6d6e6f; font-size: 11px; display: flex; align-items: center; justify-content: center; gap: 4px; padding: 6px 0 0; }
+
+  /* Hero board: fixed card heights so the moving card lines up */
+  .hero .mc { height: 82px; overflow: hidden; }
+  .hero .mc-desc { display: none; }
+  .hero .mc-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .mover {
+    position: absolute; z-index: 4;
+    width: calc((100% - 44px) / 3);
+    left: calc(12px + (100% - 44px) / 3 + 10px);
+    top: calc(4px + 28px + 82px + 8px);
+    animation: moveCard 8s cubic-bezier(.45,.05,.25,1) infinite;
+  }
+  .mover .chk { animation: chkOn 8s infinite; }
+  .mover .tg-swap > span:first-child, .count-swap > span:first-child { animation: swapOut 8s infinite; }
+  .mover .tg-swap > span:last-child, .count-swap > span:last-child { animation: swapIn 8s infinite; }
+  .ghost-slot { height: 82px; border: 1.5px dashed transparent; border-radius: 7px; animation: slot 8s infinite; }
+  @keyframes moveCard {
+    0%, 16% { transform: translate(0, 0) rotate(0); box-shadow: 0 1px 2px rgba(0,0,0,.08), 0 0 0 1px rgba(0,0,0,.06); opacity: 1; }
+    24% { transform: translate(6px, -8px) rotate(2.5deg); box-shadow: 0 18px 30px rgba(0,0,0,.18), 0 0 0 1px rgba(0,0,0,.06); }
+    48% { transform: translate(calc(100% + 10px), 82px) rotate(2.5deg); box-shadow: 0 18px 30px rgba(0,0,0,.18), 0 0 0 1px rgba(0,0,0,.06); }
+    55%, 86% { transform: translate(calc(100% + 10px), 90px) rotate(0); box-shadow: 0 1px 2px rgba(0,0,0,.08), 0 0 0 1px rgba(0,0,0,.06); opacity: 1; }
+    92% { transform: translate(calc(100% + 10px), 90px); opacity: 0; }
+    93% { transform: translate(0, 0); opacity: 0; }
+    100% { transform: translate(0, 0); opacity: 1; }
+  }
+  @keyframes chkOn { 0%, 56% { background: transparent; border-color: #a2a0a2; color: transparent; } 60%, 90% { background: #58a182; border-color: #58a182; color: #fff; } 94%, 100% { background: transparent; border-color: #a2a0a2; color: transparent; } }
+  @keyframes swapOut { 0%, 56% { opacity: 1; } 60%, 90% { opacity: 0; } 94%, 100% { opacity: 1; } }
+  @keyframes swapIn { 0%, 56% { opacity: 0; } 60%, 90% { opacity: 1; } 94%, 100% { opacity: 0; } }
+  @keyframes slot { 0%, 20% { border-color: transparent; } 30%, 50% { border-color: #a9bdea; background: rgba(69,115,210,.05); } 56%, 100% { border-color: transparent; background: none; } }
+  /* ---------- Feature strip ---------- */
+  .strip { padding: 0 0 40px; }
+  .strip-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+  .strip-item {
+    display: flex; align-items: center; gap: 10px; padding: 10px 16px 10px 10px; border-radius: 12px;
+    background: #fff; box-shadow: var(--shadow-sm); font-size: 14.5px; font-weight: 500; color: var(--text-2);
+  }
+  .strip-item .ic { width: 30px; height: 30px; border-radius: 8px; display: grid; place-items: center; }
+
+  /* ---------- Problem ---------- */
+  .problem { background: linear-gradient(180deg, #fff, var(--soft)); }
+  .cards-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 56px; }
+  .pcard { background: #fff; border-radius: var(--radius); padding: 26px 22px; box-shadow: var(--shadow-sm); transition: transform .25s, box-shadow .25s; }
+  .pcard:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .pcard .ic { width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; margin-bottom: 18px; background: var(--coral-soft); color: var(--coral); }
+  .pcard h3 { font-size: 17px; margin-bottom: 8px; }
+  .pcard p { font-size: 14.5px; color: var(--muted); }
+  .scatter { position: relative; height: 110px; margin-bottom: 14px; border-radius: 12px; background: var(--soft); overflow: hidden; }
+  .scatter span {
+    position: absolute; font-size: 11px; background: #fff; border-radius: 6px; padding: 3px 8px; box-shadow: var(--shadow-sm); color: var(--text-2);
+    white-space: nowrap; animation: drift 7s ease-in-out infinite;
+  }
+  @keyframes drift { 0%,100% { transform: translate(0,0) rotate(var(--r,0deg)); } 50% { transform: translate(var(--x,6px), var(--y,-6px)) rotate(calc(var(--r,0deg) * -1)); } }
+
+  /* ---------- Flow diagram ---------- */
+  .flow { margin-top: 64px; display: grid; grid-template-columns: 1fr 90px 1fr 90px 1fr; align-items: stretch; }
+  .fnode { background: #fff; border-radius: 20px; padding: 28px 26px; box-shadow: var(--shadow-md); position: relative; overflow: hidden; }
+  .fnode::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 4px; background: var(--c); }
+  .fnode .tag { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--c); }
+  .fnode .tag .n { width: 22px; height: 22px; border-radius: 50%; background: var(--c); color: #fff; display: grid; place-items: center; font-size: 11px; letter-spacing: 0; }
+  .fnode h3 { font-size: 20px; margin: 12px 0 14px; }
+  .fnode ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .fnode li { display: flex; gap: 10px; font-size: 14.5px; color: var(--text-2); line-height: 1.45; }
+  .fnode li::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--c); margin-top: 7px; flex-shrink: 0; opacity: .8; }
+  .farrow { display: grid; place-items: center; }
+  .farrow svg { width: 70px; height: 28px; overflow: visible; }
+  .farrow .line { stroke: #7a74ec; stroke-width: 2.5; fill: none; stroke-dasharray: 70; stroke-dashoffset: 70; transition: stroke-dashoffset 1s ease .3s; }
+  .farrow .head { stroke: #8a5cf6; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; opacity: 0; transition: opacity .3s ease 1.1s; }
+  .farrow .dot { fill: #8a5cf6; opacity: 0; }
+  .flow.in .farrow .line { stroke-dashoffset: 0; }
+  .flow.in .farrow .head { opacity: 1; }
+  .flow.in .farrow .dot { opacity: 1; animation: travel 2.4s ease-in-out 1.4s infinite; }
+  @keyframes travel { 0% { transform: translateX(0); opacity: 0; } 15% { opacity: 1; } 85% { opacity: 1; } 100% { transform: translateX(58px); opacity: 0; } }
+
+  /* ---------- Feature rows ---------- */
+  .features { background: #fff; }
+  .frow { display: grid; grid-template-columns: 1fr 1.15fr; gap: 72px; align-items: center; margin-top: 110px; }
+  .frow.flip .ftext { order: 2; }
+  .frow > * { min-width: 0; }
+  .frow.wide { grid-template-columns: .85fr 1.5fr; gap: 56px; }
+  .frow.wide.flip { grid-template-columns: 1.5fr .85fr; }
+  .frow.wide .stage { padding: 24px; }
+  .ftext .num { font-size: 13px; font-weight: 700; color: var(--accent); background: var(--accent-soft); border-radius: 999px; padding: 4px 12px; display: inline-block; }
+  .ftext h3 { font-size: clamp(24px, 2.6vw, 32px); margin: 16px 0 14px; }
+  .ftext p { color: var(--muted); font-size: 16.5px; }
+  .checks { list-style: none; margin-top: 22px; display: flex; flex-direction: column; gap: 11px; }
+  .checks li { display: flex; gap: 11px; font-size: 15px; color: var(--text-2); align-items: flex-start; }
+  .checks li svg { margin-top: 3px; color: var(--accent); }
+  .kbd { display: inline-block; font: 600 12px/1 ui-monospace, SFMono-Regular, Menlo, monospace; padding: 3px 7px; border-radius: 5px; background: #fff; box-shadow: 0 1px 0 #d0d3da, 0 0 0 1px #e1e3e8; color: var(--text); }
+  .try { margin-top: 22px; display: inline-flex; align-items: center; gap: 8px; font-size: 13.5px; font-weight: 600; color: var(--accent); background: var(--accent-soft); padding: 7px 12px; border-radius: 8px; }
+  .try .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 0 rgba(69,115,210,.5); animation: pulse 1.8s infinite; }
+  @keyframes pulse { 70% { box-shadow: 0 0 0 9px rgba(69,115,210,0); } 100% { box-shadow: 0 0 0 0 rgba(69,115,210,0); } }
+
+  .stage { border-radius: 20px; background: linear-gradient(145deg, #f3f6fd, #f9f5fe 60%, #fdf3f3); padding: 34px; position: relative; }
+  .stage .panel { background: #fff; border-radius: 12px; box-shadow: var(--shadow-lg); overflow: hidden; }
+
+  /* Card anatomy */
+  .anatomy { display: grid; place-items: center; padding: 50px 30px; }
+  .anatomy .mc { width: 100%; max-width: 360px; font-size: 14px; padding: 16px 16px 14px; transform: scale(1); box-shadow: var(--shadow-lg); border-radius: 10px; }
+  .anatomy .chk { width: 17px; height: 17px; margin-top: 2px; }
+  .anatomy .mc-desc { font-size: 12.5px; margin-left: 25px; }
+  .anatomy .mc-tags, .anatomy .mc-meta { margin-left: 25px; }
+  .anatomy .tg { font-size: 11.5px; padding: 1px 10px; }
+  .anatomy .mc-meta { font-size: 12.5px; margin-top: 12px; gap: 7px; }
+  .anatomy .av { width: 22px; height: 22px; font-size: 9px; }
+  .anatomy .mc-dots { position: absolute; top: 10px; right: 10px; color: #6d6e6f; }
+  .mark { position: relative; }
+  .mark::after {
+    content: attr(data-n); position: absolute; top: -12px; right: -14px; width: 20px; height: 20px; border-radius: 50%;
+    background: var(--accent); color: #fff; font: 700 11px/20px -apple-system, sans-serif; text-align: center;
+    box-shadow: 0 0 0 3px #fff; transform: scale(0); transition: transform .4s cubic-bezier(.3,1.6,.5,1);
+    transition-delay: calc(var(--i) * .15s + .4s);
+  }
+  .in .mark::after { transform: scale(1); }
+  .legend { list-style: none; counter-reset: lg; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 18px; margin-top: 22px; }
+  .legend li { display: flex; gap: 10px; align-items: baseline; font-size: 14.5px; color: var(--text-2); }
+  .legend li b { width: 20px; height: 20px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 11px; display: grid; place-items: center; flex-shrink: 0; transform: translateY(4px); }
+
+  /* Modal mockup */
+  .modal-demo { display: grid; grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+  .mm { font-size: 12px; }
+  .mm-head { display: flex; align-items: center; padding: 11px 14px; border-bottom: 1px solid var(--line); font-weight: 600; font-size: 13px; }
+  .mm-head span:last-child { margin-left: auto; color: #6d6e6f; }
+  .mm-body { padding: 14px 16px 6px; }
+  .mm-name { font-size: 15px; font-weight: 500; border: 1px solid var(--accent); border-radius: 6px; padding: 6px 8px; min-height: 34px; display: flex; align-items: center; }
+  .mm-name .caret { width: 1.5px; height: 17px; background: var(--accent); margin-left: 1px; animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .mm-name .ph { color: #a2a0a2; }
+  .mm-row { display: grid; grid-template-columns: 58px 1fr; align-items: center; gap: 8px; margin-top: 10px; color: #6d6e6f; font-size: 11.5px; }
+  .mm-field { border: 1px solid var(--line); border-radius: 5px; padding: 4px 8px; color: #1e1f21; display: flex; align-items: center; gap: 6px; min-height: 26px; transition: border-color .3s, background .3s; }
+  .mm-field.flash { border-color: var(--accent); background: var(--accent-soft); }
+  .mm-seg { display: flex; border: 1px solid var(--line); border-radius: 5px; overflow: hidden; width: max-content; }
+  .mm-seg span { padding: 3px 7px; border-right: 1px solid var(--line); font-size: 10.5px; white-space: nowrap; transition: all .3s; }
+  .mm-seg span:last-child { border-right: none; }
+  .mm-seg span.sel { background: #e8eefb; color: var(--accent); font-weight: 600; }
+  .mm-foot { display: flex; justify-content: flex-end; gap: 6px; padding: 10px 14px; border-top: 1px solid var(--line); margin-top: 12px; }
+  .mm-btn { padding: 4px 10px; border-radius: 5px; font-size: 11.5px; border: 1px solid var(--line); }
+  .mm-btn.pri { background: var(--accent); color: #fff; border-color: var(--accent); transition: transform .2s, box-shadow .2s; }
+  .mm-btn.pri.press { transform: scale(.94); box-shadow: 0 0 0 4px rgba(69,115,210,.25); }
+  .mini-col { background: #f9f8f8; border-radius: 12px; padding: 10px; box-shadow: var(--shadow-sm); }
+  .mini-col .mb-cards { gap: 8px; }
+  .mc.pop { animation: popIn .6s cubic-bezier(.3,1.4,.5,1); }
+  @keyframes popIn { 0% { transform: translateY(-12px) scale(.9); opacity: 0; } 100% { transform: none; opacity: 1; } }
+  .entry { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .entry span { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; background: var(--soft); border: 1px solid var(--line); border-radius: 8px; padding: 5px 10px; color: var(--text-2); }
+
+  /* Interactive board demo */
+  .demo .mc { cursor: grab; user-select: none; }
+  .demo .mc:hover { box-shadow: 0 3px 8px rgba(0,0,0,.12), 0 0 0 1px rgba(0,0,0,.08); }
+  .demo .mc.dragging { opacity: .4; transform: rotate(1.5deg); }
+  .demo .chk { cursor: pointer; }
+  .demo .chk:hover { border-color: #58a182; color: #58a182; background: #e3f2ea; }
+  .mc-dots { position: absolute; top: 5px; right: 4px; width: 20px; height: 20px; border-radius: 4px; display: grid; place-items: center; color: #6d6e6f; opacity: 0; }
+  .mc:hover .mc-dots, .mc-dots.open { opacity: 1; }
+  .mc-dots:hover { background: #f0f0f0; }
+  .demo .mc-name { padding-right: 16px; }
+  .mmenu { position: absolute; right: 4px; top: 26px; z-index: 10; background: #fff; border-radius: 7px; box-shadow: 0 6px 20px rgba(0,0,0,.18), 0 0 0 1px rgba(0,0,0,.06); padding: 4px 0; min-width: 130px; font-size: 11.5px; animation: popIn .18s ease-out; }
+  .mmenu .lbl { padding: 4px 10px 2px; font-size: 9.5px; color: #6d6e6f; text-transform: uppercase; letter-spacing: .05em; }
+  .mmenu button { display: flex; width: 100%; padding: 5px 10px; text-align: left; gap: 6px; align-items: center; }
+  .mmenu button:hover { background: #f3f3f3; }
+  .mmenu button.cur { color: var(--accent); font-weight: 600; }
+  .mc.moved { animation: flashIn .7s ease-out; }
+  @keyframes flashIn { 0% { box-shadow: 0 0 0 3px rgba(69,115,210,.55); transform: scale(1.03); } 100% { box-shadow: 0 1px 2px rgba(0,0,0,.08), 0 0 0 1px rgba(0,0,0,.06); transform: none; } }
+  .demo-bar { display: flex; align-items: center; gap: 10px; padding: 10px 12px 6px; font-size: 11.5px; color: #6d6e6f; background: #f9f8f8; }
+  .demo-bar .sp { flex: 1; }
+  .meter { width: 90px; height: 5px; border-radius: 3px; background: #e5e5e5; overflow: hidden; }
+  .meter i { display: block; height: 100%; background: #58a182; border-radius: 3px; transition: width .4s; }
+  .reset-demo { font-size: 11px; color: var(--accent); font-weight: 600; }
+
+  /* Search demo */
+  .sd-bar { display: flex; gap: 8px; padding: 12px; background: #fff; border-bottom: 1px solid var(--line); align-items: center; }
+  .sd-input { flex: 1; display: flex; align-items: center; gap: 7px; background: #f5f4f4; border: 1px solid transparent; border-radius: 16px; padding: 5px 12px; color: #8a8b8d; }
+  .sd-input:focus-within { border-color: var(--accent); background: #fff; }
+  .sd-input input { border: none; outline: none; background: transparent; font: inherit; font-size: 12.5px; flex: 1; min-width: 0; color: #1e1f21; }
+  .sd-toggle { font-size: 12px; padding: 5px 10px; border-radius: 6px; color: #6d6e6f; display: flex; align-items: center; gap: 5px; white-space: nowrap; }
+  .sd-toggle:hover { background: #f0f0f0; }
+  .sd-toggle.on { background: #e8eefb; color: var(--accent); }
+  .chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 16px; }
+  .chips button { font-size: 13px; padding: 4px 11px; border-radius: 999px; border: 1px solid var(--line); color: var(--text-2); background: #fff; }
+  .chips button:hover { border-color: var(--accent); color: var(--accent); }
+  .empty { color: #a2a0a2; font-size: 11px; text-align: center; padding: 12px 0; border: 1.5px dashed #dcdbdb; border-radius: 7px; }
+
+  /* Theme demo */
+  .theme-picker { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+  .theme-picker button {
+    display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px 7px 8px; border-radius: 10px;
+    background: #fff; box-shadow: var(--shadow-sm); font-size: 13.5px; font-weight: 500; transition: transform .15s, box-shadow .15s;
+  }
+  .theme-picker button:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
+  .theme-picker button.on { box-shadow: 0 0 0 2px var(--accent); }
+  .theme-picker .tsw { width: 18px; height: 18px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(0,0,0,.1); }
+  .ts { --t-side: #2e2e30; --t-accent: #4573d2; --t-board: #f9f8f8; --t-c1: transparent; --t-c2: transparent; --t-c3: transparent; position: relative; overflow: hidden; }
+  .ts .tsx { display: grid; grid-template-columns: 110px 1fr; min-height: 300px; transition: grid-template-columns .4s; }
+  .ts .t-side { background: var(--t-side); padding: 12px 8px; transition: background .4s; display: flex; flex-direction: column; gap: 5px; }
+  .ts .t-side i { display: block; height: 7px; border-radius: 4px; background: rgba(255,255,255,.18); margin: 4px 6px; }
+  .ts .t-side i.on { background: rgba(255,255,255,.4); }
+  .ts .t-main { display: flex; flex-direction: column; min-width: 0; transition: background .4s, color .4s; }
+  .ts .t-head { display: flex; align-items: center; gap: 8px; padding: 12px 14px; border-bottom: 1px solid rgba(0,0,0,.06); font-size: 14px; font-weight: 600; }
+  .ts .t-icon { width: 22px; height: 22px; border-radius: 5px; background: var(--t-accent); transition: background .4s; }
+  .ts .t-badge { font-size: 10.5px; font-weight: 600; padding: 2px 9px; border-radius: 10px; background: var(--t-badge-bg, transparent); color: var(--t-badge-fg, inherit); white-space: nowrap; transition: all .3s; }
+  .ts .t-btn { margin-left: auto; background: var(--t-accent); color: #fff; font-size: 10.5px; padding: 3px 9px; border-radius: 5px; font-weight: 600; transition: background .4s; }
+  .ts .mb { background: var(--t-board); flex: 1; padding-top: 8px; transition: background .4s; }
+  .ts .mb-col:nth-child(1) .mc { border-top: 3px solid var(--t-c1); }
+  .ts .mb-col:nth-child(2) .mc { border-top: 3px solid var(--t-c2); }
+  .ts .mb-col:nth-child(3) .mc { border-top: 3px solid var(--t-c3); }
+  .ts .mb-col { transition: opacity .4s; }
+  .ts.focus .tsx { grid-template-columns: 0 1fr; }
+  .ts.focus .t-side { padding: 0; overflow: hidden; }
+  .ts.focus .mb-col:not(:nth-child(2)) { opacity: .5; }
+  .ts.focus .mc-tags, .ts.focus .mc-desc { display: none; }
+  .ts.focus .mb-col:nth-child(2) .mc { box-shadow: 0 0 0 1.5px var(--t-accent); }
+  .ts.comic .mb { background-image: radial-gradient(rgba(226,54,54,.16) 1.2px, transparent 1.4px); background-size: 11px 11px; }
+  .ts.comic .mc { border: 1.5px solid #141414; box-shadow: 3px 3px 0 #141414; }
+  .ts.comic .t-head span.tt { font-family: Impact, "Arial Black", sans-serif; text-transform: uppercase; letter-spacing: .6px; font-weight: 400; color: #e23636; }
+  .ts.dark .t-main { background: #0b1026; color: #e6e9ff; }
+  .ts.dark .t-head { border-color: #252d55; }
+  .ts.dark .mb {
+    background-image: radial-gradient(1px 1px at 20px 30px, #fff, transparent), radial-gradient(1px 1px at 90px 90px, rgba(255,255,255,.7), transparent), radial-gradient(1.4px 1.4px at 150px 50px, #cfd8ff, transparent), radial-gradient(ellipse at 15% 85%, rgba(124,92,255,.3), transparent 50%), radial-gradient(ellipse at 85% 20%, rgba(255,122,217,.2), transparent 50%);
+    background-size: 180px 140px, 180px 140px, 180px 140px, 100% 100%, 100% 100%;
+  }
+  .ts.dark .mc { background: rgba(25,32,72,.85); color: #e6e9ff; box-shadow: 0 0 0 1px rgba(124,92,255,.3); }
+  .ts.dark .mc-meta, .ts.dark .mb-h em, .ts.dark .mc.done .mc-name { color: #9aa3c7; }
+  .ts .fxl { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+  .ts .fxl span { position: absolute; top: -30px; animation: fall linear infinite; }
+  @keyframes fall { 0% { transform: translate(0,0) rotate(0); } 50% { transform: translate(18px, 190px) rotate(180deg); } 100% { transform: translate(-6px, 400px) rotate(360deg); } }
+
+  /* Small touches grid */
+  .touch-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 56px; }
+  .tcard { background: #fff; border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow-sm); transition: transform .25s, box-shadow .25s; display: flex; flex-direction: column; }
+  .tcard:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .tcard .ic { width: 42px; height: 42px; border-radius: 11px; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; margin-bottom: 16px; transition: transform .3s; }
+  .tcard:hover .ic { transform: rotate(-8deg) scale(1.08); }
+  .tcard h3 { font-size: 17px; margin-bottom: 6px; }
+  .tcard p { font-size: 14.5px; color: var(--muted); }
+  .tcard .vis { margin-top: 18px; background: var(--soft); border-radius: 10px; padding: 14px; font-size: 12px; min-height: 64px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .toast-m { background: #1e1f21; color: #fff; border-radius: 7px; padding: 7px 11px; display: flex; gap: 12px; font-size: 11.5px; animation: toastLoop 5s ease-in-out infinite; }
+  .toast-m b { color: #8fb1ff; }
+  @keyframes toastLoop { 0%, 8% { transform: translateY(46px); opacity: 0; } 18%, 75% { transform: none; opacity: 1; } 88%, 100% { transform: translateY(46px); opacity: 0; } }
+  .count-m { display: flex; align-items: center; gap: 10px; color: #6d6e6f; }
+  .rename-m { font-size: 15px; font-weight: 500; border: 1px solid var(--accent); border-radius: 6px; padding: 3px 8px; background: #fff; }
+  .rename-m .caret { display: inline-block; width: 1.5px; height: 15px; background: var(--accent); vertical-align: -2px; animation: blink 1s steps(1) infinite; }
+  .resp-m { display: flex; gap: 10px; align-items: flex-end; }
+  .resp-m .dev { border: 1.5px solid #c5c8d0; border-radius: 6px; display: flex; overflow: hidden; background: #fff; }
+  .resp-m .dev i { display: block; }
+  .resp-m .dev .s { background: #2e2e30; }
+  .resp-m .dev .b { background: #f2f1f1; }
+
+  /* How to use */
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 56px; counter-reset: st; position: relative; }
+  .steps::before { content: ""; position: absolute; top: 27px; left: 12%; right: 12%; height: 2px; background: repeating-linear-gradient(90deg, #cdd8f3 0 8px, transparent 8px 14px); }
+  .step { text-align: center; position: relative; }
+  .step .n { width: 56px; height: 56px; border-radius: 50%; background: #fff; box-shadow: var(--shadow-md); display: grid; place-items: center; margin: 0 auto 18px; font-weight: 700; color: var(--accent); font-size: 18px; position: relative; }
+  .step h3 { font-size: 17px; margin-bottom: 6px; }
+  .step p { font-size: 14.5px; color: var(--muted); max-width: 240px; margin: 0 auto; }
+
+  /* Benefits */
+  .benefits { background: linear-gradient(180deg, var(--soft), #fff); }
+  .bgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 56px; }
+  .bcard { background: #fff; border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow-sm); position: relative; overflow: hidden; transition: transform .25s, box-shadow .25s; }
+  .bcard:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .bcard .ic { width: 44px; height: 44px; border-radius: 12px; background: var(--green-soft); color: var(--green); display: grid; place-items: center; margin-bottom: 16px; }
+  .bcard h3 { font-size: 17.5px; margin-bottom: 8px; }
+  .bcard p { font-size: 14.5px; color: var(--muted); }
+  .bcard .from { margin-top: 14px; font-size: 12.5px; color: var(--accent); font-weight: 600; display: flex; align-items: center; gap: 6px; }
+
+  /* Limitations */
+  .limits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 56px; }
+  .lbox { border-radius: 20px; padding: 32px; border: 1px solid var(--line); background: #fff; }
+  .lbox.need { background: linear-gradient(160deg, #f5f8ff, #fff 60%); }
+  .lbox h3 { display: flex; align-items: center; gap: 10px; font-size: 20px; margin-bottom: 6px; }
+  .lbox .sub { color: var(--muted); font-size: 14.5px; margin-bottom: 20px; }
+  .lbox .ic { width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; }
+  .litem { display: flex; gap: 14px; padding: 14px 0; border-top: 1px solid var(--line); }
+  .litem:first-of-type { border-top: none; }
+  .litem .b { width: 28px; height: 28px; border-radius: 8px; display: grid; place-items: center; flex-shrink: 0; }
+  .litem h4 { font-size: 15px; font-weight: 600; margin-bottom: 2px; }
+  .litem p { font-size: 14px; color: var(--muted); line-height: 1.5; }
+  .status-legend { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 18px; font-size: 13px; color: var(--muted); justify-content: center; }
+  .status-legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .status-legend i { width: 9px; height: 9px; border-radius: 50%; }
+
+  /* CTA + footer */
+  .cta { padding: 60px 0 110px; }
+  .cta-box {
+    border-radius: 28px; padding: 64px 40px; text-align: center; color: #fff; position: relative; overflow: hidden;
+    background: radial-gradient(500px 260px at 15% 10%, rgba(255,255,255,.18), transparent 70%), linear-gradient(130deg, #3d63c4, #6a4fd8 55%, #d4587a);
+  }
+  .cta-box h2 { color: #fff; margin-top: 0; }
+  .cta-box p { color: rgba(255,255,255,.85); max-width: 560px; margin: 0 auto; font-size: 17px; }
+  .cta-box .btn.primary { background: #fff; color: var(--accent); box-shadow: 0 10px 30px -10px rgba(0,0,0,.4); margin-top: 30px; }
+  .cta-box .dots { position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,.18) 1px, transparent 1.2px); background-size: 18px 18px; mask-image: linear-gradient(180deg, transparent, #000 50%, transparent); -webkit-mask-image: linear-gradient(180deg, transparent, #000 50%, transparent); pointer-events: none; }
+  footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--muted); font-size: 13.5px; }
+  footer .wrap { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  footer .sp { flex: 1; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 1000px) {
+    .cards-4 { grid-template-columns: repeat(2, 1fr); }
+    .frow, .frow.flip, .frow.wide, .frow.wide.flip { grid-template-columns: 1fr; gap: 36px; margin-top: 90px; }
+    .frow.flip .ftext { order: 0; }
+    .flow { grid-template-columns: 1fr; gap: 0; }
+    .farrow { height: 64px; }
+    .farrow svg { transform: rotate(90deg); }
+    .touch-grid, .bgrid { grid-template-columns: repeat(2, 1fr); }
+    .steps { grid-template-columns: repeat(2, 1fr); row-gap: 40px; }
+    .steps::before { display: none; }
+    .chip-a, .chip-b { display: none; }
+  }
+  @media (max-width: 720px) {
+    section { padding: 84px 0; }
+    .wrap { padding: 0 16px; }
+    .nav-links { display: none; }
+    .am { grid-template-columns: 1fr; }
+    .am-side { display: none; }
+    .am-members, .am-status, .am-search { display: none; }
+    .cards-4, .touch-grid, .bgrid, .steps, .limits-grid { grid-template-columns: 1fr; }
+    .modal-demo { grid-template-columns: 1fr; }
+    .stage { padding: 16px; }
+    .legend { grid-template-columns: 1fr; }
+    .lbox { padding: 24px 20px; }
+    .ts .tsx { grid-template-columns: 0 1fr; }
+    .ts .t-side { padding: 0; overflow: hidden; }
+    .chip-c { display: none; }
+    .cta-box { padding: 48px 22px; }
+    .mb { gap: 7px; padding-left: 8px; padding-right: 8px; }
+    .mover { width: calc((100% - 30px) / 3); left: calc(8px + (100% - 30px) / 3 + 7px); }
+    .mc-meta .who { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Icon sprite (inline SVG, no external files) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="flowGrad" x1="0" x2="1"><stop offset="0" stop-color="#4573d2"/><stop offset="1" stop-color="#8a5cf6"/></linearGradient>
+    <symbol id="i-logo" viewBox="0 0 32 32"><circle cx="16" cy="9" r="6" fill="#f06a6a"/><circle cx="8" cy="21" r="6" fill="#f06a6a"/><circle cx="24" cy="21" r="6" fill="#f06a6a"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="m6 12.5 4 4 8-9"/></symbol>
+    <symbol id="i-check-c" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="m8 12.5 2.7 2.7L16.5 9.5"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><rect x="4" y="5.5" width="16" height="14.5" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="m16 16 4 4"/></symbol>
+    <symbol id="i-dots" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.7" fill="currentColor"/><circle cx="12" cy="12" r="1.7" fill="currentColor"/><circle cx="19" cy="12" r="1.7" fill="currentColor"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M3 11 12 4l9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15zM10 20.5a2 2 0 0 0 4 0"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M9 7h11M9 12h11M9 17h11M4.5 7h.01M4.5 12h.01M4.5 17h.01"/></symbol>
+    <symbol id="i-board" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="5" height="15" rx="1" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="10" y="4.5" width="5" height="10" rx="1" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="16.5" y="4.5" width="4" height="12.5" rx="1" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M4 20h4L19 9l-4-4L4 16z"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4.5 7h15M9.5 7V4.5h5V7M6.5 7l1 13h9l1-13M10 11v5.5M14 11v5.5"/></symbol>
+    <symbol id="i-move" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-palette" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M12 3.5a8.5 8.5 0 1 0 0 17c1.2 0 1.8-.8 1.8-1.7 0-1.2-1-1.5-1-2.6 0-1 .8-1.7 1.8-1.7h2.2c2 0 3.7-1.6 3.7-3.7C20.5 6.6 16.7 3.5 12 3.5z"/><circle cx="7.5" cy="11" r="1.2" fill="currentColor"/><circle cx="10.5" cy="7.5" r="1.2" fill="currentColor"/><circle cx="15" cy="7.5" r="1.2" fill="currentColor"/></symbol>
+    <symbol id="i-offline" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M6 3.5h8l4 4V20a.5.5 0 0 1-.5.5h-11A.5.5 0 0 1 6 20z"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M14 3.5V8h4M9 13l2 2 4-4"/></symbol>
+    <symbol id="i-scatter" viewBox="0 0 24 24"><rect x="3" y="4" width="7" height="6" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="3" width="7" height="5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="12" y="14" width="8" height="6" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="15" width="6" height="5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="i-question" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6M12 17h.01"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.8" fill="none" stroke="currentColor" stroke-width="1.8"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M4.5 20c1.2-3.6 4-5.5 7.5-5.5s6.3 1.9 7.5 5.5"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M13 3 5 13.5h6L10 21l8-10.5h-6z"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></symbol>
+    <symbol id="i-undo" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M9 7 4.5 11.5 9 16M5 11.5h9.5a5 5 0 0 1 0 10H11"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M8 14h8"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M5 20V12M12 20V5M19 20v-9"/></symbol>
+    <symbol id="i-device" viewBox="0 0 24 24"><rect x="2.5" y="4.5" width="14" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="15" y="9" width="6.5" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M6 18.5h6"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M19.5 12a7.5 7.5 0 1 1-2.2-5.3M19.5 4v4.5H15"/></symbol>
+    <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7.5" ry="2.8" fill="none" stroke="currentColor" stroke-width="1.8"/><path fill="none" stroke="currentColor" stroke-width="1.8" d="M4.5 6v12c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8V6M4.5 12c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path fill="none" stroke="currentColor" stroke-width="1.8" d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></symbol>
+    <symbol id="i-sync" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 12a8 8 0 0 1 13.7-5.6L20 8.5M20 4v4.5h-4.5M20 12a8 8 0 0 1-13.7 5.6L4 15.5M4 20v-4.5h4.5"/></symbol>
+    <symbol id="i-cloud" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M7 18.5h10.5a4 4 0 0 0 .6-8 6 6 0 0 0-11.6-1.5A4.8 4.8 0 0 0 7 18.5z"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M12 3 4.5 6v5.5c0 4.6 3.2 8.2 7.5 9.5 4.3-1.3 7.5-4.9 7.5-9.5V6z"/></symbol>
+    <symbol id="i-test" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M9 3.5h6M10 3.5v6L5 18.5a1.5 1.5 0 0 0 1.3 2h11.4a1.5 1.5 0 0 0 1.3-2L14 9.5v-6M7.5 14.5h9"/></symbol>
+    <symbol id="i-cursor" viewBox="0 0 24 24"><path fill="#1e1f21" stroke="#fff" stroke-width="1.5" stroke-linejoin="round" d="M5 3l14 8-6.2 1.6L10 19z"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="m7 7 10 10M17 7 7 17"/></symbol>
+    <symbol id="i-msg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M4 5.5h16v10.5H9l-5 4z"/></symbol>
+  </defs>
+</svg>
+
+<div class="progress" id="progress"></div>
+
+<nav class="top" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><svg width="24" height="24"><use href="#i-logo"/></svg>Taskboard</a>
+    <div class="nav-links">
+      <a href="#problem">Problem</a>
+      <a href="#solution">Solution</a>
+      <a href="#features">Features</a>
+      <a href="#benefits">Benefits</a>
+      <a href="#limits">Limitations</a>
+    </div>
+    <a class="btn primary sm nav-cta" href="index.html">Open the board</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="pill reveal"><b>Single HTML file</b>No install, no sign-up, works offline</span>
+      <h1 class="reveal" style="--d:.08s">Your team's work,<br><span class="grad">on one clear board.</span></h1>
+      <p class="lead reveal" style="--d:.16s">Taskboard is a lightweight Kanban board inspired by Asana. See every task in <b>To Do</b>, <b>In Progress</b> and <b>Done</b>, with who owns it and when it's due — then move it forward with a drag or a click.</p>
+      <div class="hero-ctas reveal" style="--d:.24s">
+        <a class="btn primary" href="index.html">Open the board <svg width="16" height="16"><use href="#i-move"/></svg></a>
+        <a class="btn ghost" href="#features">See how it works</a>
+      </div>
+      <div class="hero-note reveal" style="--d:.3s">
+        <span><svg width="15" height="15"><use href="#i-check"/></svg>Add, edit &amp; delete tasks</span>
+        <span><svg width="15" height="15"><use href="#i-check"/></svg>Drag between columns</span>
+        <span><svg width="15" height="15"><use href="#i-check"/></svg>7 built-in themes</span>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal zoom" style="--d:.2s">
+      <div class="float-chip chip-a"><span class="ic" style="background:#e6f5ee;color:#2f9e75"><svg width="16" height="16"><use href="#i-check-c"/></svg></span><span>Marked complete<small>one click on the circle</small></span></div>
+      <div class="float-chip chip-b"><span class="ic" style="background:#fdeeee;color:#f06a6a"><svg width="16" height="16"><use href="#i-cal"/></svg></span><span>Due today<small>highlighted in green</small></span></div>
+      <div class="float-chip chip-c"><span class="ic" style="background:#eef3fd;color:#4573d2"><svg width="16" height="16"><use href="#i-palette"/></svg></span><span>Theme: Focus mode<small>dims everything but In Progress</small></span></div>
+
+      <div class="app-mock">
+        <div class="chrome"><i></i><i></i><i></i><span class="url">index.html</span></div>
+        <div class="am">
+          <aside class="am-side">
+            <div class="am-logo"><svg width="16" height="16"><use href="#i-logo"/></svg>Taskboard</div>
+            <div class="am-create"><b><svg width="10" height="10"><use href="#i-plus"/></svg></b>Create</div>
+            <div class="am-nav"><svg width="13" height="13"><use href="#i-home"/></svg>Home</div>
+            <div class="am-nav"><svg width="13" height="13"><use href="#i-check-c"/></svg>My tasks</div>
+            <div class="am-nav"><svg width="13" height="13"><use href="#i-bell"/></svg>Inbox</div>
+            <div class="am-sec">Projects</div>
+            <div class="am-nav on"><span class="sw" style="background:#4ecbc4"></span>Website Launch</div>
+            <div class="am-nav"><span class="sw" style="background:#f8df72"></span>Marketing Campaign</div>
+            <div class="am-nav"><span class="sw" style="background:#b36bd4"></span>Mobile App v2</div>
+            <div class="am-nav"><span class="sw" style="background:#f9aaef"></span>Customer Research</div>
+          </aside>
+          <div class="am-main">
+            <div class="am-top"><span class="am-search"><svg width="11" height="11"><use href="#i-search"/></svg>Search tasks</span><span class="av lg" style="background:#f06a6a">ME</span></div>
+            <div class="am-head">
+              <div class="am-title-row">
+                <span class="am-picon"><svg width="14" height="14"><use href="#i-list"/></svg></span>
+                <span class="am-title">Website Launch</span>
+                <span class="am-status">On track</span>
+                <span class="am-members" id="heroMembers"></span>
+                <span class="am-share">Share</span>
+              </div>
+              <div class="am-tabs"><span>Overview</span><span>List</span><span class="on">Board</span><span>Timeline</span><span>Calendar</span></div>
+            </div>
+            <div class="am-toolbar">
+              <span class="am-add"><svg width="10" height="10"><use href="#i-plus"/></svg>Add task</span>
+              <span class="sp"></span>
+              <span class="count-swap swap"><span>2 of 6 tasks complete</span><span>3 of 6 tasks complete</span></span>
+              <span>🎨 Theme</span>
+            </div>
+            <div class="mb" id="heroBoard"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ FEATURE STRIP ============ -->
+<div class="strip">
+  <div class="wrap">
+    <div class="strip-grid">
+      <div class="strip-item reveal" style="--d:0s"><span class="ic" style="background:#eef3fd;color:#4573d2"><svg width="16" height="16"><use href="#i-board"/></svg></span>3-column Kanban</div>
+      <div class="strip-item reveal" style="--d:.05s"><span class="ic" style="background:#e6f5ee;color:#2f9e75"><svg width="16" height="16"><use href="#i-edit"/></svg></span>Add · Edit · Delete</div>
+      <div class="strip-item reveal" style="--d:.1s"><span class="ic" style="background:#f3eefe;color:#8a5cf6"><svg width="16" height="16"><use href="#i-move"/></svg></span>4 ways to change status</div>
+      <div class="strip-item reveal" style="--d:.15s"><span class="ic" style="background:#fff4e5;color:#e08a00"><svg width="16" height="16"><use href="#i-search"/></svg></span>Search &amp; filter</div>
+      <div class="strip-item reveal" style="--d:.2s"><span class="ic" style="background:#fdeeee;color:#f06a6a"><svg width="16" height="16"><use href="#i-palette"/></svg></span>7 themes</div>
+      <div class="strip-item reveal" style="--d:.25s"><span class="ic" style="background:#eaf6fb;color:#0b8fb5"><svg width="16" height="16"><use href="#i-offline"/></svg></span>Runs offline</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PROBLEM ============ -->
+<section class="problem" id="problem">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow coral reveal">The problem</span>
+      <h2 class="reveal" style="--d:.05s">Tasks get lost between<br>chats, notes and spreadsheets</h2>
+      <p class="lead reveal" style="--d:.1s">Most small teams don't lack effort — they lack one shared place that shows what's happening. These are the everyday frictions Taskboard was built around.</p>
+    </div>
+    <div class="cards-4">
+      <div class="pcard reveal" style="--d:0s">
+        <div class="scatter">
+          <span style="left:8%;top:14%;--r:-4deg;--x:5px;--y:-4px">💬 "who's on the copy?"</span>
+          <span style="left:40%;top:52%;--r:3deg;--x:-6px;--y:5px;animation-delay:-2s">📝 todo.txt</span>
+          <span style="left:12%;top:66%;--r:2deg;animation-delay:-4s">📊 tasks_v3_final.xlsx</span>
+          <span style="left:55%;top:16%;--r:-2deg;--x:-4px;animation-delay:-1s">📌 sticky note</span>
+        </div>
+        <h3>Work is scattered</h3>
+        <p>Tasks live in messages, documents and personal lists, so nobody sees the whole picture.</p>
+      </div>
+      <div class="pcard reveal" style="--d:.08s">
+        <div class="ic"><svg width="22" height="22"><use href="#i-question"/></svg></div>
+        <h3>Ownership is unclear</h3>
+        <p>When a task has no visible owner, it's easy for everyone to assume someone else has it.</p>
+      </div>
+      <div class="pcard reveal" style="--d:.16s">
+        <div class="ic"><svg width="22" height="22"><use href="#i-clock"/></svg></div>
+        <h3>Deadlines slip silently</h3>
+        <p>Due dates buried in text don't stand out, so overdue work is noticed late.</p>
+      </div>
+      <div class="pcard reveal" style="--d:.24s">
+        <div class="ic"><svg width="22" height="22"><use href="#i-gear"/></svg></div>
+        <h3>Big tools feel heavy</h3>
+        <p>Full project suites need accounts, setup and a connection before you can track a single task.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FLOW: PROBLEM → SOLUTION → BENEFITS ============ -->
+<section id="solution" style="padding-top:100px">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow reveal">From problem to outcome</span>
+      <h2 class="reveal" style="--d:.05s">How Taskboard closes the gap</h2>
+      <p class="lead reveal" style="--d:.1s">Each pain point maps to a concrete feature in the board, and each feature to a day-to-day improvement.</p>
+    </div>
+
+    <div class="flow reveal" id="flow">
+      <div class="fnode" style="--c:#f06a6a">
+        <span class="tag"><span class="n">1</span>Problem</span>
+        <h3>Scattered, unclear work</h3>
+        <ul>
+          <li>Tasks spread across many places</li>
+          <li>No visible owner or status</li>
+          <li>Deadlines easy to miss</li>
+          <li>Heavy tools need setup</li>
+        </ul>
+      </div>
+      <div class="farrow"><svg viewBox="0 0 70 28"><path class="line" d="M2 14 H64"/><path class="head" d="M56 6 L65 14 L56 22"/><circle class="dot" cx="4" cy="14" r="3.5"/></svg></div>
+      <div class="fnode" style="--c:#4573d2">
+        <span class="tag"><span class="n">2</span>Solution</span>
+        <h3>One Kanban board</h3>
+        <ul>
+          <li>To Do · In Progress · Done columns</li>
+          <li>Every card shows assignee &amp; due date</li>
+          <li>Overdue in red, today in green</li>
+          <li>One HTML file, opens offline</li>
+        </ul>
+      </div>
+      <div class="farrow"><svg viewBox="0 0 70 28"><path class="line" d="M2 14 H64"/><path class="head" d="M56 6 L65 14 L56 22"/><circle class="dot" cx="4" cy="14" r="3.5"/></svg></div>
+      <div class="fnode" style="--c:#2f9e75">
+        <span class="tag"><span class="n">3</span>Benefits</span>
+        <h3>Clear, shared progress</h3>
+        <ul>
+          <li>Status visible at a glance</li>
+          <li>Clear responsibility per task</li>
+          <li>Due dates surface early</li>
+          <li>Start in seconds, no sign-up</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURES ============ -->
+<section class="features" id="features" style="padding-top:60px">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow reveal">The solution, feature by feature</span>
+      <h2 class="reveal" style="--d:.05s">Everything you need to run a board</h2>
+      <p class="lead reveal" style="--d:.1s">Each mockup below recreates the real Taskboard screen. Several of them are interactive — try them.</p>
+    </div>
+
+    <!-- 1. Card anatomy -->
+    <div class="frow">
+      <div class="ftext reveal left">
+        <span class="num">01 · Task cards</span>
+        <h3>Every card answers who, what and when</h3>
+        <p>Tasks sit as cards inside their status column. Each card carries the essentials, so you can read the board without opening anything.</p>
+        <ol class="legend">
+          <li><b>1</b>Completion circle</li>
+          <li><b>2</b>Task name</li>
+          <li><b>3</b>Description preview (2 lines)</li>
+          <li><b>4</b>Priority &amp; status tags</li>
+          <li><b>5</b>Assignee avatar &amp; name</li>
+          <li><b>6</b>Due date — <span style="color:#c92f54">overdue</span> / <span style="color:#58a182;font-weight:600">today</span></li>
+        </ol>
+      </div>
+      <div class="stage reveal right" id="anatomyStage">
+        <div class="anatomy">
+          <div class="mc">
+            <div class="mc-top"><span class="chk mark" data-n="1" style="--i:0"><svg width="10" height="10"><use href="#i-check"/></svg></span><span class="mc-name"><span class="mark" data-n="2" style="--i:1">Design landing page mockups</span></span></div>
+            <span class="mc-dots" style="opacity:1"><svg width="14" height="14"><use href="#i-dots"/></svg></span>
+            <div class="mc-desc"><span class="mark" data-n="3" style="--i:2">Desktop and mobile versions in the new brand style.</span></div>
+            <div class="mc-tags"><span class="tg p-high">High</span><span class="tg s-progress mark" data-n="4" style="--i:3">In Progress</span></div>
+            <div class="mc-meta"><span class="av" style="background:#4573d2">MA</span><span class="who mark" data-n="5" style="--i:4">Minh Anh</span><span class="due today mark" data-n="6" style="--i:5"><svg width="12" height="12"><use href="#i-cal"/></svg>Today</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Add & edit -->
+    <div class="frow flip">
+      <div class="ftext reveal right">
+        <span class="num">02 · Add &amp; edit</span>
+        <h3>Capture a task in one short form</h3>
+        <p>The same form is used to create a new task and to edit an existing one. Click any card to open it with its current values.</p>
+        <ul class="checks">
+          <li><svg width="16" height="16"><use href="#i-check"/></svg>Name (required), assignee, due date, priority, status and description</li>
+          <li><svg width="16" height="16"><use href="#i-check"/></svg>Assignee field suggests teammates as you type</li>
+          <li><svg width="16" height="16"><use href="#i-check"/></svg>Choose the starting status directly in the form</li>
+        </ul>
+        <div class="entry">
+          <span><svg width="13" height="13"><use href="#i-plus"/></svg>Add task button</span>
+          <span><svg width="13" height="13"><use href="#i-plus"/></svg>Column “+”</span>
+          <span>Sidebar “Create”</span>
+          <span>Press <span class="kbd">N</span></span>
+        </div>
+      </div>
+      <div class="stage reveal left">
+        <div class="modal-demo" id="modalDemo">
+          <div class="panel mm">
+            <div class="mm-head"><span>New task</span><span><svg width="13" height="13"><use href="#i-x"/></svg></span></div>
+            <div class="mm-body">
+              <div class="mm-name" id="mmName"><span class="ph">Write a task name</span><span class="caret"></span></div>
+              <div class="mm-row"><span>Assignee</span><span class="mm-field" id="mmWho">&nbsp;</span></div>
+              <div class="mm-row"><span>Due date</span><span class="mm-field" id="mmDue">&nbsp;</span></div>
+              <div class="mm-row"><span>Priority</span><span class="mm-field" id="mmPri" style="width:max-content;min-width:80px">None</span></div>
+              <div class="mm-row"><span>Status</span><span class="mm-seg" id="mmSeg"><span class="sel">To Do</span><span>In Progress</span><span>Done</span></span></div>
+            </div>
+            <div class="mm-foot"><span class="mm-btn">Cancel</span><span class="mm-btn pri" id="mmSave">Create task</span></div>
+          </div>
+          <div class="mini-col">
+            <div class="mb-h">To Do <em id="mmCount">2</em><span class="plus"><svg width="12" height="12"><use href="#i-plus"/></svg></span></div>
+            <div class="mb-cards" id="mmCol"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Change status (interactive) -->
+    <div class="frow wide">
+      <div class="ftext reveal left">
+        <span class="num">03 · Change status</span>
+        <h3>Move work forward, your way</h3>
+        <p>There are four ways to change a task's status, so updating the board never slows you down.</p>
+        <ul class="checks">
+          <li><svg width="16" height="16"><use href="#i-check"/></svg><span><b>Drag &amp; drop</b> a card to another column — or to a new position in the same one</span></li>
+          <li><svg width="16" height="16"><use href="#i-check"/></svg><span><b>Click the circle</b> to mark Done (click again to send back to To Do)</span></li>
+          <li><svg width="16" height="16"><use href="#i-check"/></svg><span><b>⋯ → Move to</b> from the card menu</span></li>
+          <li><svg width="16" height="16"><use href="#i-check"/></svg><span><b>Status selector</b> inside the edit form</span></li>
+        </ul>
+        <span class="try"><span class="pulse"></span>Try it: drag a card, click a circle or open ⋯</span>
+      </div>
+      <div class="stage reveal right">
+        <div class="panel demo">
+          <div class="demo-bar"><span id="demoCount">2 of 6 tasks complete</span><span class="meter"><i id="demoMeter"></i></span><span class="sp"></span><button class="reset-demo" id="demoReset">Reset demo</button></div>
+          <div class="mb" id="demoBoard"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Search & filter (interactive) -->
+    <div class="frow wide flip">
+      <div class="ftext reveal right">
+        <span class="num">04 · Search &amp; filter</span>
+        <h3>Find any task instantly</h3>
+        <p>The search box filters the board as you type, matching the task name, assignee and description. “My tasks only” narrows the board to your own work.</p>
+        <ul class="checks">
+          <li><svg width="16" height="16"><use href="#i-check"/></svg>Live filtering — no search button</li>
+          <li><svg width="16" height="16"><use href="#i-check"/></svg>Column counts keep showing the full total</li>
+          <li><svg width="16" height="16"><use href="#i-check"/></svg>Combine search with the “My tasks only” toggle</li>
+        </ul>
+        <div class="chips" id="searchChips">
+          <span style="font-size:13px;color:var(--muted);align-self:center">Try:</span>
+          <button>design</button><button>Kevin</button><button>analytics</button><button>brand</button>
+        </div>
+      </div>
+      <div class="stage reveal left">
+        <div class="panel">
+          <div class="sd-bar">
+            <label class="sd-input"><svg width="13" height="13"><use href="#i-search"/></svg><input id="sdInput" type="search" placeholder="Search tasks"></label>
+            <button class="sd-toggle" id="sdMine"><svg width="13" height="13"><use href="#i-person"/></svg>My tasks only</button>
+          </div>
+          <div class="mb" id="searchBoard" style="padding-top:8px"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Themes (interactive) -->
+    <div class="frow wide">
+      <div class="ftext reveal left">
+        <span class="num">05 · Themes</span>
+        <h3>Seven themes, including Focus mode</h3>
+        <p>Pick a look from the 🎨 Theme menu. Seasonal themes add colors, a greeting badge and gentle falling decorations. Your choice is remembered with your tasks.</p>
+        <ul class="checks">
+          <li><svg width="16" height="16"><use href="#i-check"/></svg><span><b>Focus mode</b> hides the sidebar, descriptions and tags, and dims every column except In Progress</span></li>
+          <li><svg width="16" height="16"><use href="#i-check"/></svg>Decorations turn off automatically when the system asks for reduced motion</li>
+        </ul>
+        <div class="theme-picker" id="themePicker"></div>
+      </div>
+      <div class="stage reveal right">
+        <div class="panel ts" id="themeStage">
+          <div class="tsx">
+            <div class="t-side"><i></i><i></i><i class="on"></i><i></i><i></i><i></i></div>
+            <div class="t-main">
+              <div class="t-head"><span class="t-icon"></span><span class="tt">Website Launch</span><span class="t-badge" id="tBadge"></span><span class="t-btn">+ Add task</span></div>
+              <div class="mb" id="themeBoard"></div>
+            </div>
+          </div>
+          <div class="fxl" id="themeFx"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. Small touches -->
+    <div class="center" style="margin-top:130px">
+      <span class="eyebrow reveal">Thoughtful details</span>
+      <h2 class="reveal" style="--d:.05s">Small touches that keep you moving</h2>
+    </div>
+    <div class="touch-grid">
+      <div class="tcard reveal" style="--d:0s">
+        <div class="ic"><svg width="20" height="20"><use href="#i-undo"/></svg></div>
+        <h3>Delete with Undo</h3>
+        <p>Delete from the edit form or the ⋯ menu after a confirmation. An Undo button stays on screen for about 5 seconds.</p>
+        <div class="vis"><div class="toast-m">Task deleted <b>Undo</b></div></div>
+      </div>
+      <div class="tcard reveal" style="--d:.08s">
+        <div class="ic"><svg width="20" height="20"><use href="#i-chart"/></svg></div>
+        <h3>Progress at a glance</h3>
+        <p>The toolbar shows how many tasks are complete, and each column header shows its task count.</p>
+        <div class="vis"><div class="count-m"><span id="touchCount">2 of 6 tasks complete</span><span class="meter"><i id="touchMeter" style="width:33%"></i></span></div></div>
+      </div>
+      <div class="tcard reveal" style="--d:.16s">
+        <div class="ic"><svg width="20" height="20"><use href="#i-edit"/></svg></div>
+        <h3>Rename the project inline</h3>
+        <p>Click the project title to rename it. The sidebar and browser tab update to match.</p>
+        <div class="vis"><span class="rename-m">Website Launch<span class="caret"></span></span></div>
+      </div>
+      <div class="tcard reveal" style="--d:0s">
+        <div class="ic"><svg width="20" height="20"><use href="#i-key"/></svg></div>
+        <h3>Keyboard friendly</h3>
+        <p>Press <span class="kbd">N</span> for a new task and <span class="kbd">Esc</span> to close forms and menus. <span class="kbd">Enter</span> confirms a project rename.</p>
+        <div class="vis" style="gap:8px"><span class="kbd" style="font-size:15px;padding:8px 12px">N</span><span class="kbd" style="font-size:15px;padding:8px 12px">Esc</span><span class="kbd" style="font-size:15px;padding:8px 12px">Enter</span></div>
+      </div>
+      <div class="tcard reveal" style="--d:.08s">
+        <div class="ic"><svg width="20" height="20"><use href="#i-db"/></svg></div>
+        <h3>Saved in your browser</h3>
+        <p>Tasks, project name and theme are stored in the browser's local storage, so they're there next time you open the file.</p>
+        <div class="vis"><span style="font-family:ui-monospace,Menlo,monospace;color:var(--text-2)">localStorage → "taskboard.v1"</span></div>
+      </div>
+      <div class="tcard reveal" style="--d:.16s">
+        <div class="ic"><svg width="20" height="20"><use href="#i-device"/></svg></div>
+        <h3>Adapts to small screens</h3>
+        <p>On narrow windows the sidebar tucks away behind the menu button, and the board scrolls sideways.</p>
+        <div class="vis"><div class="resp-m">
+          <div class="dev" style="width:96px;height:58px"><i class="s" style="width:22px"></i><i class="b" style="flex:1"></i></div>
+          <div class="dev" style="width:34px;height:58px;border-radius:7px"><i class="b" style="flex:1"></i></div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW TO USE ============ -->
+<section style="background:var(--soft)">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow reveal">Getting started</span>
+      <h2 class="reveal" style="--d:.05s">Up and running in four steps</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal" style="--d:0s"><div class="n">1</div><h3>Open index.html</h3><p>Double-click the file. Six sample tasks are ready so you can explore right away.</p></div>
+      <div class="step reveal" style="--d:.1s"><div class="n">2</div><h3>Add your tasks</h3><p>Use Add task or press N. Set an assignee, due date and priority.</p></div>
+      <div class="step reveal" style="--d:.2s"><div class="n">3</div><h3>Move them forward</h3><p>Drag cards across columns or tick the circle when they're done.</p></div>
+      <div class="step reveal" style="--d:.3s"><div class="n">4</div><h3>Make it yours</h3><p>Rename the project and pick a theme. Use Reset sample data to start over.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BENEFITS ============ -->
+<section class="benefits" id="benefits">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow green reveal">Expected benefits</span>
+      <h2 class="reveal" style="--d:.05s">What changes when work is on one board</h2>
+      <p class="lead reveal" style="--d:.1s">These are the improvements the current features are designed to support. We haven't measured them yet, so there are no numbers here.</p>
+    </div>
+    <div class="bgrid">
+      <div class="bcard reveal" style="--d:0s"><div class="ic"><svg width="20" height="20"><use href="#i-eye"/></svg></div><h3>Shared visibility</h3><p>Everyone looks at the same three columns, so “where are we?” is answered by the board itself.</p><div class="from"><svg width="13" height="13"><use href="#i-board"/></svg>Kanban columns · counts</div></div>
+      <div class="bcard reveal" style="--d:.08s"><div class="ic"><svg width="20" height="20"><use href="#i-person"/></svg></div><h3>Clear responsibility</h3><p>An avatar on every card makes ownership explicit, and “My tasks only” shows each person their own list.</p><div class="from"><svg width="13" height="13"><use href="#i-person"/></svg>Assignee · filter</div></div>
+      <div class="bcard reveal" style="--d:.16s"><div class="ic"><svg width="20" height="20"><use href="#i-clock"/></svg></div><h3>Earlier deadline awareness</h3><p>Overdue dates turn red and today's dates turn green, so urgent work stands out before it slips.</p><div class="from"><svg width="13" height="13"><use href="#i-cal"/></svg>Due-date highlighting</div></div>
+      <div class="bcard reveal" style="--d:0s"><div class="ic"><svg width="20" height="20"><use href="#i-bolt"/></svg></div><h3>Fewer steps per update</h3><p>A drag or a single click changes status, so keeping the board current takes very little effort.</p><div class="from"><svg width="13" height="13"><use href="#i-move"/></svg>4 ways to change status</div></div>
+      <div class="bcard reveal" style="--d:.08s"><div class="ic"><svg width="20" height="20"><use href="#i-target"/></svg></div><h3>Deeper focus</h3><p>Focus mode strips the screen down to what's in progress when you need to concentrate.</p><div class="from"><svg width="13" height="13"><use href="#i-palette"/></svg>Focus mode theme</div></div>
+      <div class="bcard reveal" style="--d:.16s"><div class="ic"><svg width="20" height="20"><use href="#i-offline"/></svg></div><h3>Zero setup</h3><p>No installation, account or internet connection is needed to start tracking work.</p><div class="from"><svg width="13" height="13"><use href="#i-offline"/></svg>Single offline HTML file</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LIMITATIONS ============ -->
+<section id="limits">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow coral reveal">Limitations &amp; required resources</span>
+      <h2 class="reveal" style="--d:.05s">Where Taskboard is today</h2>
+      <p class="lead reveal" style="--d:.1s">Taskboard is currently a single-user prototype. Here's what it doesn't do yet, and what running it for a real team would take.</p>
+    </div>
+    <div class="limits-grid">
+      <div class="lbox reveal left">
+        <h3><span class="ic" style="background:var(--coral-soft);color:var(--coral)"><svg width="18" height="18"><use href="#i-x"/></svg></span>Not yet implemented</h3>
+        <p class="sub">Visible in the interface or expected in a team tool, but not working today.</p>
+        <div class="litem"><span class="b" style="background:var(--coral-soft);color:var(--coral)"><svg width="15" height="15"><use href="#i-db"/></svg></span><div><h4>Data stays in one browser</h4><p>Tasks live in that browser's local storage. There's no sync between devices or people, and clearing site data (or a private window) loses them.</p></div></div>
+        <div class="litem"><span class="b" style="background:var(--coral-soft);color:var(--coral)"><svg width="15" height="15"><use href="#i-lock"/></svg></span><div><h4>No accounts or real sharing</h4><p>There's no sign-in. “Me” is fixed to Kevin, the teammate list is built in, and the Share and Invite buttons don't do anything yet.</p></div></div>
+        <div class="litem"><span class="b" style="background:var(--coral-soft);color:var(--coral)"><svg width="15" height="15"><use href="#i-board"/></svg></span><div><h4>One project, Board view only</h4><p>Other sidebar projects, Home, My tasks, Inbox, Reporting, Portfolios and Goals, plus the Overview, List, Timeline and Calendar tabs, are placeholders. The “On track” status is fixed.</p></div></div>
+        <div class="litem"><span class="b" style="background:var(--coral-soft);color:var(--coral)"><svg width="15" height="15"><use href="#i-bell"/></svg></span><div><h4>No notifications or collaboration</h4><p>There are no reminders, comments, attachments, subtasks or task dependencies.</p></div></div>
+        <div class="litem"><span class="b" style="background:var(--coral-soft);color:var(--coral)"><svg width="15" height="15"><use href="#i-device"/></svg></span><div><h4>Touch drag not verified</h4><p>Drag &amp; drop uses the browser's mouse drag events and may not work on phones or tablets. The ⋯ menu and edit form still change status there.</p></div></div>
+      </div>
+      <div class="lbox need reveal right">
+        <h3><span class="ic" style="background:var(--accent-soft);color:var(--accent)"><svg width="18" height="18"><use href="#i-gear"/></svg></span>Needed for real operation</h3>
+        <p class="sub">Resources a team deployment would require.</p>
+        <div class="litem"><span class="b" style="background:var(--accent-soft);color:var(--accent)"><svg width="15" height="15"><use href="#i-db"/></svg></span><div><h4>Backend &amp; database</h4><p>A server API and database so tasks are stored centrally and backed up.</p></div></div>
+        <div class="litem"><span class="b" style="background:var(--accent-soft);color:var(--accent)"><svg width="15" height="15"><use href="#i-lock"/></svg></span><div><h4>Authentication &amp; permissions</h4><p>User accounts, team membership and access rules for who can see or edit each project.</p></div></div>
+        <div class="litem"><span class="b" style="background:var(--accent-soft);color:var(--accent)"><svg width="15" height="15"><use href="#i-sync"/></svg></span><div><h4>Real-time sync</h4><p>Live updates (for example over WebSockets) so changes appear for every teammate at once.</p></div></div>
+        <div class="litem"><span class="b" style="background:var(--accent-soft);color:var(--accent)"><svg width="15" height="15"><use href="#i-cloud"/></svg></span><div><h4>Hosting &amp; notifications</h4><p>A hosted web address with HTTPS, plus an email or push service for due-date reminders.</p></div></div>
+        <div class="litem"><span class="b" style="background:var(--accent-soft);color:var(--accent)"><svg width="15" height="15"><use href="#i-shield"/></svg></span><div><h4>Security, privacy &amp; QA</h4><p>Security review, a privacy policy, mobile and touch testing, and an accessibility check.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<div class="cta">
+  <div class="wrap">
+    <div class="cta-box reveal zoom">
+      <div class="dots"></div>
+      <h2>Put your next project on the board</h2>
+      <p>Open the file, add a few tasks and see your team's work come together in one place.</p>
+      <a class="btn primary" href="index.html">Open Taskboard <svg width="16" height="16"><use href="#i-move"/></svg></a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span class="brand" style="font-size:15px"><svg width="18" height="18"><use href="#i-logo"/></svg>Taskboard</span>
+    <span class="sp"></span>
+    <span>Prototype · runs entirely from index.html · no server, no external libraries</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  // ---------- Shared data (mirrors the 6 sample tasks in index.html) ----------
+  const COLORS = { "Kevin": "#4573d2", "Sarah Kim": "#58a182", "Minh Anh": "#b36bd4", "David Lee": "#ec8d71", "Linh Tran": "#e8a427" };
+  const SAMPLE = [
+    { id: "t1", name: "Define launch goals and success metrics", who: "Kevin", due: "Nov 1", dueCls: "", status: "todo", pri: "high", desc: "Agree on KPIs with the leadership team before kickoff." },
+    { id: "t2", name: "Write homepage copy", who: "Sarah Kim", due: "Nov 4", dueCls: "", status: "todo", pri: "medium", desc: "Hero headline, value props and CTA text." },
+    { id: "t3", name: "Design landing page mockups", who: "Minh Anh", due: "Tomorrow", dueCls: "", status: "progress", pri: "high", desc: "Desktop and mobile versions in the new brand style." },
+    { id: "t4", name: "Set up analytics tracking", who: "David Lee", due: "Today", dueCls: "today", status: "progress", pri: "medium", desc: "" },
+    { id: "t5", name: "Kickoff meeting with stakeholders", who: "Kevin", due: "Oct 25", dueCls: "", status: "done", pri: "low", desc: "Notes shared in the project channel." },
+    { id: "t6", name: "Choose hosting provider", who: "Linh Tran", due: "Oct 27", dueCls: "", status: "done", pri: "medium", desc: "" }
+  ];
+  const STATUSES = [["todo", "To Do"], ["progress", "In Progress"], ["done", "Done"]];
+  const LABEL = { todo: "To Do", progress: "In Progress", done: "Done" };
+  const PRI = { low: "Low", medium: "Medium", high: "High" };
+  const $ = id => document.getElementById(id);
+  const icon = (id, s) => '<svg width="' + s + '" height="' + s + '"><use href="#' + id + '"/></svg>';
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const initials = n => { const p = n.split(" "); return (p[0][0] + (p.length > 1 ? p[p.length - 1][0] : p[0][1])).toUpperCase(); };
+  const avatar = n => '<span class="av" style="background:' + COLORS[n] + '">' + initials(n) + "</span>";
+
+  function cardHTML(t, o) {
+    o = o || {};
+    return '<div class="mc' + (t.status === "done" ? " done" : "") + (o.extra || "") + '" data-id="' + t.id + '"' + (o.drag ? ' draggable="true"' : "") + ">" +
+      '<div class="mc-top"><span class="chk" data-chk="' + t.id + '">' + icon("i-check", 9) + '</span><span class="mc-name">' + esc(t.name) + "</span></div>" +
+      (o.menu ? '<button class="mc-dots" data-dots="' + t.id + '" aria-label="More actions">' + icon("i-dots", 13) + "</button>" : "") +
+      (o.desc && t.desc ? '<div class="mc-desc">' + esc(t.desc) + "</div>" : "") +
+      '<div class="mc-tags"><span class="tg p-' + t.pri + '">' + PRI[t.pri] + '</span>' +
+        (o.statusTag ? o.statusTag : '<span class="tg s-' + t.status + '">' + LABEL[t.status] + "</span>") + "</div>" +
+      '<div class="mc-meta">' + avatar(t.who) + '<span class="who">' + esc(t.who) + '</span><span class="due ' + t.dueCls + '">' + icon("i-cal", 10) + t.due + "</span></div>" +
+    "</div>";
+  }
+
+  function boardHTML(tasks, o) {
+    o = o || {};
+    return STATUSES.map(([id, label]) => {
+      const list = tasks.filter(t => t.status === id && (!o.filter || o.filter(t)));
+      const total = (o.all || tasks).filter(t => t.status === id).length;
+      const cards = list.length ? list.map(t => cardHTML(t, o)).join("") : '<div class="empty">' + (total ? "No matching tasks" : "Drop tasks here") + "</div>";
+      return '<div class="mb-col" data-status="' + id + '"><div class="mb-h">' + label + " <em>" + total + '</em><span class="plus">' + icon("i-plus", 12) + '</span></div><div class="mb-cards">' + cards + (o.slot && o.slot[id] ? o.slot[id] : "") + "</div>" +
+        (o.addRow ? '<div class="mb-add">' + icon("i-plus", 10) + "Add task</div>" : "") + "</div>";
+    }).join("");
+  }
+
+  // ---------- Hero board with animated card ----------
+  (function hero() {
+    const tasks = SAMPLE.filter(t => t.id !== "t4");
+    const mover = SAMPLE.find(t => t.id === "t4");
+    const board = $("heroBoard");
+    board.innerHTML = boardHTML(tasks, { all: SAMPLE, slot: { progress: '<div class="ghost-slot"></div>' } }) +
+      cardHTML(mover, { extra: " mover", statusTag: '<span class="tg-swap swap"><span class="tg s-progress">In Progress</span><span class="tg s-done">Done</span></span>' });
+    $("heroMembers").innerHTML = Object.keys(COLORS).map(avatar).join("");
+  })();
+
+  // ---------- Modal typing demo ----------
+  const NEW_TASK = { id: "n1", name: "Prepare launch announcement", who: "Minh Anh", due: "Nov 6", dueCls: "", status: "todo", pri: "high", desc: "" };
+  function resetModal() {
+    $("mmName").innerHTML = '<span class="ph">Write a task name</span><span class="caret"></span>';
+    $("mmWho").innerHTML = "&nbsp;"; $("mmDue").innerHTML = "&nbsp;"; $("mmPri").textContent = "None";
+    [...$("mmSeg").children].forEach((s, i) => s.classList.toggle("sel", i === 0));
+    $("mmCol").innerHTML = SAMPLE.filter(t => t.status === "todo").map(t => cardHTML(t)).join("");
+    $("mmCount").textContent = "2";
+  }
+  let modalRun = 0;
+  function runModal() {
+    const run = ++modalRun;
+    const alive = () => run === modalRun;
+    const wait = ms => new Promise(r => setTimeout(r, ms));
+    const flash = async (el, html) => { el.classList.add("flash"); el.innerHTML = html; await wait(450); el.classList.remove("flash"); };
+    resetModal();
+    (async () => {
+      await wait(500);
+      let typed = "";
+      for (const ch of NEW_TASK.name) {
+        if (!alive()) return;
+        typed += ch;
+        $("mmName").innerHTML = esc(typed) + '<span class="caret"></span>';
+        await wait(45 + Math.random() * 40);
+      }
+      await wait(300); if (!alive()) return;
+      await flash($("mmWho"), avatar(NEW_TASK.who) + NEW_TASK.who); if (!alive()) return;
+      await flash($("mmDue"), icon("i-cal", 11) + "Nov 6, 2026"); if (!alive()) return;
+      await flash($("mmPri"), "High"); if (!alive()) return;
+      await wait(300);
+      $("mmSave").classList.add("press"); await wait(260); $("mmSave").classList.remove("press");
+      if (!alive()) return;
+      $("mmCol").insertAdjacentHTML("beforeend", cardHTML(NEW_TASK, { extra: " pop" }));
+      $("mmCount").textContent = "3";
+      await wait(3500); if (!alive()) return;
+      runModal();
+    })();
+  }
+  resetModal();
+
+  // ---------- Interactive status demo ----------
+  let demoTasks;
+  function resetDemo() { demoTasks = SAMPLE.map(t => ({ ...t })); renderDemo(); }
+  function renderDemo(movedId) {
+    $("demoBoard").innerHTML = boardHTML(demoTasks, { drag: true, menu: true, addRow: false });
+    const done = demoTasks.filter(t => t.status === "done").length;
+    $("demoCount").textContent = done + " of " + demoTasks.length + " tasks complete";
+    $("demoMeter").style.width = (done / demoTasks.length * 100) + "%";
+    if (movedId) { const el = $("demoBoard").querySelector('[data-id="' + movedId + '"]'); if (el) el.classList.add("moved"); }
+  }
+  function moveDemo(id, status, beforeId) {
+    const t = demoTasks.find(x => x.id === id);
+    t.status = status;
+    demoTasks.splice(demoTasks.indexOf(t), 1);
+    let idx = beforeId ? demoTasks.findIndex(x => x.id === beforeId) : -1;
+    if (idx === -1) { const last = demoTasks.map(x => x.status).lastIndexOf(status); idx = last === -1 ? demoTasks.length : last + 1; }
+    demoTasks.splice(idx, 0, t);
+    renderDemo(id);
+  }
+  function closeDemoMenu() { const m = $("demoBoard").querySelector(".mmenu"); if (m) m.remove(); $("demoBoard").querySelectorAll(".mc-dots.open").forEach(b => b.classList.remove("open")); }
+  $("demoBoard").addEventListener("click", e => {
+    const chk = e.target.closest("[data-chk]");
+    if (chk) { const t = demoTasks.find(x => x.id === chk.dataset.chk); moveDemo(t.id, t.status === "done" ? "todo" : "done"); return; }
+    const dots = e.target.closest("[data-dots]");
+    if (dots) {
+      const open = dots.classList.contains("open");
+      closeDemoMenu();
+      if (open) return;
+      const t = demoTasks.find(x => x.id === dots.dataset.dots);
+      dots.classList.add("open");
+      dots.parentElement.insertAdjacentHTML("beforeend", '<div class="mmenu"><div class="lbl">Move to</div>' +
+        STATUSES.map(([id, l]) => '<button data-move="' + id + '" data-task="' + t.id + '" class="' + (id === t.status ? "cur" : "") + '">' + icon(id === t.status ? "i-check" : "i-move", 11) + l + "</button>").join("") + "</div>");
+      return;
+    }
+    const mv = e.target.closest("[data-move]");
+    if (mv) { const t = demoTasks.find(x => x.id === mv.dataset.task); closeDemoMenu(); if (t.status !== mv.dataset.move) moveDemo(t.id, mv.dataset.move); }
+  });
+  document.addEventListener("mousedown", e => { if (!e.target.closest(".mmenu, [data-dots]")) closeDemoMenu(); });
+  let dragId = null;
+  const db = $("demoBoard");
+  db.addEventListener("dragstart", e => {
+    const c = e.target.closest(".mc"); if (!c) return;
+    dragId = c.dataset.id; closeDemoMenu();
+    e.dataTransfer.effectAllowed = "move";
+    try { e.dataTransfer.setData("text/plain", dragId); } catch (err) { /* ignore */ }
+    requestAnimationFrame(() => c.classList.add("dragging"));
+  });
+  db.addEventListener("dragend", () => { dragId = null; db.querySelectorAll(".dragging, .over").forEach(el => el.classList.remove("dragging", "over")); });
+  db.addEventListener("dragover", e => {
+    const col = e.target.closest(".mb-col"); if (!col || !dragId) return;
+    e.preventDefault();
+    db.querySelectorAll(".mb-col.over").forEach(c => { if (c !== col) c.classList.remove("over"); });
+    col.classList.add("over");
+  });
+  db.addEventListener("dragleave", e => { const col = e.target.closest(".mb-col"); if (col && !col.contains(e.relatedTarget)) col.classList.remove("over"); });
+  db.addEventListener("drop", e => {
+    const col = e.target.closest(".mb-col"); if (!col || !dragId) return;
+    e.preventDefault();
+    const before = [...col.querySelectorAll(".mc:not(.dragging)")].find(c => { const r = c.getBoundingClientRect(); return e.clientY < r.top + r.height / 2; });
+    moveDemo(dragId, col.dataset.status, before ? before.dataset.id : null);
+  });
+  $("demoReset").addEventListener("click", resetDemo);
+  resetDemo();
+
+  // ---------- Search demo ----------
+  let sdQuery = "", sdMine = false;
+  function renderSearch() {
+    const q = sdQuery.toLowerCase();
+    $("searchBoard").innerHTML = boardHTML(SAMPLE, {
+      desc: true,
+      filter: t => (!sdMine || t.who === "Kevin") && (!q || t.name.toLowerCase().includes(q) || t.who.toLowerCase().includes(q) || t.desc.toLowerCase().includes(q))
+    });
+  }
+  $("sdInput").addEventListener("input", e => { sdQuery = e.target.value.trim(); renderSearch(); });
+  $("sdMine").addEventListener("click", () => { sdMine = !sdMine; $("sdMine").classList.toggle("on", sdMine); renderSearch(); });
+  $("searchChips").addEventListener("click", e => {
+    const b = e.target.closest("button"); if (!b) return;
+    $("sdInput").value = b.textContent; sdQuery = b.textContent; renderSearch();
+  });
+  renderSearch();
+
+  // ---------- Theme demo (values copied from index.html themes) ----------
+  const THEMES = [
+    { id: "default", label: "Default", sw: "#4573d2", v: { side: "#2e2e30", accent: "#4573d2", board: "#f9f8f8" } },
+    { id: "christmas", label: "Christmas", sw: "linear-gradient(135deg,#c62828 50%,#2e7d32 50%)", badge: ["🎄 Merry Christmas!", "#fde8e8", "#a51f1f"], fx: ["❄", "❅", "❆"], fxColor: "#9ec9e8", v: { side: "#123d2b", accent: "#c62828", board: "#f4f8f5", c1: "#c62828", c2: "#2e7d32", c3: "#d4a017" } },
+    { id: "tet", label: "Tết", sw: "linear-gradient(135deg,#d32f2f 50%,#f4b400 50%)", badge: ["🧧 Chúc mừng năm mới!", "#fff1c9", "#a8261b"], fx: ["🌸", "🌼", "🧧"], v: { side: "#7a0e0e", accent: "#d32f2f", board: "#fff8ec", c1: "#f4b400", c2: "#e53935", c3: "#f48fb1" } },
+    { id: "summer", label: "Summer", sw: "linear-gradient(135deg,#ffb703 50%,#0b8fb5 50%)", badge: ["☀️ Summer vibes", "#fff2d6", "#b85a00"], fx: ["☀️", "🌴", "🍉", "🐚"], v: { side: "#0b5e78", accent: "#f57c2b", board: "#f1fafd", c1: "#ffb703", c2: "#f57c2b", c3: "#26a69a" } },
+    { id: "marvel", label: "Marvel Heroes", sw: "linear-gradient(135deg,#e23636 50%,#f0c419 50%)", badge: ["💥 AVENGERS, ASSEMBLE!", "#141414", "#f0c419"], fx: ["💥", "⚡", "🛡️", "⭐"], cls: "comic", v: { side: "#141414", accent: "#e23636", board: "#fff6e0", c1: "#1f4fbf", c2: "#e23636", c3: "#f0c419" } },
+    { id: "space", label: "Vũ trụ", sw: "linear-gradient(135deg,#0b1026 45%,#7c5cff 75%,#ff7ad9)", badge: ["🚀 To infinity and beyond", "rgba(124,92,255,.25)", "#c9b8ff"], fx: ["✨", "⭐", "🪐", "☄️", "🌙"], cls: "dark", v: { side: "#060918", accent: "#7c5cff", board: "#0b1026", c1: "#4fc3f7", c2: "#7c5cff", c3: "#ff7ad9" } },
+    { id: "focus", label: "Focus mode", sw: "#3d4a55", badge: ["🎯 Focus: In Progress tasks", "#eceff1", "#37474f"], cls: "focus", v: { side: "#2e2e30", accent: "#3d4a55", board: "#fafafa" } }
+  ];
+  const themeTasks = SAMPLE.filter(t => ["t1", "t3", "t4", "t5"].includes(t.id));
+  $("themeBoard").innerHTML = boardHTML(themeTasks, { desc: false });
+  $("themePicker").innerHTML = THEMES.map(t => '<button data-t="' + t.id + '"><span class="tsw" style="background:' + t.sw + '"></span>' + t.label + "</button>").join("");
+  const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function applyTheme(id) {
+    const t = THEMES.find(x => x.id === id);
+    const st = $("themeStage");
+    st.className = "panel ts" + (t.cls ? " " + t.cls : "");
+    const v = t.v;
+    st.style.setProperty("--t-side", v.side);
+    st.style.setProperty("--t-accent", v.accent);
+    st.style.setProperty("--t-board", v.board);
+    st.style.setProperty("--t-c1", v.c1 || "transparent");
+    st.style.setProperty("--t-c2", v.c2 || "transparent");
+    st.style.setProperty("--t-c3", v.c3 || "transparent");
+    const b = $("tBadge");
+    if (t.badge) { b.textContent = t.badge[0]; st.style.setProperty("--t-badge-bg", t.badge[1]); st.style.setProperty("--t-badge-fg", t.badge[2]); b.style.display = ""; }
+    else b.style.display = "none";
+    const fx = $("themeFx"); fx.innerHTML = "";
+    if (t.fx && !reduceMotion) {
+      for (let i = 0; i < 16; i++) {
+        const s = document.createElement("span");
+        s.textContent = t.fx[i % t.fx.length];
+        s.style.left = Math.random() * 100 + "%";
+        s.style.fontSize = (11 + Math.random() * 10) + "px";
+        s.style.opacity = (0.35 + Math.random() * 0.45).toFixed(2);
+        s.style.animationDuration = (6 + Math.random() * 6).toFixed(1) + "s";
+        s.style.animationDelay = (-Math.random() * 10).toFixed(1) + "s";
+        if (t.fxColor) s.style.color = t.fxColor;
+        fx.appendChild(s);
+      }
+    }
+    $("themePicker").querySelectorAll("button").forEach(btn => btn.classList.toggle("on", btn.dataset.t === id));
+  }
+  $("themePicker").addEventListener("click", e => { const b = e.target.closest("button"); if (b) { applyTheme(b.dataset.t); themeAuto = false; } });
+  applyTheme("default");
+  // Gently cycle themes until the visitor picks one
+  let themeAuto = true, themeIdx = 0, themeTimer = null;
+  function startThemeCycle() {
+    if (themeTimer || !themeAuto || reduceMotion) return;
+    themeTimer = setInterval(() => {
+      if (!themeAuto) { clearInterval(themeTimer); themeTimer = null; return; }
+      themeIdx = (themeIdx + 1) % THEMES.length;
+      applyTheme(THEMES[themeIdx].id);
+    }, 2600);
+  }
+  function stopThemeCycle() { clearInterval(themeTimer); themeTimer = null; }
+
+  // ---------- Progress counter loop in "small touches" ----------
+  (function countLoop() {
+    let n = 2;
+    setInterval(() => {
+      n = n >= 6 ? 2 : n + 1;
+      $("touchCount").textContent = n + " of 6 tasks complete";
+      $("touchMeter").style.width = (n / 6 * 100) + "%";
+    }, 1600);
+  })();
+
+  // ---------- Scroll reveal ----------
+  const reveals = document.querySelectorAll(".reveal, #anatomyStage");
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
+    }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+    reveals.forEach(el => io.observe(el));
+
+    // Start/stop looping demos only while they're on screen
+    const live = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (en.target.id === "modalDemo") { if (en.isIntersecting) runModal(); else { modalRun++; } }
+        if (en.target.id === "themeStage") { if (en.isIntersecting) startThemeCycle(); else stopThemeCycle(); }
+      });
+    }, { threshold: 0.35 });
+    live.observe($("modalDemo"));
+    live.observe($("themeStage"));
+  } else {
+    reveals.forEach(el => el.classList.add("in"));
+    runModal();
+  }
+
+  // ---------- Nav + progress bar ----------
+  function onScroll() {
+    const h = document.documentElement;
+    const p = h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight);
+    $("progress").style.width = (p * 100) + "%";
+    $("nav").classList.toggle("scrolled", h.scrollTop > 10);
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+</body>
+</html>

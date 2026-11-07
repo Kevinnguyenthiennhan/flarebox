@@ -1,0 +1,2896 @@
+{
+ "v": 1,
+ "repo": "supercent-io/luna_snake",
+ "url": "https://github.com/supercent-io/luna_snake",
+ "branch": "main",
+ "commit": "f07bee59887e169cefe6b416077d4c7bf717840f",
+ "private": true,
+ "unityRoot": "unity_project/luna_snake/",
+ "scanned": "2026-11-07 12:50",
+ "unity": "2021.3.15f1",
+ "pipeline": "Built-in",
+ "vfxGraphPackage": false,
+ "stats": {
+  "files": 2324,
+  "metas": 1155,
+  "prefabs": 47,
+  "vfx": 17,
+  "byType": {
+   "Particle System": 13,
+   "Mixed (object with VFX)": 4
+  },
+  "byCategory": {
+   "Explosion": 6,
+   "Water": 9,
+   "Lightning": 1,
+   "Other": 1
+  },
+  "binaryAssets": 1,
+  "binaryPrefabs": 0,
+  "missingDeps": 18,
+  "staleRefs": 8,
+  "vfxWithMissing": 14,
+  "assetsWithoutMeta": 0,
+  "metasWithoutAsset": 4,
+  "duplicateGuids": 0,
+  "seconds": 46.2
+ },
+ "vfx": [
+  {
+   "name": "NukeMissileBlue",
+   "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileBlue.prefab",
+   "guid": "663f0b5398f312349af3f58756ec88ff",
+   "type": "Particle System",
+   "confidence": "high",
+   "category": "Explosion",
+   "signals": [
+    "6 Particle Systems"
+   ],
+   "counts": {
+    "particleSystems": 6,
+    "vfxGraphs": 0,
+    "meshRenderers": 0,
+    "skinnedMeshes": 0,
+    "trails": 0,
+    "lines": 0,
+    "animators": 0
+   },
+   "depCounts": {
+    "material": 5,
+    "builtin": 2,
+    "unknown": 1,
+    "texture": 1
+   },
+   "missing": 5,
+   "deps": [
+    {
+     "guid": "35b072e7a7dfe0f429bf5123cfc9a433",
+     "path": null,
+     "kind": "material",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileBlue.prefab"
+    },
+    {
+     "guid": "150aee38b5d848b42b75593618992bb7",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/circle_AB.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileBlue.prefab"
+    },
+    {
+     "guid": "b18036fb1921bf44aa1e636f1bf63a2a",
+     "path": null,
+     "kind": "material",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileBlue.prefab"
+    },
+    {
+     "guid": "0000000000000000e000000000000000",
+     "path": null,
+     "kind": "builtin",
+     "status": "builtin",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileBlue.prefab",
+     "note": "Unity built-in resources (meshes)"
+    },
+    {
+     "guid": "e653836c30661fe419b8992e230ca189",
+     "path": null,
+     "kind": "material",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileBlue.prefab"
+    },
+    {
+     "guid": "3e06c45e3372dd345b50a642fe86616d",
+     "path": null,
+     "kind": "unknown",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileBlue.prefab"
+    },
+    {
+     "guid": "e7912d15146fcf145afaaedec646b781",
+     "path": null,
+     "kind": "material",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileBlue.prefab"
+    },
+    {
+     "guid": "0000000000000000f000000000000000",
+     "path": null,
+     "kind": "builtin",
+     "status": "builtin",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/circle_AB.mat",
+     "note": "Unity built-in extra (shaders/textures)"
+    },
+    {
+     "guid": "155f67fd8750f8e4e83c8efb1731f3a0",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/particleTexture/circle.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/circle_AB.mat"
+    }
+   ],
+   "variantOf": null,
+   "preview": "supercent-io-luna-snake-supercent-snake-origin-fbxs-item-fx-nukemissileblue"
+  },
+  {
+   "name": "NukeMissileFire",
+   "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileFire.prefab",
+   "guid": "44aab3016210d2745bb9ca216285fcd4",
+   "type": "Particle System",
+   "confidence": "high",
+   "category": "Explosion",
+   "signals": [
+    "6 Particle Systems"
+   ],
+   "counts": {
+    "particleSystems": 6,
+    "vfxGraphs": 0,
+    "meshRenderers": 0,
+    "skinnedMeshes": 0,
+    "trails": 0,
+    "lines": 0,
+    "animators": 0
+   },
+   "depCounts": {
+    "material": 5,
+    "unknown": 1,
+    "builtin": 2,
+    "texture": 1
+   },
+   "missing": 5,
+   "deps": [
+    {
+     "guid": "150aee38b5d848b42b75593618992bb7",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/circle_AB.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileFire.prefab"
+    },
+    {
+     "guid": "3e06c45e3372dd345b50a642fe86616d",
+     "path": null,
+     "kind": "unknown",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileFire.prefab"
+    },
+    {
+     "guid": "e653836c30661fe419b8992e230ca189",
+     "path": null,
+     "kind": "material",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileFire.prefab"
+    },
+    {
+     "guid": "e7912d15146fcf145afaaedec646b781",
+     "path": null,
+     "kind": "material",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileFire.prefab"
+    },
+    {
+     "guid": "35b072e7a7dfe0f429bf5123cfc9a433",
+     "path": null,
+     "kind": "material",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileFire.prefab"
+    },
+    {
+     "guid": "b18036fb1921bf44aa1e636f1bf63a2a",
+     "path": null,
+     "kind": "material",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileFire.prefab"
+    },
+    {
+     "guid": "0000000000000000e000000000000000",
+     "path": null,
+     "kind": "builtin",
+     "status": "builtin",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileFire.prefab",
+     "note": "Unity built-in resources (meshes)"
+    },
+    {
+     "guid": "0000000000000000f000000000000000",
+     "path": null,
+     "kind": "builtin",
+     "status": "builtin",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/circle_AB.mat",
+     "note": "Unity built-in extra (shaders/textures)"
+    },
+    {
+     "guid": "155f67fd8750f8e4e83c8efb1731f3a0",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/particleTexture/circle.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/circle_AB.mat"
+    }
+   ],
+   "variantOf": null,
+   "preview": "supercent-io-luna-snake-supercent-snake-origin-fbxs-item-fx-nukemissilefire"
+  },
+  {
+   "name": "NukeMissileGreen",
+   "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileGreen.prefab",
+   "guid": "11c15696015cdc9428d855f95841ab7e",
+   "type": "Particle System",
+   "confidence": "high",
+   "category": "Explosion",
+   "signals": [
+    "6 Particle Systems"
+   ],
+   "counts": {
+    "particleSystems": 6,
+    "vfxGraphs": 0,
+    "meshRenderers": 0,
+    "skinnedMeshes": 0,
+    "trails": 0,
+    "lines": 0,
+    "animators": 0
+   },
+   "depCounts": {
+    "material": 5,
+    "unknown": 1,
+    "builtin": 2,
+    "texture": 1
+   },
+   "missing": 5,
+   "deps": [
+    {
+     "guid": "150aee38b5d848b42b75593618992bb7",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/circle_AB.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileGreen.prefab"
+    },
+    {
+     "guid": "3e06c45e3372dd345b50a642fe86616d",
+     "path": null,
+     "kind": "unknown",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileGreen.prefab"
+    },
+    {
+     "guid": "e653836c30661fe419b8992e230ca189",
+     "path": null,
+     "kind": "material",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileGreen.prefab"
+    },
+    {
+     "guid": "35b072e7a7dfe0f429bf5123cfc9a433",
+     "path": null,
+     "kind": "material",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileGreen.prefab"
+    },
+    {
+     "guid": "e7912d15146fcf145afaaedec646b781",
+     "path": null,
+     "kind": "material",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileGreen.prefab"
+    },
+    {
+     "guid": "b18036fb1921bf44aa1e636f1bf63a2a",
+     "path": null,
+     "kind": "material",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileGreen.prefab"
+    },
+    {
+     "guid": "0000000000000000e000000000000000",
+     "path": null,
+     "kind": "builtin",
+     "status": "builtin",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileGreen.prefab",
+     "note": "Unity built-in resources (meshes)"
+    },
+    {
+     "guid": "0000000000000000f000000000000000",
+     "path": null,
+     "kind": "builtin",
+     "status": "builtin",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/circle_AB.mat",
+     "note": "Unity built-in extra (shaders/textures)"
+    },
+    {
+     "guid": "155f67fd8750f8e4e83c8efb1731f3a0",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/particleTexture/circle.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/circle_AB.mat"
+    }
+   ],
+   "variantOf": null,
+   "preview": "supercent-io-luna-snake-supercent-snake-origin-fbxs-item-fx-nukemissilegreen"
+  },
+  {
+   "name": "NukeMissilePink",
+   "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissilePink.prefab",
+   "guid": "56c3b9c6dd0fe9745823c539d098d4ea",
+   "type": "Particle System",
+   "confidence": "high",
+   "category": "Explosion",
+   "signals": [
+    "6 Particle Systems"
+   ],
+   "counts": {
+    "particleSystems": 6,
+    "vfxGraphs": 0,
+    "meshRenderers": 0,
+    "skinnedMeshes": 0,
+    "trails": 0,
+    "lines": 0,
+    "animators": 0
+   },
+   "depCounts": {
+    "material": 5,
+    "unknown": 1,
+    "builtin": 2,
+    "texture": 1
+   },
+   "missing": 5,
+   "deps": [
+    {
+     "guid": "150aee38b5d848b42b75593618992bb7",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/circle_AB.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissilePink.prefab"
+    },
+    {
+     "guid": "e653836c30661fe419b8992e230ca189",
+     "path": null,
+     "kind": "material",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissilePink.prefab"
+    },
+    {
+     "guid": "3e06c45e3372dd345b50a642fe86616d",
+     "path": null,
+     "kind": "unknown",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissilePink.prefab"
+    },
+    {
+     "guid": "35b072e7a7dfe0f429bf5123cfc9a433",
+     "path": null,
+     "kind": "material",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissilePink.prefab"
+    },
+    {
+     "guid": "e7912d15146fcf145afaaedec646b781",
+     "path": null,
+     "kind": "material",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissilePink.prefab"
+    },
+    {
+     "guid": "b18036fb1921bf44aa1e636f1bf63a2a",
+     "path": null,
+     "kind": "material",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissilePink.prefab"
+    },
+    {
+     "guid": "0000000000000000e000000000000000",
+     "path": null,
+     "kind": "builtin",
+     "status": "builtin",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissilePink.prefab",
+     "note": "Unity built-in resources (meshes)"
+    },
+    {
+     "guid": "0000000000000000f000000000000000",
+     "path": null,
+     "kind": "builtin",
+     "status": "builtin",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/circle_AB.mat",
+     "note": "Unity built-in extra (shaders/textures)"
+    },
+    {
+     "guid": "155f67fd8750f8e4e83c8efb1731f3a0",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/particleTexture/circle.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/circle_AB.mat"
+    }
+   ],
+   "variantOf": null,
+   "preview": "supercent-io-luna-snake-supercent-snake-origin-fbxs-item-fx-nukemissilepink"
+  },
+  {
+   "name": "SpeedUp_fx",
+   "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/SpeedUp_fx.prefab",
+   "guid": "2d6a958bd317e4ddf8d817fd2ab3f2ed",
+   "type": "Particle System",
+   "confidence": "high",
+   "category": "Water",
+   "signals": [
+    "2 Particle Systems",
+    "additive blending"
+   ],
+   "counts": {
+    "particleSystems": 2,
+    "vfxGraphs": 0,
+    "meshRenderers": 0,
+    "skinnedMeshes": 0,
+    "trails": 0,
+    "lines": 0,
+    "animators": 0
+   },
+   "depCounts": {
+    "material": 2,
+    "builtin": 2,
+    "texture": 2
+   },
+   "missing": 0,
+   "deps": [
+    {
+     "guid": "13def0b14fabe7840b99516a853854da",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/ring_shockwave_ADD.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/SpeedUp_fx.prefab"
+    },
+    {
+     "guid": "0000000000000000e000000000000000",
+     "path": null,
+     "kind": "builtin",
+     "status": "builtin",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/SpeedUp_fx.prefab",
+     "note": "Unity built-in resources (meshes)"
+    },
+    {
+     "guid": "56365635521be4f1494f7c79451ace0a",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/magic_line_ADD.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/SpeedUp_fx.prefab"
+    },
+    {
+     "guid": "0000000000000000f000000000000000",
+     "path": null,
+     "kind": "builtin",
+     "status": "builtin",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/ring_shockwave_ADD.mat",
+     "note": "Unity built-in extra (shaders/textures)"
+    },
+    {
+     "guid": "8226872b438e7324ab822708db4923e5",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/particleTexture/wave.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/ring_shockwave_ADD.mat"
+    },
+    {
+     "guid": "d38ceb17eba198f48b5ea27e60ae55e7",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/particleTexture/magic_line_2.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/magic_line_ADD.mat"
+    }
+   ],
+   "variantOf": null,
+   "preview": "supercent-io-luna-snake-supercent-snake-origin-fbxs-item-fx-speedup-fx"
+  },
+  {
+   "name": "speed_buster",
+   "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/speed_buster.prefab",
+   "guid": "146b8e77a1f424561a95a7b725c6a730",
+   "type": "Particle System",
+   "confidence": "high",
+   "category": "Lightning",
+   "signals": [
+    "3 Particle Systems",
+    "additive blending"
+   ],
+   "counts": {
+    "particleSystems": 3,
+    "vfxGraphs": 0,
+    "meshRenderers": 0,
+    "skinnedMeshes": 0,
+    "trails": 0,
+    "lines": 0,
+    "animators": 0
+   },
+   "depCounts": {
+    "material": 3,
+    "mesh": 1,
+    "builtin": 1,
+    "texture": 3
+   },
+   "missing": 0,
+   "deps": [
+    {
+     "guid": "588b1a3aff3fd4860ab427832a040fa3",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/glow1_ADD.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/speed_buster.prefab"
+    },
+    {
+     "guid": "a976a44ca501e564bb2adee42f573b4d",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/sparkle_ADD.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/speed_buster.prefab"
+    },
+    {
+     "guid": "c3972e105fc9a4dd48cc8ee87bec274c",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/rocketgradient_ADD.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/speed_buster.prefab"
+    },
+    {
+     "guid": "3933d0fbad2694932bfc8bf0bdf8291d",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/ETFX_Rocket2.FBX",
+     "kind": "mesh",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/speed_buster.prefab"
+    },
+    {
+     "guid": "0000000000000000f000000000000000",
+     "path": null,
+     "kind": "builtin",
+     "status": "builtin",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/glow1_ADD.mat",
+     "note": "Unity built-in extra (shaders/textures)"
+    },
+    {
+     "guid": "75c822b01a637d547abc69e6f1f590b4",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/particleTexture/glow1.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/glow1_ADD.mat"
+    },
+    {
+     "guid": "6eafc1a51ff61174abfe403602dad939",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/particleTexture/sparkle3.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/sparkle_ADD.mat"
+    },
+    {
+     "guid": "43d85cd5903a7f945919e921295b0d6d",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/particleTexture/rocket_gradient.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/rocketgradient_ADD.mat"
+    }
+   ],
+   "variantOf": null,
+   "preview": "supercent-io-luna-snake-supercent-snake-origin-fbxs-item-fx-speed-buster"
+  },
+  {
+   "name": "BloodExplosionRound",
+   "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/BloodExplosionRound.prefab",
+   "guid": "01949c12a89de284792dc4b7b7128404",
+   "type": "Particle System",
+   "confidence": "high",
+   "category": "Explosion",
+   "signals": [
+    "2 Particle Systems"
+   ],
+   "counts": {
+    "particleSystems": 2,
+    "vfxGraphs": 0,
+    "meshRenderers": 0,
+    "skinnedMeshes": 0,
+    "trails": 0,
+    "lines": 0,
+    "animators": 0
+   },
+   "depCounts": {
+    "material": 2,
+    "builtin": 1,
+    "texture": 2
+   },
+   "missing": 0,
+   "deps": [
+    {
+     "guid": "150aee38b5d848b42b75593618992bb7",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/circle_AB.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/BloodExplosionRound.prefab"
+    },
+    {
+     "guid": "f7c5949bd4fc39b4da8b55816f159297",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/splat02_3x3_AB.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/BloodExplosionRound.prefab"
+    },
+    {
+     "guid": "0000000000000000f000000000000000",
+     "path": null,
+     "kind": "builtin",
+     "status": "builtin",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/circle_AB.mat",
+     "note": "Unity built-in extra (shaders/textures)"
+    },
+    {
+     "guid": "155f67fd8750f8e4e83c8efb1731f3a0",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/particleTexture/circle.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/circle_AB.mat"
+    },
+    {
+     "guid": "4e7fadba81fbb72408f12d8d10b1a0c6",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/particleTexture/splat02_flat_3x3.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/splat02_3x3_AB.mat"
+    }
+   ],
+   "variantOf": null,
+   "preview": "supercent-io-luna-snake-supercent-snake-origin-particle-bloodexplosionround"
+  },
+  {
+   "name": "Pink_ink",
+   "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Pink_ink.prefab",
+   "guid": "ed7f7c5e33ab5b447bae2407733f5b44",
+   "type": "Particle System",
+   "confidence": "high",
+   "category": "Other",
+   "signals": [
+    "5 Particle Systems"
+   ],
+   "counts": {
+    "particleSystems": 5,
+    "vfxGraphs": 0,
+    "meshRenderers": 0,
+    "skinnedMeshes": 0,
+    "trails": 0,
+    "lines": 0,
+    "animators": 0
+   },
+   "depCounts": {
+    "material": 2,
+    "builtin": 1,
+    "script": 1,
+    "mesh": 1,
+    "texture": 8
+   },
+   "missing": 7,
+   "deps": [
+    {
+     "guid": "f6bbc6d4c6d3f7f4f9ef4da533fa7606",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/fx/circle_AB 1.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Pink_ink.prefab"
+    },
+    {
+     "guid": "0000000000000000f000000000000000",
+     "path": null,
+     "kind": "builtin",
+     "status": "builtin",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Pink_ink.prefab",
+     "note": "Unity built-in extra (shaders/textures)"
+    },
+    {
+     "guid": "c80bd5dd92d724c308a618ae3c9b0e92",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Scripts/Player/BlooldParticle.cs",
+     "kind": "script",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Pink_ink.prefab"
+    },
+    {
+     "guid": "d0afeecb50256db4b8a1d5c3229b7781",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/fx/ink.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Pink_ink.prefab"
+    },
+    {
+     "guid": "288be23f2628227438d46f1d8a82b567",
+     "path": null,
+     "kind": "mesh",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Pink_ink.prefab"
+    },
+    {
+     "guid": "06907d08092c41f4aa8b5b3cbe5f9fa2",
+     "path": null,
+     "kind": "texture",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/fx/circle_AB 1.mat"
+    },
+    {
+     "guid": "fcb027caad6963b4a80539bbce0d10e9",
+     "path": null,
+     "kind": "texture",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/fx/circle_AB 1.mat"
+    },
+    {
+     "guid": "854b25bc08516364da5a786b1cad247e",
+     "path": null,
+     "kind": "texture",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/fx/circle_AB 1.mat"
+    },
+    {
+     "guid": "155f67fd8750f8e4e83c8efb1731f3a0",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/particleTexture/circle.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/fx/circle_AB 1.mat"
+    },
+    {
+     "guid": "2f6642b43dc405d498acba7e288c068c",
+     "path": null,
+     "kind": "texture",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/fx/circle_AB 1.mat"
+    },
+    {
+     "guid": "db8fa36fcfe9738418db54ee0fe17fdf",
+     "path": null,
+     "kind": "texture",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/fx/circle_AB 1.mat"
+    },
+    {
+     "guid": "48da24d771916524899d36e4bfe7f762",
+     "path": null,
+     "kind": "texture",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/fx/circle_AB 1.mat"
+    },
+    {
+     "guid": "83bd3d87d695c3b44a9bec18cf0ca2c8",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/fx/ink.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/fx/ink.mat"
+    }
+   ],
+   "variantOf": null,
+   "preview": "supercent-io-luna-snake-supercent-snake-origin-particle-pink-ink"
+  },
+  {
+   "name": "Shield",
+   "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Shield.prefab",
+   "guid": "841b140067278e24ba193898126267c5",
+   "type": "Particle System",
+   "confidence": "high",
+   "category": "Water",
+   "signals": [
+    "6 Particle Systems",
+    "additive blending"
+   ],
+   "counts": {
+    "particleSystems": 6,
+    "vfxGraphs": 0,
+    "meshRenderers": 0,
+    "skinnedMeshes": 0,
+    "trails": 0,
+    "lines": 0,
+    "animators": 0
+   },
+   "depCounts": {
+    "material": 5,
+    "builtin": 1,
+    "texture": 2
+   },
+   "missing": 3,
+   "deps": [
+    {
+     "guid": "b29e688b444288148ad46d4aae66cffc",
+     "path": null,
+     "kind": "material",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Shield.prefab"
+    },
+    {
+     "guid": "13def0b14fabe7840b99516a853854da",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/ring_shockwave_ADD.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Shield.prefab"
+    },
+    {
+     "guid": "719f8d52fe2e6b444b41c2f7a8fe587b",
+     "path": null,
+     "kind": "material",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Shield.prefab"
+    },
+    {
+     "guid": "a976a44ca501e564bb2adee42f573b4d",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/sparkle_ADD.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Shield.prefab"
+    },
+    {
+     "guid": "d63774db53e2fee4b84a72da1c9f1096",
+     "path": null,
+     "kind": "material",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Shield.prefab"
+    },
+    {
+     "guid": "0000000000000000f000000000000000",
+     "path": null,
+     "kind": "builtin",
+     "status": "builtin",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/ring_shockwave_ADD.mat",
+     "note": "Unity built-in extra (shaders/textures)"
+    },
+    {
+     "guid": "8226872b438e7324ab822708db4923e5",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/particleTexture/wave.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/ring_shockwave_ADD.mat"
+    },
+    {
+     "guid": "6eafc1a51ff61174abfe403602dad939",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/particleTexture/sparkle3.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/sparkle_ADD.mat"
+    }
+   ],
+   "variantOf": null,
+   "preview": "supercent-io-luna-snake-supercent-snake-origin-particle-shield"
+  },
+  {
+   "name": "eat_fx_white",
+   "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/eat_fx_white.prefab",
+   "guid": "a192014b09516b846925aad45b4d62bf",
+   "type": "Particle System",
+   "confidence": "high",
+   "category": "Water",
+   "signals": [
+    "6 Particle Systems"
+   ],
+   "counts": {
+    "particleSystems": 6,
+    "vfxGraphs": 0,
+    "meshRenderers": 0,
+    "skinnedMeshes": 0,
+    "trails": 0,
+    "lines": 0,
+    "animators": 0
+   },
+   "depCounts": {
+    "material": 2,
+    "builtin": 1,
+    "shader": 1,
+    "texture": 3
+   },
+   "missing": 2,
+   "deps": [
+    {
+     "guid": "22bc196a07a0cc4418ce632372bb5225",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_white.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/eat_fx_white.prefab"
+    },
+    {
+     "guid": "0000000000000000e000000000000000",
+     "path": null,
+     "kind": "builtin",
+     "status": "builtin",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/eat_fx_white.prefab",
+     "note": "Unity built-in resources (meshes)"
+    },
+    {
+     "guid": "17b49f7d5374495469afb057e2e00c2d",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_blue.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/eat_fx_white.prefab"
+    },
+    {
+     "guid": "7ffc1bc2bbb1ef64f84b552b2d2f0619",
+     "path": "unity_project/luna_snake/Assets/Supercent/JMO Assets/Toony Colors Pro/Shaders/Hybrid/TCP2 Hybrid Shader.shader",
+     "kind": "shader",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_white.mat"
+    },
+    {
+     "guid": "3c7dcce7245574f89bdbb4a3b75408da",
+     "path": null,
+     "kind": "texture",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_white.mat"
+    },
+    {
+     "guid": "9bcbd987586cf455eb6d1453c032f69d",
+     "path": null,
+     "kind": "texture",
+     "status": "stale",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_white.mat",
+     "note": "material property _MainTex is not used by its shader (leftover reference)"
+    },
+    {
+     "guid": "c7400e2f8d58a464aaf873f5b0a9e4b8",
+     "path": null,
+     "kind": "texture",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_white.mat"
+    }
+   ],
+   "variantOf": null,
+   "preview": "supercent-io-luna-snake-supercent-snake-origin-particle-eat-fx-white"
+  },
+  {
+   "name": "fx_WaterExplosion2",
+   "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/fx_WaterExplosion2.prefab",
+   "guid": "16cb7ed1695595645bff336fcd49738e",
+   "type": "Particle System",
+   "confidence": "high",
+   "category": "Explosion",
+   "signals": [
+    "3 Particle Systems"
+   ],
+   "counts": {
+    "particleSystems": 3,
+    "vfxGraphs": 0,
+    "meshRenderers": 0,
+    "skinnedMeshes": 0,
+    "trails": 0,
+    "lines": 0,
+    "animators": 0
+   },
+   "depCounts": {
+    "material": 1,
+    "builtin": 1,
+    "shader": 1,
+    "texture": 3
+   },
+   "missing": 2,
+   "deps": [
+    {
+     "guid": "17b49f7d5374495469afb057e2e00c2d",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_blue.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/fx_WaterExplosion2.prefab"
+    },
+    {
+     "guid": "0000000000000000e000000000000000",
+     "path": null,
+     "kind": "builtin",
+     "status": "builtin",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/fx_WaterExplosion2.prefab",
+     "note": "Unity built-in resources (meshes)"
+    },
+    {
+     "guid": "7ffc1bc2bbb1ef64f84b552b2d2f0619",
+     "path": "unity_project/luna_snake/Assets/Supercent/JMO Assets/Toony Colors Pro/Shaders/Hybrid/TCP2 Hybrid Shader.shader",
+     "kind": "shader",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_blue.mat"
+    },
+    {
+     "guid": "3c7dcce7245574f89bdbb4a3b75408da",
+     "path": null,
+     "kind": "texture",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_blue.mat"
+    },
+    {
+     "guid": "9bcbd987586cf455eb6d1453c032f69d",
+     "path": null,
+     "kind": "texture",
+     "status": "stale",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_blue.mat",
+     "note": "material property _MainTex is not used by its shader (leftover reference)"
+    },
+    {
+     "guid": "c7400e2f8d58a464aaf873f5b0a9e4b8",
+     "path": null,
+     "kind": "texture",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_blue.mat"
+    }
+   ],
+   "variantOf": null,
+   "preview": "supercent-io-luna-snake-supercent-snake-origin-particle-fx-waterexplosion2"
+  },
+  {
+   "name": "Bot (1)",
+   "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Prefabs/Bot (1).prefab",
+   "guid": "9f1ad7fa7a8774bb8b74a2bfe11855bd",
+   "type": "Mixed (object with VFX)",
+   "confidence": "medium",
+   "category": "Water",
+   "signals": [
+    "12 Particle Systems",
+    "animated (Animator/Animation)",
+    "additive blending",
+    "1 opaque mesh renderer(s) \u2014 likely a character/prop carrying VFX"
+   ],
+   "counts": {
+    "particleSystems": 12,
+    "vfxGraphs": 0,
+    "meshRenderers": 1,
+    "skinnedMeshes": 1,
+    "trails": 0,
+    "lines": 0,
+    "animators": 1
+   },
+   "depCounts": {
+    "script": 5,
+    "asset": 2,
+    "material": 8,
+    "mesh": 1,
+    "animation": 3,
+    "prefab": 2,
+    "shader": 2,
+    "texture": 8,
+    "builtin": 2
+   },
+   "missing": 5,
+   "deps": [
+    {
+     "guid": "6d299169e151748aa9849fdd906b232d",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Scripts/Player/BotCollision.cs",
+     "kind": "script",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Prefabs/Bot (1).prefab"
+    },
+    {
+     "guid": "3528b314742154a528d72af2647d91be",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/TMPfont/BAKBAKONE-REGULAR SDF.asset",
+     "kind": "asset",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Prefabs/Bot (1).prefab"
+    },
+    {
+     "guid": "9541d86e2fd84c1d9990edf0852d74ab",
+     "path": null,
+     "kind": "script",
+     "status": "package",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Prefabs/Bot (1).prefab",
+     "note": "script GUID not in repo \u2014 likely from a Unity package"
+    },
+    {
+     "guid": "8febe7bbc058a4a6ea16bce9bf354357",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Scripts/Player/BotPlayer.cs",
+     "kind": "script",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Prefabs/Bot (1).prefab"
+    },
+    {
+     "guid": "b5b86d98412285140ae46d9f48268c09",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Snake/x/snake8.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Prefabs/Bot (1).prefab"
+    },
+    {
+     "guid": "dcf29804ecca14a4ea1a5adb1b26d6f0",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/snake5_head.fbx",
+     "kind": "mesh",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Prefabs/Bot (1).prefab"
+    },
+    {
+     "guid": "db1e535e774444e4a92211e9675d1be2",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Animation/eat.controller",
+     "kind": "animation",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Prefabs/Bot (1).prefab"
+    },
+    {
+     "guid": "f6a5abfe4ead44b269ddbf789efa4066",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Scripts/Player/CharacterBase.cs",
+     "kind": "script",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Prefabs/Bot (1).prefab"
+    },
+    {
+     "guid": "a192014b09516b846925aad45b4d62bf",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/eat_fx_white.prefab",
+     "kind": "prefab",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Prefabs/Bot (1).prefab"
+    },
+    {
+     "guid": "841b140067278e24ba193898126267c5",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Shield.prefab",
+     "kind": "prefab",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Prefabs/Bot (1).prefab"
+    },
+    {
+     "guid": "71c1514a6bd24e1e882cebbe1904ce04",
+     "path": null,
+     "kind": "script",
+     "status": "package",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/TMPfont/BAKBAKONE-REGULAR SDF.asset",
+     "note": "script GUID not in repo \u2014 likely from a Unity package"
+    },
+    {
+     "guid": "5321786de2076442798b3973a37c9fe6",
+     "path": "unity_project/luna_snake/Assets/TextMesh Pro/Fonts/BAKBAKONE-REGULAR.TTF",
+     "kind": "asset",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/TMPfont/BAKBAKONE-REGULAR SDF.asset"
+    },
+    {
+     "guid": "68e6db2ebdc24f95958faec2be5558d6",
+     "path": "unity_project/luna_snake/Assets/TextMesh Pro/Shaders/TMP_SDF.shader",
+     "kind": "shader",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/TMPfont/BAKBAKONE-REGULAR SDF.asset"
+    },
+    {
+     "guid": "7ffc1bc2bbb1ef64f84b552b2d2f0619",
+     "path": "unity_project/luna_snake/Assets/Supercent/JMO Assets/Toony Colors Pro/Shaders/Hybrid/TCP2 Hybrid Shader.shader",
+     "kind": "shader",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Snake/x/snake8.mat"
+    },
+    {
+     "guid": "8470904cc80816c4998babfe65285b3b",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/snake5_color.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Snake/x/snake8.mat"
+    },
+    {
+     "guid": "216bc317513882c46913f10e09275b17",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/snake_nomal.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Snake/x/snake8.mat"
+    },
+    {
+     "guid": "3978bff3c96d54a408b3242e5b4cf0db",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/snake_color.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Snake/x/snake8.mat"
+    },
+    {
+     "guid": "8f867e49bd78c124b947eb72bf92e132",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Animation/eat.anim",
+     "kind": "animation",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Animation/eat.controller"
+    },
+    {
+     "guid": "80ff01f00c6e03e4d87043e729787f10",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Animation/eat_backup.anim",
+     "kind": "animation",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Animation/eat.controller"
+    },
+    {
+     "guid": "22bc196a07a0cc4418ce632372bb5225",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_white.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/eat_fx_white.prefab"
+    },
+    {
+     "guid": "0000000000000000e000000000000000",
+     "path": null,
+     "kind": "builtin",
+     "status": "builtin",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/eat_fx_white.prefab",
+     "note": "Unity built-in resources (meshes)"
+    },
+    {
+     "guid": "17b49f7d5374495469afb057e2e00c2d",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_blue.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/eat_fx_white.prefab"
+    },
+    {
+     "guid": "b29e688b444288148ad46d4aae66cffc",
+     "path": null,
+     "kind": "material",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Shield.prefab"
+    },
+    {
+     "guid": "13def0b14fabe7840b99516a853854da",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/ring_shockwave_ADD.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Shield.prefab"
+    },
+    {
+     "guid": "719f8d52fe2e6b444b41c2f7a8fe587b",
+     "path": null,
+     "kind": "material",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Shield.prefab"
+    },
+    {
+     "guid": "a976a44ca501e564bb2adee42f573b4d",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/sparkle_ADD.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Shield.prefab"
+    },
+    {
+     "guid": "d63774db53e2fee4b84a72da1c9f1096",
+     "path": null,
+     "kind": "material",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Shield.prefab"
+    },
+    {
+     "guid": "3c7dcce7245574f89bdbb4a3b75408da",
+     "path": null,
+     "kind": "texture",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_white.mat"
+    },
+    {
+     "guid": "9bcbd987586cf455eb6d1453c032f69d",
+     "path": null,
+     "kind": "texture",
+     "status": "stale",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_white.mat",
+     "note": "material property _MainTex is not used by its shader (leftover reference)"
+    },
+    {
+     "guid": "c7400e2f8d58a464aaf873f5b0a9e4b8",
+     "path": null,
+     "kind": "texture",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_white.mat"
+    },
+    {
+     "guid": "0000000000000000f000000000000000",
+     "path": null,
+     "kind": "builtin",
+     "status": "builtin",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/ring_shockwave_ADD.mat",
+     "note": "Unity built-in extra (shaders/textures)"
+    },
+    {
+     "guid": "8226872b438e7324ab822708db4923e5",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/particleTexture/wave.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/ring_shockwave_ADD.mat"
+    },
+    {
+     "guid": "6eafc1a51ff61174abfe403602dad939",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/particleTexture/sparkle3.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/sparkle_ADD.mat"
+    }
+   ],
+   "variantOf": null,
+   "preview": "supercent-io-luna-snake-supercent-snake-origin-prefabs-bot-1"
+  },
+  {
+   "name": "Player",
+   "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Prefabs/Player.prefab",
+   "guid": "752ef0ed073334556be3623a6a39d1d7",
+   "type": "Particle System",
+   "confidence": "high",
+   "category": "Water",
+   "signals": [
+    "12 Particle Systems",
+    "animated (Animator/Animation)",
+    "additive blending"
+   ],
+   "counts": {
+    "particleSystems": 12,
+    "vfxGraphs": 0,
+    "meshRenderers": 2,
+    "skinnedMeshes": 1,
+    "trails": 0,
+    "lines": 0,
+    "animators": 1
+   },
+   "depCounts": {
+    "script": 4,
+    "material": 8,
+    "mesh": 1,
+    "animation": 3,
+    "asset": 3,
+    "prefab": 2,
+    "shader": 2,
+    "builtin": 2,
+    "texture": 5
+   },
+   "missing": 6,
+   "deps": [
+    {
+     "guid": "2dd7b5d8144394dce80e021f1fef42e2",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Scripts/Player/Magnatic.cs",
+     "kind": "script",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Prefabs/Player.prefab"
+    },
+    {
+     "guid": "52e98454cd5b3464d929d266ae29cb10",
+     "path": null,
+     "kind": "material",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Prefabs/Player.prefab"
+    },
+    {
+     "guid": "dcf29804ecca14a4ea1a5adb1b26d6f0",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/snake5_head.fbx",
+     "kind": "mesh",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Prefabs/Player.prefab"
+    },
+    {
+     "guid": "db1e535e774444e4a92211e9675d1be2",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Animation/eat.controller",
+     "kind": "animation",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Prefabs/Player.prefab"
+    },
+    {
+     "guid": "ce53c8f2c275640e6af536aa8a429930",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Scripts/Player/player.cs",
+     "kind": "script",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Prefabs/Player.prefab"
+    },
+    {
+     "guid": "8f586378b4e144a9851e7b34d9b748ee",
+     "path": "unity_project/luna_snake/Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset",
+     "kind": "asset",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Prefabs/Player.prefab"
+    },
+    {
+     "guid": "9541d86e2fd84c1d9990edf0852d74ab",
+     "path": null,
+     "kind": "script",
+     "status": "package",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Prefabs/Player.prefab",
+     "note": "script GUID not in repo \u2014 likely from a Unity package"
+    },
+    {
+     "guid": "841b140067278e24ba193898126267c5",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Shield.prefab",
+     "kind": "prefab",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Prefabs/Player.prefab"
+    },
+    {
+     "guid": "a192014b09516b846925aad45b4d62bf",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/eat_fx_white.prefab",
+     "kind": "prefab",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Prefabs/Player.prefab"
+    },
+    {
+     "guid": "8f867e49bd78c124b947eb72bf92e132",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Animation/eat.anim",
+     "kind": "animation",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Animation/eat.controller"
+    },
+    {
+     "guid": "80ff01f00c6e03e4d87043e729787f10",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Animation/eat_backup.anim",
+     "kind": "animation",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Animation/eat.controller"
+    },
+    {
+     "guid": "fe393ace9b354375a9cb14cdbbc28be4",
+     "path": "unity_project/luna_snake/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader",
+     "kind": "shader",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset"
+    },
+    {
+     "guid": "71c1514a6bd24e1e882cebbe1904ce04",
+     "path": null,
+     "kind": "script",
+     "status": "package",
+     "via": "unity_project/luna_snake/Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset",
+     "note": "script GUID not in repo \u2014 likely from a Unity package"
+    },
+    {
+     "guid": "2e498d1c8094910479dc3e1b768306a4",
+     "path": "unity_project/luna_snake/Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset",
+     "kind": "asset",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset"
+    },
+    {
+     "guid": "b29e688b444288148ad46d4aae66cffc",
+     "path": null,
+     "kind": "material",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Shield.prefab"
+    },
+    {
+     "guid": "13def0b14fabe7840b99516a853854da",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/ring_shockwave_ADD.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Shield.prefab"
+    },
+    {
+     "guid": "719f8d52fe2e6b444b41c2f7a8fe587b",
+     "path": null,
+     "kind": "material",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Shield.prefab"
+    },
+    {
+     "guid": "a976a44ca501e564bb2adee42f573b4d",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/sparkle_ADD.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Shield.prefab"
+    },
+    {
+     "guid": "d63774db53e2fee4b84a72da1c9f1096",
+     "path": null,
+     "kind": "material",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Shield.prefab"
+    },
+    {
+     "guid": "22bc196a07a0cc4418ce632372bb5225",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_white.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/eat_fx_white.prefab"
+    },
+    {
+     "guid": "0000000000000000e000000000000000",
+     "path": null,
+     "kind": "builtin",
+     "status": "builtin",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/eat_fx_white.prefab",
+     "note": "Unity built-in resources (meshes)"
+    },
+    {
+     "guid": "17b49f7d5374495469afb057e2e00c2d",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_blue.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/eat_fx_white.prefab"
+    },
+    {
+     "guid": "e3265ab4bf004d28a9537516768c1c75",
+     "path": "unity_project/luna_snake/Assets/TextMesh Pro/Fonts/LiberationSans.ttf",
+     "kind": "asset",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset"
+    },
+    {
+     "guid": "0000000000000000f000000000000000",
+     "path": null,
+     "kind": "builtin",
+     "status": "builtin",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/ring_shockwave_ADD.mat",
+     "note": "Unity built-in extra (shaders/textures)"
+    },
+    {
+     "guid": "8226872b438e7324ab822708db4923e5",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/particleTexture/wave.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/ring_shockwave_ADD.mat"
+    },
+    {
+     "guid": "6eafc1a51ff61174abfe403602dad939",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/particleTexture/sparkle3.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/sparkle_ADD.mat"
+    },
+    {
+     "guid": "7ffc1bc2bbb1ef64f84b552b2d2f0619",
+     "path": "unity_project/luna_snake/Assets/Supercent/JMO Assets/Toony Colors Pro/Shaders/Hybrid/TCP2 Hybrid Shader.shader",
+     "kind": "shader",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_white.mat"
+    },
+    {
+     "guid": "3c7dcce7245574f89bdbb4a3b75408da",
+     "path": null,
+     "kind": "texture",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_white.mat"
+    },
+    {
+     "guid": "9bcbd987586cf455eb6d1453c032f69d",
+     "path": null,
+     "kind": "texture",
+     "status": "stale",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_white.mat",
+     "note": "material property _MainTex is not used by its shader (leftover reference)"
+    },
+    {
+     "guid": "c7400e2f8d58a464aaf873f5b0a9e4b8",
+     "path": null,
+     "kind": "texture",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_white.mat"
+    }
+   ],
+   "variantOf": null,
+   "preview": "supercent-io-luna-snake-supercent-snake-origin-prefabs-player"
+  },
+  {
+   "name": "Player",
+   "path": "unity_project/luna_snake/Assets/Supercent/Snake/Playable003/Prefabs/Player.prefab",
+   "guid": "4eb9ac6e0aaf34829a279a30051750d1",
+   "type": "Mixed (object with VFX)",
+   "confidence": "medium",
+   "category": "Water",
+   "signals": [
+    "12 Particle Systems",
+    "animated (Animator/Animation)",
+    "additive blending",
+    "1 opaque mesh renderer(s) \u2014 likely a character/prop carrying VFX"
+   ],
+   "counts": {
+    "particleSystems": 12,
+    "vfxGraphs": 0,
+    "meshRenderers": 2,
+    "skinnedMeshes": 1,
+    "trails": 0,
+    "lines": 0,
+    "animators": 1
+   },
+   "depCounts": {
+    "material": 8,
+    "asset": 2,
+    "script": 4,
+    "animation": 3,
+    "builtin": 2,
+    "mesh": 1,
+    "shader": 2,
+    "texture": 8
+   },
+   "missing": 5,
+   "deps": [
+    {
+     "guid": "d63774db53e2fee4b84a72da1c9f1096",
+     "path": null,
+     "kind": "material",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable003/Prefabs/Player.prefab"
+    },
+    {
+     "guid": "3528b314742154a528d72af2647d91be",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/TMPfont/BAKBAKONE-REGULAR SDF.asset",
+     "kind": "asset",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable003/Prefabs/Player.prefab"
+    },
+    {
+     "guid": "9541d86e2fd84c1d9990edf0852d74ab",
+     "path": null,
+     "kind": "script",
+     "status": "package",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable003/Prefabs/Player.prefab",
+     "note": "script GUID not in repo \u2014 likely from a Unity package"
+    },
+    {
+     "guid": "b29e688b444288148ad46d4aae66cffc",
+     "path": null,
+     "kind": "material",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable003/Prefabs/Player.prefab"
+    },
+    {
+     "guid": "a976a44ca501e564bb2adee42f573b4d",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/sparkle_ADD.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable003/Prefabs/Player.prefab"
+    },
+    {
+     "guid": "719f8d52fe2e6b444b41c2f7a8fe587b",
+     "path": null,
+     "kind": "material",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable003/Prefabs/Player.prefab"
+    },
+    {
+     "guid": "db1e535e774444e4a92211e9675d1be2",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Animation/eat.controller",
+     "kind": "animation",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable003/Prefabs/Player.prefab"
+    },
+    {
+     "guid": "ce53c8f2c275640e6af536aa8a429930",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Scripts/Player/player.cs",
+     "kind": "script",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable003/Prefabs/Player.prefab"
+    },
+    {
+     "guid": "17b49f7d5374495469afb057e2e00c2d",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_blue.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable003/Prefabs/Player.prefab"
+    },
+    {
+     "guid": "0000000000000000e000000000000000",
+     "path": null,
+     "kind": "builtin",
+     "status": "builtin",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable003/Prefabs/Player.prefab",
+     "note": "Unity built-in resources (meshes)"
+    },
+    {
+     "guid": "22bc196a07a0cc4418ce632372bb5225",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_white.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable003/Prefabs/Player.prefab"
+    },
+    {
+     "guid": "ccfbdcb31f9c88341b1be186132048f1",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Snake/snake4_white.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable003/Prefabs/Player.prefab"
+    },
+    {
+     "guid": "dcf29804ecca14a4ea1a5adb1b26d6f0",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/snake5_head.fbx",
+     "kind": "mesh",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable003/Prefabs/Player.prefab"
+    },
+    {
+     "guid": "13def0b14fabe7840b99516a853854da",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/ring_shockwave_ADD.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable003/Prefabs/Player.prefab"
+    },
+    {
+     "guid": "2dd7b5d8144394dce80e021f1fef42e2",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Scripts/Player/Magnatic.cs",
+     "kind": "script",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable003/Prefabs/Player.prefab"
+    },
+    {
+     "guid": "71c1514a6bd24e1e882cebbe1904ce04",
+     "path": null,
+     "kind": "script",
+     "status": "package",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/TMPfont/BAKBAKONE-REGULAR SDF.asset",
+     "note": "script GUID not in repo \u2014 likely from a Unity package"
+    },
+    {
+     "guid": "5321786de2076442798b3973a37c9fe6",
+     "path": "unity_project/luna_snake/Assets/TextMesh Pro/Fonts/BAKBAKONE-REGULAR.TTF",
+     "kind": "asset",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/TMPfont/BAKBAKONE-REGULAR SDF.asset"
+    },
+    {
+     "guid": "68e6db2ebdc24f95958faec2be5558d6",
+     "path": "unity_project/luna_snake/Assets/TextMesh Pro/Shaders/TMP_SDF.shader",
+     "kind": "shader",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/TMPfont/BAKBAKONE-REGULAR SDF.asset"
+    },
+    {
+     "guid": "0000000000000000f000000000000000",
+     "path": null,
+     "kind": "builtin",
+     "status": "builtin",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/sparkle_ADD.mat",
+     "note": "Unity built-in extra (shaders/textures)"
+    },
+    {
+     "guid": "6eafc1a51ff61174abfe403602dad939",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/particleTexture/sparkle3.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/sparkle_ADD.mat"
+    },
+    {
+     "guid": "8f867e49bd78c124b947eb72bf92e132",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Animation/eat.anim",
+     "kind": "animation",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Animation/eat.controller"
+    },
+    {
+     "guid": "80ff01f00c6e03e4d87043e729787f10",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Animation/eat_backup.anim",
+     "kind": "animation",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Animation/eat.controller"
+    },
+    {
+     "guid": "7ffc1bc2bbb1ef64f84b552b2d2f0619",
+     "path": "unity_project/luna_snake/Assets/Supercent/JMO Assets/Toony Colors Pro/Shaders/Hybrid/TCP2 Hybrid Shader.shader",
+     "kind": "shader",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_blue.mat"
+    },
+    {
+     "guid": "3c7dcce7245574f89bdbb4a3b75408da",
+     "path": null,
+     "kind": "texture",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_blue.mat"
+    },
+    {
+     "guid": "9bcbd987586cf455eb6d1453c032f69d",
+     "path": null,
+     "kind": "texture",
+     "status": "stale",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_blue.mat",
+     "note": "material property _MainTex is not used by its shader (leftover reference)"
+    },
+    {
+     "guid": "c7400e2f8d58a464aaf873f5b0a9e4b8",
+     "path": null,
+     "kind": "texture",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_blue.mat"
+    },
+    {
+     "guid": "f1f70a9fdee867d4582508e5c48966df",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/snake4_color.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Snake/snake4_white.mat"
+    },
+    {
+     "guid": "216bc317513882c46913f10e09275b17",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/snake_nomal.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Snake/snake4_white.mat"
+    },
+    {
+     "guid": "3978bff3c96d54a408b3242e5b4cf0db",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/snake_color.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Snake/snake4_white.mat"
+    },
+    {
+     "guid": "8226872b438e7324ab822708db4923e5",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/particleTexture/wave.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/ring_shockwave_ADD.mat"
+    }
+   ],
+   "variantOf": null,
+   "preview": "supercent-io-luna-snake-supercent-snake-playable003-prefabs-player"
+  },
+  {
+   "name": "Bot",
+   "path": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Bot.prefab",
+   "guid": "bd2bb2288650748ba99d4b63fd5c5ca3",
+   "type": "Mixed (object with VFX)",
+   "confidence": "medium",
+   "category": "Water",
+   "signals": [
+    "15 Particle Systems",
+    "animated (Animator/Animation)",
+    "additive blending",
+    "1 opaque mesh renderer(s) \u2014 likely a character/prop carrying VFX"
+   ],
+   "counts": {
+    "particleSystems": 15,
+    "vfxGraphs": 0,
+    "meshRenderers": 2,
+    "skinnedMeshes": 1,
+    "trails": 0,
+    "lines": 0,
+    "animators": 1
+   },
+   "depCounts": {
+    "script": 4,
+    "asset": 2,
+    "material": 10,
+    "mesh": 2,
+    "animation": 3,
+    "prefab": 3,
+    "shader": 2,
+    "texture": 10,
+    "builtin": 2
+   },
+   "missing": 5,
+   "deps": [
+    {
+     "guid": "e2b2099aa66c34f14b8a59bbe3c48431",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Scripts/Character/BotCollision.cs",
+     "kind": "script",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Bot.prefab"
+    },
+    {
+     "guid": "3528b314742154a528d72af2647d91be",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/TMPfont/BAKBAKONE-REGULAR SDF.asset",
+     "kind": "asset",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Bot.prefab"
+    },
+    {
+     "guid": "9541d86e2fd84c1d9990edf0852d74ab",
+     "path": null,
+     "kind": "script",
+     "status": "package",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Bot.prefab",
+     "note": "script GUID not in repo \u2014 likely from a Unity package"
+    },
+    {
+     "guid": "b5b86d98412285140ae46d9f48268c09",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Snake/x/snake8.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Bot.prefab"
+    },
+    {
+     "guid": "dcf29804ecca14a4ea1a5adb1b26d6f0",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/snake5_head.fbx",
+     "kind": "mesh",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Bot.prefab"
+    },
+    {
+     "guid": "db1e535e774444e4a92211e9675d1be2",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Animation/eat.controller",
+     "kind": "animation",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Bot.prefab"
+    },
+    {
+     "guid": "a6f9b09721b92448d9532840f6d0346a",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Scripts/Character/Bot.cs",
+     "kind": "script",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Bot.prefab"
+    },
+    {
+     "guid": "146b8e77a1f424561a95a7b725c6a730",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/speed_buster.prefab",
+     "kind": "prefab",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Bot.prefab"
+    },
+    {
+     "guid": "a192014b09516b846925aad45b4d62bf",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/eat_fx_white.prefab",
+     "kind": "prefab",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Bot.prefab"
+    },
+    {
+     "guid": "841b140067278e24ba193898126267c5",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Shield.prefab",
+     "kind": "prefab",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Bot.prefab"
+    },
+    {
+     "guid": "71c1514a6bd24e1e882cebbe1904ce04",
+     "path": null,
+     "kind": "script",
+     "status": "package",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/TMPfont/BAKBAKONE-REGULAR SDF.asset",
+     "note": "script GUID not in repo \u2014 likely from a Unity package"
+    },
+    {
+     "guid": "5321786de2076442798b3973a37c9fe6",
+     "path": "unity_project/luna_snake/Assets/TextMesh Pro/Fonts/BAKBAKONE-REGULAR.TTF",
+     "kind": "asset",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/TMPfont/BAKBAKONE-REGULAR SDF.asset"
+    },
+    {
+     "guid": "68e6db2ebdc24f95958faec2be5558d6",
+     "path": "unity_project/luna_snake/Assets/TextMesh Pro/Shaders/TMP_SDF.shader",
+     "kind": "shader",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/TMPfont/BAKBAKONE-REGULAR SDF.asset"
+    },
+    {
+     "guid": "7ffc1bc2bbb1ef64f84b552b2d2f0619",
+     "path": "unity_project/luna_snake/Assets/Supercent/JMO Assets/Toony Colors Pro/Shaders/Hybrid/TCP2 Hybrid Shader.shader",
+     "kind": "shader",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Snake/x/snake8.mat"
+    },
+    {
+     "guid": "8470904cc80816c4998babfe65285b3b",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/snake5_color.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Snake/x/snake8.mat"
+    },
+    {
+     "guid": "216bc317513882c46913f10e09275b17",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/snake_nomal.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Snake/x/snake8.mat"
+    },
+    {
+     "guid": "3978bff3c96d54a408b3242e5b4cf0db",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/snake_color.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Snake/x/snake8.mat"
+    },
+    {
+     "guid": "8f867e49bd78c124b947eb72bf92e132",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Animation/eat.anim",
+     "kind": "animation",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Animation/eat.controller"
+    },
+    {
+     "guid": "80ff01f00c6e03e4d87043e729787f10",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Animation/eat_backup.anim",
+     "kind": "animation",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Animation/eat.controller"
+    },
+    {
+     "guid": "588b1a3aff3fd4860ab427832a040fa3",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/glow1_ADD.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/speed_buster.prefab"
+    },
+    {
+     "guid": "a976a44ca501e564bb2adee42f573b4d",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/sparkle_ADD.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/speed_buster.prefab"
+    },
+    {
+     "guid": "c3972e105fc9a4dd48cc8ee87bec274c",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/rocketgradient_ADD.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/speed_buster.prefab"
+    },
+    {
+     "guid": "3933d0fbad2694932bfc8bf0bdf8291d",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/ETFX_Rocket2.FBX",
+     "kind": "mesh",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/speed_buster.prefab"
+    },
+    {
+     "guid": "22bc196a07a0cc4418ce632372bb5225",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_white.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/eat_fx_white.prefab"
+    },
+    {
+     "guid": "0000000000000000e000000000000000",
+     "path": null,
+     "kind": "builtin",
+     "status": "builtin",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/eat_fx_white.prefab",
+     "note": "Unity built-in resources (meshes)"
+    },
+    {
+     "guid": "17b49f7d5374495469afb057e2e00c2d",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_blue.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/eat_fx_white.prefab"
+    },
+    {
+     "guid": "b29e688b444288148ad46d4aae66cffc",
+     "path": null,
+     "kind": "material",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Shield.prefab"
+    },
+    {
+     "guid": "13def0b14fabe7840b99516a853854da",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/ring_shockwave_ADD.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Shield.prefab"
+    },
+    {
+     "guid": "719f8d52fe2e6b444b41c2f7a8fe587b",
+     "path": null,
+     "kind": "material",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Shield.prefab"
+    },
+    {
+     "guid": "d63774db53e2fee4b84a72da1c9f1096",
+     "path": null,
+     "kind": "material",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Shield.prefab"
+    },
+    {
+     "guid": "0000000000000000f000000000000000",
+     "path": null,
+     "kind": "builtin",
+     "status": "builtin",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/glow1_ADD.mat",
+     "note": "Unity built-in extra (shaders/textures)"
+    },
+    {
+     "guid": "75c822b01a637d547abc69e6f1f590b4",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/particleTexture/glow1.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/glow1_ADD.mat"
+    },
+    {
+     "guid": "6eafc1a51ff61174abfe403602dad939",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/particleTexture/sparkle3.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/sparkle_ADD.mat"
+    },
+    {
+     "guid": "43d85cd5903a7f945919e921295b0d6d",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/particleTexture/rocket_gradient.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/rocketgradient_ADD.mat"
+    },
+    {
+     "guid": "3c7dcce7245574f89bdbb4a3b75408da",
+     "path": null,
+     "kind": "texture",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_white.mat"
+    },
+    {
+     "guid": "9bcbd987586cf455eb6d1453c032f69d",
+     "path": null,
+     "kind": "texture",
+     "status": "stale",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_white.mat",
+     "note": "material property _MainTex is not used by its shader (leftover reference)"
+    },
+    {
+     "guid": "c7400e2f8d58a464aaf873f5b0a9e4b8",
+     "path": null,
+     "kind": "texture",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_white.mat"
+    },
+    {
+     "guid": "8226872b438e7324ab822708db4923e5",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/particleTexture/wave.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/ring_shockwave_ADD.mat"
+    }
+   ],
+   "variantOf": null,
+   "preview": "supercent-io-luna-snake-supercent-snake-playable004-prefabs-bot"
+  },
+  {
+   "name": "Headshot_new_fx",
+   "path": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Headshot_new_fx.prefab",
+   "guid": "71966ee54f4994cf2a53c9adf21f99d6",
+   "type": "Particle System",
+   "confidence": "high",
+   "category": "Water",
+   "signals": [
+    "5 Particle Systems",
+    "additive blending"
+   ],
+   "counts": {
+    "particleSystems": 5,
+    "vfxGraphs": 0,
+    "meshRenderers": 0,
+    "skinnedMeshes": 0,
+    "trails": 0,
+    "lines": 0,
+    "animators": 0
+   },
+   "depCounts": {
+    "material": 5,
+    "builtin": 2,
+    "texture": 7,
+    "shader": 1
+   },
+   "missing": 2,
+   "deps": [
+    {
+     "guid": "150aee38b5d848b42b75593618992bb7",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/circle_AB.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Headshot_new_fx.prefab"
+    },
+    {
+     "guid": "22bc196a07a0cc4418ce632372bb5225",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_white.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Headshot_new_fx.prefab"
+    },
+    {
+     "guid": "0000000000000000e000000000000000",
+     "path": null,
+     "kind": "builtin",
+     "status": "builtin",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Headshot_new_fx.prefab",
+     "note": "Unity built-in resources (meshes)"
+    },
+    {
+     "guid": "f7c5949bd4fc39b4da8b55816f159297",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/splat02_3x3_AB.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Headshot_new_fx.prefab"
+    },
+    {
+     "guid": "65b9c72a81f284f6aab84cc06ce49d40",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/evil_spirit2_ADD.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Headshot_new_fx.prefab"
+    },
+    {
+     "guid": "9e7f153edb1984d66afb8021be570a21",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/txt_kill.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Headshot_new_fx.prefab"
+    },
+    {
+     "guid": "0000000000000000f000000000000000",
+     "path": null,
+     "kind": "builtin",
+     "status": "builtin",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/circle_AB.mat",
+     "note": "Unity built-in extra (shaders/textures)"
+    },
+    {
+     "guid": "155f67fd8750f8e4e83c8efb1731f3a0",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/particleTexture/circle.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/circle_AB.mat"
+    },
+    {
+     "guid": "7ffc1bc2bbb1ef64f84b552b2d2f0619",
+     "path": "unity_project/luna_snake/Assets/Supercent/JMO Assets/Toony Colors Pro/Shaders/Hybrid/TCP2 Hybrid Shader.shader",
+     "kind": "shader",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_white.mat"
+    },
+    {
+     "guid": "3c7dcce7245574f89bdbb4a3b75408da",
+     "path": null,
+     "kind": "texture",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_white.mat"
+    },
+    {
+     "guid": "9bcbd987586cf455eb6d1453c032f69d",
+     "path": null,
+     "kind": "texture",
+     "status": "stale",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_white.mat",
+     "note": "material property _MainTex is not used by its shader (leftover reference)"
+    },
+    {
+     "guid": "c7400e2f8d58a464aaf873f5b0a9e4b8",
+     "path": null,
+     "kind": "texture",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_white.mat"
+    },
+    {
+     "guid": "4e7fadba81fbb72408f12d8d10b1a0c6",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/particleTexture/splat02_flat_3x3.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/splat02_3x3_AB.mat"
+    },
+    {
+     "guid": "fb1e07af0536d1146be99da5274f2d50",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/particleTexture/evil_spirit2.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/evil_spirit2_ADD.mat"
+    },
+    {
+     "guid": "173ea8e8c2933614aa8a07147b5afc53",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Sprites/txt_kill.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/txt_kill.mat"
+    }
+   ],
+   "variantOf": null,
+   "preview": "supercent-io-luna-snake-supercent-snake-playable004-prefabs-headshot-new-fx"
+  },
+  {
+   "name": "Player",
+   "path": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Player.prefab",
+   "guid": "e8d61d7f668e14633b478c9dbf2e7551",
+   "type": "Mixed (object with VFX)",
+   "confidence": "medium",
+   "category": "Water",
+   "signals": [
+    "22 Particle Systems",
+    "animated (Animator/Animation)",
+    "additive blending",
+    "1 opaque mesh renderer(s) \u2014 likely a character/prop carrying VFX"
+   ],
+   "counts": {
+    "particleSystems": 22,
+    "vfxGraphs": 0,
+    "meshRenderers": 2,
+    "skinnedMeshes": 1,
+    "trails": 0,
+    "lines": 0,
+    "animators": 1
+   },
+   "depCounts": {
+    "script": 4,
+    "material": 15,
+    "mesh": 2,
+    "animation": 3,
+    "asset": 2,
+    "prefab": 5,
+    "shader": 2,
+    "texture": 15,
+    "builtin": 2
+   },
+   "missing": 5,
+   "deps": [
+    {
+     "guid": "fcbd121f89fff4584ab587a618db5c92",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Scripts/Character/Magnatic.cs",
+     "kind": "script",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Player.prefab"
+    },
+    {
+     "guid": "ccfbdcb31f9c88341b1be186132048f1",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Snake/snake4_white.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Player.prefab"
+    },
+    {
+     "guid": "dcf29804ecca14a4ea1a5adb1b26d6f0",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/snake5_head.fbx",
+     "kind": "mesh",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Player.prefab"
+    },
+    {
+     "guid": "db1e535e774444e4a92211e9675d1be2",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Animation/eat.controller",
+     "kind": "animation",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Player.prefab"
+    },
+    {
+     "guid": "f44bebd1a9b0e456e96771a4889a492f",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Scripts/Character/Player.cs",
+     "kind": "script",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Player.prefab"
+    },
+    {
+     "guid": "3528b314742154a528d72af2647d91be",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/TMPfont/BAKBAKONE-REGULAR SDF.asset",
+     "kind": "asset",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Player.prefab"
+    },
+    {
+     "guid": "9541d86e2fd84c1d9990edf0852d74ab",
+     "path": null,
+     "kind": "script",
+     "status": "package",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Player.prefab",
+     "note": "script GUID not in repo \u2014 likely from a Unity package"
+    },
+    {
+     "guid": "2d6a958bd317e4ddf8d817fd2ab3f2ed",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/SpeedUp_fx.prefab",
+     "kind": "prefab",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Player.prefab"
+    },
+    {
+     "guid": "146b8e77a1f424561a95a7b725c6a730",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/speed_buster.prefab",
+     "kind": "prefab",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Player.prefab"
+    },
+    {
+     "guid": "71966ee54f4994cf2a53c9adf21f99d6",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Headshot_new_fx.prefab",
+     "kind": "prefab",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Player.prefab"
+    },
+    {
+     "guid": "841b140067278e24ba193898126267c5",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Shield.prefab",
+     "kind": "prefab",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Player.prefab"
+    },
+    {
+     "guid": "a192014b09516b846925aad45b4d62bf",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/eat_fx_white.prefab",
+     "kind": "prefab",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Player.prefab"
+    },
+    {
+     "guid": "7ffc1bc2bbb1ef64f84b552b2d2f0619",
+     "path": "unity_project/luna_snake/Assets/Supercent/JMO Assets/Toony Colors Pro/Shaders/Hybrid/TCP2 Hybrid Shader.shader",
+     "kind": "shader",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Snake/snake4_white.mat"
+    },
+    {
+     "guid": "f1f70a9fdee867d4582508e5c48966df",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/snake4_color.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Snake/snake4_white.mat"
+    },
+    {
+     "guid": "216bc317513882c46913f10e09275b17",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/snake_nomal.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Snake/snake4_white.mat"
+    },
+    {
+     "guid": "3978bff3c96d54a408b3242e5b4cf0db",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/snake_color.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Snake/snake4_white.mat"
+    },
+    {
+     "guid": "8f867e49bd78c124b947eb72bf92e132",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Animation/eat.anim",
+     "kind": "animation",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Animation/eat.controller"
+    },
+    {
+     "guid": "80ff01f00c6e03e4d87043e729787f10",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Animation/eat_backup.anim",
+     "kind": "animation",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Animation/eat.controller"
+    },
+    {
+     "guid": "71c1514a6bd24e1e882cebbe1904ce04",
+     "path": null,
+     "kind": "script",
+     "status": "package",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/TMPfont/BAKBAKONE-REGULAR SDF.asset",
+     "note": "script GUID not in repo \u2014 likely from a Unity package"
+    },
+    {
+     "guid": "5321786de2076442798b3973a37c9fe6",
+     "path": "unity_project/luna_snake/Assets/TextMesh Pro/Fonts/BAKBAKONE-REGULAR.TTF",
+     "kind": "asset",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/TMPfont/BAKBAKONE-REGULAR SDF.asset"
+    },
+    {
+     "guid": "68e6db2ebdc24f95958faec2be5558d6",
+     "path": "unity_project/luna_snake/Assets/TextMesh Pro/Shaders/TMP_SDF.shader",
+     "kind": "shader",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/TMPfont/BAKBAKONE-REGULAR SDF.asset"
+    },
+    {
+     "guid": "13def0b14fabe7840b99516a853854da",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/ring_shockwave_ADD.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/SpeedUp_fx.prefab"
+    },
+    {
+     "guid": "0000000000000000e000000000000000",
+     "path": null,
+     "kind": "builtin",
+     "status": "builtin",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/SpeedUp_fx.prefab",
+     "note": "Unity built-in resources (meshes)"
+    },
+    {
+     "guid": "56365635521be4f1494f7c79451ace0a",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/magic_line_ADD.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/SpeedUp_fx.prefab"
+    },
+    {
+     "guid": "588b1a3aff3fd4860ab427832a040fa3",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/glow1_ADD.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/speed_buster.prefab"
+    },
+    {
+     "guid": "a976a44ca501e564bb2adee42f573b4d",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/sparkle_ADD.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/speed_buster.prefab"
+    },
+    {
+     "guid": "c3972e105fc9a4dd48cc8ee87bec274c",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/rocketgradient_ADD.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/speed_buster.prefab"
+    },
+    {
+     "guid": "3933d0fbad2694932bfc8bf0bdf8291d",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/ETFX_Rocket2.FBX",
+     "kind": "mesh",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/speed_buster.prefab"
+    },
+    {
+     "guid": "150aee38b5d848b42b75593618992bb7",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/circle_AB.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Headshot_new_fx.prefab"
+    },
+    {
+     "guid": "22bc196a07a0cc4418ce632372bb5225",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_white.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Headshot_new_fx.prefab"
+    },
+    {
+     "guid": "f7c5949bd4fc39b4da8b55816f159297",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/splat02_3x3_AB.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Headshot_new_fx.prefab"
+    },
+    {
+     "guid": "65b9c72a81f284f6aab84cc06ce49d40",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/evil_spirit2_ADD.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Headshot_new_fx.prefab"
+    },
+    {
+     "guid": "9e7f153edb1984d66afb8021be570a21",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/txt_kill.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Headshot_new_fx.prefab"
+    },
+    {
+     "guid": "b29e688b444288148ad46d4aae66cffc",
+     "path": null,
+     "kind": "material",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Shield.prefab"
+    },
+    {
+     "guid": "719f8d52fe2e6b444b41c2f7a8fe587b",
+     "path": null,
+     "kind": "material",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Shield.prefab"
+    },
+    {
+     "guid": "d63774db53e2fee4b84a72da1c9f1096",
+     "path": null,
+     "kind": "material",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Shield.prefab"
+    },
+    {
+     "guid": "17b49f7d5374495469afb057e2e00c2d",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_blue.mat",
+     "kind": "material",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/eat_fx_white.prefab"
+    },
+    {
+     "guid": "0000000000000000f000000000000000",
+     "path": null,
+     "kind": "builtin",
+     "status": "builtin",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/ring_shockwave_ADD.mat",
+     "note": "Unity built-in extra (shaders/textures)"
+    },
+    {
+     "guid": "8226872b438e7324ab822708db4923e5",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/particleTexture/wave.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/ring_shockwave_ADD.mat"
+    },
+    {
+     "guid": "d38ceb17eba198f48b5ea27e60ae55e7",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/particleTexture/magic_line_2.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/magic_line_ADD.mat"
+    },
+    {
+     "guid": "75c822b01a637d547abc69e6f1f590b4",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/particleTexture/glow1.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/glow1_ADD.mat"
+    },
+    {
+     "guid": "6eafc1a51ff61174abfe403602dad939",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/particleTexture/sparkle3.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/sparkle_ADD.mat"
+    },
+    {
+     "guid": "43d85cd5903a7f945919e921295b0d6d",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/particleTexture/rocket_gradient.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/rocketgradient_ADD.mat"
+    },
+    {
+     "guid": "155f67fd8750f8e4e83c8efb1731f3a0",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/particleTexture/circle.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/circle_AB.mat"
+    },
+    {
+     "guid": "3c7dcce7245574f89bdbb4a3b75408da",
+     "path": null,
+     "kind": "texture",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_white.mat"
+    },
+    {
+     "guid": "9bcbd987586cf455eb6d1453c032f69d",
+     "path": null,
+     "kind": "texture",
+     "status": "stale",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_white.mat",
+     "note": "material property _MainTex is not used by its shader (leftover reference)"
+    },
+    {
+     "guid": "c7400e2f8d58a464aaf873f5b0a9e4b8",
+     "path": null,
+     "kind": "texture",
+     "status": "missing",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/water_white.mat"
+    },
+    {
+     "guid": "4e7fadba81fbb72408f12d8d10b1a0c6",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/particleTexture/splat02_flat_3x3.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/splat02_3x3_AB.mat"
+    },
+    {
+     "guid": "fb1e07af0536d1146be99da5274f2d50",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Textures/particleTexture/evil_spirit2.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/evil_spirit2_ADD.mat"
+    },
+    {
+     "guid": "173ea8e8c2933614aa8a07147b5afc53",
+     "path": "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Sprites/txt_kill.png",
+     "kind": "texture",
+     "status": "ok",
+     "via": "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/Materials/Misc/txt_kill.mat"
+    }
+   ],
+   "variantOf": null,
+   "preview": "supercent-io-luna-snake-supercent-snake-playable004-prefabs-player"
+  }
+ ],
+ "missing": [
+  {
+   "guid": "35b072e7a7dfe0f429bf5123cfc9a433",
+   "path": null,
+   "kind": "material",
+   "note": null,
+   "referencedBy": [
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileBlue.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileFire.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileGreen.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissilePink.prefab"
+   ]
+  },
+  {
+   "guid": "b18036fb1921bf44aa1e636f1bf63a2a",
+   "path": null,
+   "kind": "material",
+   "note": null,
+   "referencedBy": [
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileBlue.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileFire.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileGreen.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissilePink.prefab"
+   ]
+  },
+  {
+   "guid": "e653836c30661fe419b8992e230ca189",
+   "path": null,
+   "kind": "material",
+   "note": null,
+   "referencedBy": [
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileBlue.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileFire.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileGreen.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissilePink.prefab"
+   ]
+  },
+  {
+   "guid": "3e06c45e3372dd345b50a642fe86616d",
+   "path": null,
+   "kind": "unknown",
+   "note": null,
+   "referencedBy": [
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileBlue.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileFire.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileGreen.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissilePink.prefab"
+   ]
+  },
+  {
+   "guid": "e7912d15146fcf145afaaedec646b781",
+   "path": null,
+   "kind": "material",
+   "note": null,
+   "referencedBy": [
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileBlue.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileFire.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissileGreen.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/item_fx/NukeMissilePink.prefab"
+   ]
+  },
+  {
+   "guid": "288be23f2628227438d46f1d8a82b567",
+   "path": null,
+   "kind": "mesh",
+   "note": null,
+   "referencedBy": [
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Pink_ink.prefab"
+   ]
+  },
+  {
+   "guid": "06907d08092c41f4aa8b5b3cbe5f9fa2",
+   "path": null,
+   "kind": "texture",
+   "note": null,
+   "referencedBy": [
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Pink_ink.prefab"
+   ]
+  },
+  {
+   "guid": "fcb027caad6963b4a80539bbce0d10e9",
+   "path": null,
+   "kind": "texture",
+   "note": null,
+   "referencedBy": [
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Pink_ink.prefab"
+   ]
+  },
+  {
+   "guid": "854b25bc08516364da5a786b1cad247e",
+   "path": null,
+   "kind": "texture",
+   "note": null,
+   "referencedBy": [
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Pink_ink.prefab"
+   ]
+  },
+  {
+   "guid": "2f6642b43dc405d498acba7e288c068c",
+   "path": null,
+   "kind": "texture",
+   "note": null,
+   "referencedBy": [
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Pink_ink.prefab"
+   ]
+  },
+  {
+   "guid": "db8fa36fcfe9738418db54ee0fe17fdf",
+   "path": null,
+   "kind": "texture",
+   "note": null,
+   "referencedBy": [
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Pink_ink.prefab"
+   ]
+  },
+  {
+   "guid": "48da24d771916524899d36e4bfe7f762",
+   "path": null,
+   "kind": "texture",
+   "note": null,
+   "referencedBy": [
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Pink_ink.prefab"
+   ]
+  },
+  {
+   "guid": "b29e688b444288148ad46d4aae66cffc",
+   "path": null,
+   "kind": "material",
+   "note": null,
+   "referencedBy": [
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Shield.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Prefabs/Bot (1).prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Prefabs/Player.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Playable003/Prefabs/Player.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Bot.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Player.prefab"
+   ]
+  },
+  {
+   "guid": "719f8d52fe2e6b444b41c2f7a8fe587b",
+   "path": null,
+   "kind": "material",
+   "note": null,
+   "referencedBy": [
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Shield.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Prefabs/Bot (1).prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Prefabs/Player.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Playable003/Prefabs/Player.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Bot.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Player.prefab"
+   ]
+  },
+  {
+   "guid": "d63774db53e2fee4b84a72da1c9f1096",
+   "path": null,
+   "kind": "material",
+   "note": null,
+   "referencedBy": [
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/Shield.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Prefabs/Bot (1).prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Prefabs/Player.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Playable003/Prefabs/Player.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Bot.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Player.prefab"
+   ]
+  },
+  {
+   "guid": "3c7dcce7245574f89bdbb4a3b75408da",
+   "path": null,
+   "kind": "texture",
+   "note": null,
+   "referencedBy": [
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/eat_fx_white.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/fx_WaterExplosion2.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Prefabs/Bot (1).prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Prefabs/Player.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Playable003/Prefabs/Player.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Bot.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Headshot_new_fx.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Player.prefab"
+   ]
+  },
+  {
+   "guid": "c7400e2f8d58a464aaf873f5b0a9e4b8",
+   "path": null,
+   "kind": "texture",
+   "note": null,
+   "referencedBy": [
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/eat_fx_white.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Particle/fx_WaterExplosion2.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Prefabs/Bot (1).prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Prefabs/Player.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Playable003/Prefabs/Player.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Bot.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Headshot_new_fx.prefab",
+    "unity_project/luna_snake/Assets/Supercent/Snake/Playable004/Prefabs/Player.prefab"
+   ]
+  },
+  {
+   "guid": "52e98454cd5b3464d929d266ae29cb10",
+   "path": null,
+   "kind": "material",
+   "note": null,
+   "referencedBy": [
+    "unity_project/luna_snake/Assets/Supercent/Snake/Origin/Prefabs/Player.prefab"
+   ]
+  }
+ ],
+ "binary": [
+  "unity_project/luna_snake/ProjectSettings/XRSettings.asset"
+ ],
+ "orphans": {
+  "assetsWithoutMeta": [],
+  "metasWithoutAsset": [
+   "unity_project/luna_snake/Assets/Supercent/Luna",
+   "unity_project/luna_snake/Assets/Supercent/Snake/Origin/FBXs/boss/\uc774\ud399\ud2b8",
+   "unity_project/luna_snake/Assets/Supercent/Snake/Playable002/FBXs/Materials",
+   "unity_project/luna_snake/Assets/Supercent/Snake/Resources"
+  ]
+ },
+ "duplicateGuids": [],
+ "id": "supercent-io-luna-snake",
+ "preview": {
+  "pack": "supercent-io/luna_snake",
+  "base": "vfx/supercent-io-luna-snake/",
+  "exported": 17,
+  "candidates": 17,
+  "ids": [
+   "supercent-io-luna-snake-supercent-snake-origin-fbxs-item-fx-speed-buster",
+   "supercent-io-luna-snake-supercent-snake-origin-fbxs-item-fx-speedup-fx",
+   "supercent-io-luna-snake-supercent-snake-origin-particle-bloodexplosionround",
+   "supercent-io-luna-snake-supercent-snake-origin-fbxs-item-fx-nukemissileblue",
+   "supercent-io-luna-snake-supercent-snake-origin-fbxs-item-fx-nukemissilefire",
+   "supercent-io-luna-snake-supercent-snake-origin-fbxs-item-fx-nukemissilegreen",
+   "supercent-io-luna-snake-supercent-snake-origin-fbxs-item-fx-nukemissilepink",
+   "supercent-io-luna-snake-supercent-snake-origin-particle-eat-fx-white",
+   "supercent-io-luna-snake-supercent-snake-origin-particle-fx-waterexplosion2",
+   "supercent-io-luna-snake-supercent-snake-origin-particle-pink-ink",
+   "supercent-io-luna-snake-supercent-snake-origin-particle-shield",
+   "supercent-io-luna-snake-supercent-snake-origin-prefabs-player",
+   "supercent-io-luna-snake-supercent-snake-playable004-prefabs-headshot-new-fx",
+   "supercent-io-luna-snake-supercent-snake-origin-prefabs-bot-1",
+   "supercent-io-luna-snake-supercent-snake-playable003-prefabs-player",
+   "supercent-io-luna-snake-supercent-snake-playable004-prefabs-bot",
+   "supercent-io-luna-snake-supercent-snake-playable004-prefabs-player"
+  ]
+ },
+ "collection": "scan-supercent-io-luna-snake"
+}

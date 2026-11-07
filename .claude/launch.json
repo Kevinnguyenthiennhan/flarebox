@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "flarebox",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["tools/flarebox_server.py", "--port", "8790"],
+      "port": 8790
+    }
+  ]
+}

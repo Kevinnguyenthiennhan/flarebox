@@ -1,0 +1,44 @@
+{
+ "v": 1,
+ "repo": "supercent-io/luna_idleoilempire",
+ "url": "https://github.com/supercent-io/luna_idleoilempire",
+ "branch": "main",
+ "commit": "77617da9316416d537dda9e2cf1f67c60472d222",
+ "private": true,
+ "unityRoot": "unity_project/luna_idleoilempire/",
+ "scanned": "2026-11-07 12:48",
+ "unity": "2022.3.16f1",
+ "pipeline": "Built-in",
+ "vfxGraphPackage": false,
+ "stats": {
+  "files": 464,
+  "metas": 235,
+  "prefabs": 0,
+  "vfx": 0,
+  "byType": {},
+  "byCategory": {},
+  "binaryAssets": 1,
+  "binaryPrefabs": 0,
+  "missingDeps": 0,
+  "staleRefs": 0,
+  "vfxWithMissing": 0,
+  "assetsWithoutMeta": 0,
+  "metasWithoutAsset": 1,
+  "duplicateGuids": 0,
+  "seconds": 10.3
+ },
+ "vfx": [],
+ "missing": [],
+ "binary": [
+  "unity_project/luna_idleoilempire/ProjectSettings/XRSettings.asset"
+ ],
+ "orphans": {
+  "assetsWithoutMeta": [],
+  "metasWithoutAsset": [
+   "unity_project/luna_idleoilempire/Assets/Supercent/Luna"
+  ]
+ },
+ "duplicateGuids": [],
+ "id": "supercent-io-luna-idleoilempire",
+ "collection": "scan-supercent-io-luna-idleoilempire"
+}
