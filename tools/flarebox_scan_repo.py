@@ -36,7 +36,7 @@ CAT_RULES = [(r'muzzle', 'Muzzle Flash'), (r'slash|swing|sword|claw|\bcut', 'Sla
              (r'dust|debris|dirt|sand|rock', 'Dust'), (r'blood|gore', 'Blood'), (r'death|soul|ghost|spirit', 'Death & Souls'),
              (r'projectile|missile|bullet|arrow|beam|laser|trail', 'Projectile'), (r'coin|ui|reward|star|sparkle|glow|click|button|confetti', 'UI Effects')]
 HDR_RX = re.compile(r'^--- !u!(\d+) &(-?\d+)( stripped)?', re.M)
-REF_RX = re.compile(r'\{fileID: (-?\d+), guid: ([0-9a-f]{32}), type: (\d)\}')
+REF_RX = re.compile(r'\{fileID: (-?\d+),\s+guid: ([0-9a-f]{32}),\s+type: (\d)\}')  # Unity wraps long refs onto a second line
 GUID_RX = re.compile(r'"?guid"?\s*[:=]\s*"?([0-9a-f]{32})')
 
 def log(*a): print(*a, file=sys.stderr, flush=True)

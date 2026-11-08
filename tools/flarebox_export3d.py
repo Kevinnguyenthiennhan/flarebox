@@ -245,11 +245,8 @@ def build(path, depth=0):
 TEX = {}  # (guid, maxdim) -> id
 TEXDATA = {}
 TEXNAME = {}
-def tex_id(guid, maxdim=256, fid=None):
-    if not guid: return None
-    if guid == '0000000000000000f000000000000000': return 'builtin:particle'
-    key = (guid, maxdim)
-    if key in TEX: return TEX[key]
+def tex_image(guid):
+    """texture GUID -> (RGBA PIL image with the importer's alpha source applied, path, .meta text) or None"""
     p = G.get(guid)
     if not p or not os.path.exists(PROJ + p): return None
     try:
@@ -264,12 +261,64 @@ def tex_id(guid, maxdim=256, fid=None):
         im.putalpha(im.convert('L'))
     elif asrc == 0:
         im.putalpha(255)
+    return im, p, meta
+
+def tex_store(key, im, name, maxdim):
     w, h = im.size; k = min(1.0, maxdim / max(w, h))
     if k < 1: im = im.resize((max(1, round(w * k)), max(1, round(h * k))), Image.LANCZOS)
     b = io.BytesIO(); im.save(b, 'PNG', optimize=True)
     tid = 't%d' % len(TEX)
-    TEX[key] = tid; TEXDATA[tid] = 'data:image/png;base64,' + base64.b64encode(b.getvalue()).decode(); TEXNAME[tid] = os.path.basename(p)
+    TEX[key] = tid; TEXDATA[tid] = 'data:image/png;base64,' + base64.b64encode(b.getvalue()).decode(); TEXNAME[tid] = name
     return tid
+
+def tex_id(guid, maxdim=256, fid=None):
+    if not guid: return None
+    if guid == '0000000000000000f000000000000000': return 'builtin:particle'
+    key = (guid, maxdim)
+    if key in TEX: return TEX[key]
+    r = tex_image(guid)
+    if not r: return None
+    im, p, _ = r
+    return tex_store(key, im, os.path.basename(p), maxdim)
+
+def sprite_image(ref):
+    """Sprite reference {fileID, guid} -> RGBA image of just that sprite. A texture imported as one sprite gives the whole
+    image; in a multi-sprite texture (Sprite Mode = Multiple) the sprite's rect is cut out (rect origin is bottom-left)."""
+    r = tex_image(ref.get('guid'))
+    if not r: return None
+    im, p, meta = r
+    fid = int(num(ref.get('fileID', 0)))
+    if not re.search(r'spriteMode: 2', meta): return im
+    # find the sprite: newer metas carry internalID per sprite, older ones map fileID -> name in fileIDToRecycleName
+    blocks = re.split(r'\n\s*- serializedVersion: \d+\n(?=\s*name: )', meta.split('spriteSheet:', 1)[-1])
+    want_name = None
+    m = re.search(r'\b%d: (\S+)' % fid, meta.split('spriteSheet:', 1)[0])
+    if m: want_name = m.group(1)
+    for b in blocks:
+        nm = re.search(r'^\s*name: (.+)$', b, re.M); iid = re.search(r'internalID: (-?\d+)', b)
+        if (iid and int(iid.group(1)) == fid) or (want_name and nm and nm.group(1).strip() == want_name):
+            rx = re.search(r'rect:\s*\n\s*serializedVersion: \d+\s*\n\s*x: ([\d.]+)\s*\n\s*y: ([\d.]+)\s*\n\s*width: ([\d.]+)\s*\n\s*height: ([\d.]+)', b)
+            if rx:
+                x, y, w, h = (float(v) for v in rx.groups()); H = im.size[1]
+                return im.crop((round(x), round(H - y - h), round(x + w), round(H - y)))
+    return im
+
+def sprite_atlas(sprites, maxdim=512):
+    """Texture Sheet Animation in Sprites mode -> (texture id, sprite count). One sprite: that sprite as the texture.
+    Several: packed side by side in one row, so they play as an N×1 grid (frame i = sprite i, exactly like Unity)."""
+    refs = [s.get('sprite') for s in sprites or [] if isinstance(s, dict)]
+    refs = [r for r in refs if isinstance(r, dict) and r.get('guid') and r.get('guid') != '0' * 32]
+    if not refs: return None, 0
+    key = ('sprites',) + tuple((r['guid'], int(num(r.get('fileID', 0)))) for r in refs) + (maxdim,)
+    if key in TEX: return TEX[key], len(refs)
+    ims = [sprite_image(r) for r in refs]
+    if any(i is None for i in ims): return None, 0
+    name = os.path.basename(G.get(refs[0]['guid'], 'sprite'))
+    if len(ims) == 1: return tex_store(key, ims[0], name, maxdim), 1
+    cell = max(8, min(maxdim // 2 if len(ims) > 4 else maxdim, max(max(i.size) for i in ims)))
+    atlas = Image.new('RGBA', (cell * len(ims), cell), (0, 0, 0, 0))
+    for n, i in enumerate(ims): atlas.paste(i.resize((cell, cell), Image.LANCZOS), (n * cell, 0))
+    return tex_store(key, atlas, name + ' (+%d sprites)' % (len(ims) - 1), max(maxdim, cell * len(ims))), len(ims)
 
 # ---------------------------------------------------------------- FBX meshes
 def fbx_parse(path):
@@ -573,9 +622,18 @@ def ps_export(ps, psr, mtx, lossy, local_scale, name):
         o['uv'] = {'tx': int(num(uv.get('tilesX', 1))), 'ty': int(num(uv.get('tilesY', 1))), 'anim': int(num(uv.get('animationType', 0))),
                    'row': int(num(uv.get('rowIndex', 0))), 'rowMode': int(num(uv.get('rowMode', 1))), 'fot': mmc(uv.get('frameOverTime')),
                    'sf': mmc(uv.get('startFrame')), 'cycles': R(num(uv.get('cycles', 1))), 'time': int(num(uv.get('timeMode', 0))), 'fps': R(num(uv.get('fps', 30)))}
+    # Sprites mode: the sprite list replaces the material's main texture; frame i of the sheet = sprite i
+    sprite_tex = None
+    if uv and int(num(uv.get('mode', 0))) == 1:
+        sprite_tex, n = sprite_atlas(uv.get('sprites'))
+        if sprite_tex and n > 1:
+            tiles = n
+            o['uv'] = {'tx': n, 'ty': 1, 'anim': 0, 'row': 0, 'rowMode': 1, 'fot': mmc(uv.get('frameOverTime')),
+                       'sf': mmc(uv.get('startFrame')), 'cycles': R(num(uv.get('cycles', 1))), 'time': int(num(uv.get('timeMode', 0))), 'fps': R(num(uv.get('fps', 30)))}
     mats = psr.get('m_Materials') or []
     mat = material(mats[0] if mats else None, tiles)
     if mat is None: return None
+    if sprite_tex: mat['slots']['main'] = {'tex': sprite_tex, 'prop': 'sprite', 'st': [1, 1, 0, 0], 'scroll': [0, 0]}
     rm = int(num(psr.get('m_RenderMode', 0)))
     rr = {'mode': rm, 'align': int(num(psr.get('m_RenderAlignment', 0))), 'sort': int(num(psr.get('m_SortMode', 0))), 'fudge': R(num(psr.get('m_SortingFudge', 0))),
           'order': int(num(psr.get('m_SortingOrder', 0))), 'minS': R(num(psr.get('m_MinParticleSize', 0))), 'maxS': R(num(psr.get('m_MaxParticleSize', 0.5))),

@@ -240,7 +240,7 @@
   .set-row { display: flex; gap: 8px; flex-wrap: wrap; }
   .set-row input, .set-field select { flex: 1 1 260px; min-width: 0; height: 38px; border: 1px solid #c9d1d8; border-radius: 6px; padding: 0 12px; font: inherit; font-size: 14px; background: #fff; }
   .set-row input:focus, .set-field select:focus { outline: 2px solid var(--accent); outline-offset: -1px; border-color: transparent; }
-  .set-field { display: grid; gap: 6px; font-size: 13px; color: var(--text-2); } .set-field select { max-width: 280px; }
+  .set-field { display: grid; gap: 6px; font-size: 13px; color: var(--text-2); } .set-field select { max-width: 280px; } #unityProj select { max-width: 520px; } .set-row[hidden], .set-ok[hidden] { display: none; }
   .danger-btn { color: #b42318; }
   .set-cache { border-collapse: collapse; font-size: 13px; width: 100%; max-width: 520px; } .set-cache td { padding: 6px 8px 6px 0; border-bottom: 1px solid #eef1f3; } .set-cache td:nth-child(2) { text-align: right; color: var(--text-2); white-space: nowrap; } .set-cache td:last-child { text-align: right; width: 1%; white-space: nowrap; } .set-cache tr.tot td { font-weight: 600; border-bottom: 0; }
   .set-ok { color: #11713f; font-size: 13px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; } .set-ok .i { width: 14px; height: 14px; }
@@ -345,6 +345,67 @@
 
   /* collections overview */
   .col-card .thumb { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 2px; background: #e9ecef; }
+  .col-card .thumb { position: relative; }
+  .grp-stack { position: absolute; left: 10px; bottom: 10px; display: inline-flex; align-items: center; gap: 5px; background: rgba(20,28,36,.78); color: #fff; font-size: 12px; font-weight: 600; border-radius: 99px; padding: 3px 9px; } .grp-stack .i { width: 13px; height: 13px; color: #f2c14e; }
+  .group-card { box-shadow: 4px 4px 0 -1px #fff, 4px 4px 0 0 var(--line, #dde3e7), 8px 8px 0 -1px #fff, 8px 8px 0 0 var(--line, #dde3e7); }
+  .scan-card.group-card h3 .i { color: #c99a2e; }
+  .grp-badge { margin-left: auto; font-size: 12px; font-weight: 600; color: #8a5a00; background: #fff4e0; border-radius: 99px; padding: 2px 9px; }
+  .crumb-sep { color: var(--muted); }
+  .up-presets { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+  .chip-btn { border: 1px solid #c9d1d8; background: #fff; border-radius: 99px; padding: 5px 12px; font: inherit; font-size: 12.5px; color: var(--text-2); cursor: pointer; }
+  .chip-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .up-menu { margin-top: 4px; border: 1px solid #c9d1d8; border-radius: 6px; background: #fff; max-height: 230px; overflow: auto; box-shadow: 0 6px 18px rgba(20,40,60,.10); font-size: 13px; }
+  .up-mhead { position: sticky; top: 0; background: #f6f8f9; border-bottom: 1px solid #e5e8eb; padding: 7px 10px; color: var(--text-2); font-size: 12.5px; display: flex; gap: 6px; align-items: center; flex-wrap: wrap; z-index: 1; }
+  .up-mhead code { background: #eceff1; border-radius: 4px; padding: 1px 5px; font-size: 12px; }
+  .up-opt { display: flex; align-items: center; gap: 8px; padding: 6px 10px; cursor: pointer; font-family: ui-monospace, Menlo, monospace; font-size: 12.5px; color: #2b3640; word-break: break-all; }
+  .up-opt .i { width: 14px; height: 14px; flex: none; color: #c99a2e; }
+  .up-opt:hover, .up-opt.hi { background: #e8f6fb; } .up-opt.cur { font-weight: 600; } .up-opt b { color: var(--accent); }
+  .up-more { padding: 7px 10px; color: var(--muted); font-size: 12px; }
+  .btn[hidden] { display: none; }
+  .tr-list { padding: 4px 0; }
+  .tr-row { display: flex; align-items: center; gap: 6px; padding: 4px 10px 4px 6px; cursor: pointer; font-size: 13px; color: #2b3640; white-space: nowrap; }
+  .tr-row:hover, .tr-row.hi { background: #e8f6fb; } .tr-row.cur { background: #d4eef8; font-weight: 600; }
+  .tr-row .i { width: 15px; height: 15px; flex: none; color: #c99a2e; }
+  .tr-tog { width: 14px; flex: none; text-align: center; color: #6b7a86; font-size: 11px; } .tr-tog:hover { color: var(--accent); }
+  .tr-name { overflow: hidden; text-overflow: ellipsis; }
+  .tr-add { margin-left: auto; width: 22px; height: 22px; border: 1px solid transparent; border-radius: 5px; background: none; color: #6b7a86; font-size: 16px; line-height: 1; cursor: pointer; opacity: 0; flex: none; }
+  .tr-row:hover .tr-add, .tr-row.hi .tr-add, .tr-row.cur .tr-add { opacity: 1; } .tr-add:hover { border-color: var(--accent); color: var(--accent); background: #fff; }
+  .tr-new-tag { font-size: 10.5px; font-weight: 600; color: #11713f; background: #e3f6ec; border-radius: 99px; padding: 0 7px; }
+  .tr-adding { cursor: default; } .tr-adding:hover { background: none; }
+  .tr-input { flex: 1; min-width: 0; height: 26px; border: 1px solid var(--accent); border-radius: 5px; padding: 0 8px; font: inherit; font-size: 13px; } .tr-input.bad { border-color: #c4321f; }
+  .tr-hint { font-size: 11.5px; color: var(--muted); }
+  .tr-tail { font-size: 12px; color: var(--muted); } .tr-tail code { background: #eceff1; border-radius: 4px; padding: 1px 5px; font-size: 11.5px; }
+  .up-menu { max-height: 300px; }
+  .up-field { margin-bottom: 12px; } .up-field .inp { font-family: ui-monospace, Menlo, monospace; font-size: 13px; }
+  .up-field .inp.bad { border-color: #c4321f; outline-color: #c4321f; }
+  .up-prev { display: block; margin-top: 5px; font-size: 12px; color: var(--muted); font-family: ui-monospace, Menlo, monospace; word-break: break-all; } .up-prev.bad { color: #b42318; font-family: inherit; }
+  .up-hint { font-size: 12.5px; color: var(--muted); line-height: 1.6; margin: 4px 0 0; } .up-hint code { background: #f3f5f7; border-radius: 4px; padding: 1px 5px; font-size: 12px; }
+  .up-remember { font-size: 13px; color: var(--text-2); display: flex; align-items: center; gap: 6px; }
+  .up-drop { margin: 14px 20px 0; border: 2px dashed #c9d1d8; border-radius: 10px; padding: 14px 16px; transition: border-color .15s, background .15s; }
+  .up-drop.over { border-color: var(--accent); background: #e8f6fb; } .up-drop.set { border-style: solid; border-color: #9fd8ec; background: #f2fafd; }
+  .up-drop-empty, .up-drop-set { display: flex; align-items: center; gap: 12px; font-size: 13px; color: var(--text-2); line-height: 1.5; }
+  .up-drop-empty > .i, .up-drop-set > .i { width: 26px; height: 26px; flex: none; color: var(--accent); } .up-drop-set > .i { color: #c99a2e; }
+  .up-drop-set > div { flex: 1; min-width: 0; } .up-drop-set b { display: block; font-size: 14px; color: #1d2731; word-break: break-all; } .up-drop-set small { color: var(--muted); font-size: 12px; }
+  #upkgBody.dimmed { opacity: .45; }
+  .toast-act { margin-left: 10px; background: none; border: 1px solid rgba(255,255,255,.5); color: #fff; border-radius: 6px; padding: 2px 10px; font: inherit; font-size: 12.5px; font-weight: 600; cursor: pointer; } .toast-act:hover { background: rgba(255,255,255,.15); }
+  .d-export { display: flex; gap: 8px; margin: -8px 0 18px; } .d-export .btn { flex: 1; justify-content: center; } .d-export .btn .i { width: 16px; height: 16px; }
+  .up-field .inp.drop-over { border-color: var(--accent); background: #e8f6fb; outline: 2px dashed var(--accent); outline-offset: 2px; }
+  .up-info { margin: 12px 20px 0; display: flex; gap: 12px; align-items: flex-start; background: #f6f8f9; border: 1px solid #e5e8eb; border-radius: 10px; padding: 12px 14px; font-size: 12.5px; color: var(--text-2); line-height: 1.55; }
+  .up-info[hidden] { display: none; } .up-info > .i { width: 22px; height: 22px; flex: none; color: var(--accent); margin-top: 2px; } .up-info b { display: block; font-size: 13.5px; color: #1d2731; }
+  button.t-ic.t-dl { border: 0; background: none; color: inherit; padding: 0; cursor: pointer; display: inline-grid; place-items: center; } button.t-ic.t-dl:hover { color: #fff; transform: scale(1.15); }
+  .up-drop-set small code { background: #e6f2f7; border-radius: 4px; padding: 1px 5px; font-size: 11.5px; word-break: break-all; }
+  .up-map { display: grid; gap: 2px; margin-top: 8px; font-size: 12.5px; color: var(--text-2); font-family: ui-monospace, Menlo, monospace; } .up-map b { font-family: Inter, sans-serif; font-weight: 600; display: inline-block; width: 62px; } .up-map i { font-style: normal; font-family: Inter, sans-serif; font-size: 11px; border-radius: 99px; padding: 0 7px; margin-left: 4px; } .up-map i.ok { background: #e8edf0; color: #4a5563; } .up-map i.new { background: #e3f6ec; color: #11713f; }
+  .up-flat { margin-top: 8px; font-size: 12.5px; color: var(--text-2); display: flex; align-items: center; gap: 6px; }
+  .chip-btn.on { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+  .up-cands { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; } .up-drop-err { margin-top: 8px; font-size: 12.5px; }
+  #upkgDlg footer { flex-wrap: wrap; row-gap: 10px; } #upkgDlg footer .up-remember { flex-basis: 100%; }
+  .ask-msg { font-size: 14px; line-height: 1.6; color: var(--text-2); white-space: pre-line; margin: 0; }
+  .btn.primary.danger-fill { background: #c4321f; border-color: #c4321f; } .btn.primary.danger-fill:hover { background: #a82a1a; border-color: #a82a1a; }
+  .col-del { position: absolute; top: 10px; right: 10px; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,.94); color: #b42318; border: 1px solid rgba(0,0,0,.08); box-shadow: 0 2px 8px rgba(0,0,0,.18); opacity: 0; transition: opacity .15s, background .15s; cursor: pointer; z-index: 2; }
+  .col-del .i { width: 16px; height: 16px; }
+  .col-card:hover .col-del, .col-card:focus-within .col-del, .col-del:focus-visible { opacity: 1; }
+  .col-del:hover { background: #fdecea; }
+  @media (hover: none) { .col-del { opacity: 1; } }
   .col-card .thumb > div { position: relative; background-size: cover; background-position: center; }
   .col-card .thumb > div img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   img.p3d { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -681,6 +742,28 @@
   </form>
 </dialog>
 
+<!-- Confirm (in-page: native confirm() is suppressed in some embedded browsers and silently returns false) -->
+<dialog class="dlg" id="askDlg" aria-labelledby="askDlgT">
+  <form id="askForm" method="dialog">
+    <header><h3 id="askDlgT">Are you sure?</h3><button class="x" type="button" data-close aria-label="Close"><svg class="i"><use href="#i-x"/></svg></button></header>
+    <div class="body"><p id="askMsg" class="ask-msg"></p></div>
+    <footer><button class="btn" type="button" data-close>Cancel</button><button class="btn primary" id="askOk" type="submit">OK</button></footer>
+  </form>
+</dialog>
+
+<!-- Save to Unity: choose the folders for prefab / material / texture -->
+<dialog class="dlg wide" id="upkgDlg" aria-labelledby="upkgDlgT">
+  <form id="upkgForm">
+    <header><h3 id="upkgDlgT">Save to Unity</h3><button class="x" type="button" data-close aria-label="Close"><svg class="i"><use href="#i-x"/></svg></button></header>
+    <div class="up-drop" id="upkgDrop" tabindex="-1">
+    </div>
+    <div class="up-info" id="upkgInfo" hidden></div>
+    <div class="body" id="upkgBody"></div>
+    <footer><label class="check up-remember"><input type="checkbox" id="upkgRemember" checked>Remember these folders</label><span style="flex:1"></span>
+      <button class="btn" type="button" data-close>Cancel</button><button class="btn" id="upkgGo" type="submit">Download .unitypackage</button><button class="btn primary" id="upkgExport" type="button" hidden>Export into project</button><button class="btn primary" id="upkgDropGo" type="button" hidden>Export to folder</button></footer>
+  </form>
+</dialog>
+
 <!-- Upload -->
 <dialog class="dlg wide" id="upDlg" aria-labelledby="upDlgT">
   <form id="upForm">
@@ -717,6 +800,8 @@
 <script src="vfx/scans/index.js"></script>
 <!-- Review collections created by GitHub imports (flarebox_scan_repo.py --collection). -->
 <script src="vfx/scans/collections.js" onerror="void 0"></script>
+<!-- Folder names for repos with several scans, e.g. one per branch (Rename folder writes it). -->
+<script src="vfx/scans/groups.js" onerror="void 0"></script>
 <script>
 'use strict';
 /* =====================================================================
@@ -749,7 +834,11 @@ function ago(ms) {
   const y = Math.floor(d / 365); return y + (y === 1 ? ' year ago' : ' years ago');
 }
 const initials = s => s.split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase();
-function toast(msg, ms = 2600) { const t = $('#toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toast._t); toast._t = setTimeout(() => t.classList.remove('show'), ms); }
+function toast(msg, ms = 2600, action) {
+  const t = $('#toast'); t.textContent = msg;
+  if (action) { const b = document.createElement('button'); b.type = 'button'; b.className = 'toast-act'; b.textContent = action[0]; b.onclick = () => { t.classList.remove('show'); action[1](); }; t.append(' ', b); }
+  t.classList.toggle('has-act', !!action); t.classList.add('show'); clearTimeout(toast._t); toast._t = setTimeout(() => t.classList.remove('show'), ms);
+}
 /* =====================================================================
    Unity package export — builds a .unitypackage in the browser:
    Assets/Flarebox/<Name>/ { <Name>.prefab (Particle System playing the sheet), <Name>.mat, <Name>_CxR.png }
@@ -797,8 +886,8 @@ const UPKG = {
   async gzip(blob) { return new Response(blob.stream().pipeThrough(new CompressionStream('gzip'))).blob(); },
   safe(name) { return (name.replace(/[^A-Za-z0-9]+/g, '_').replace(/^_+|_+$/g, '') || 'Effect').slice(0, 48); },
   // fx + PNG bytes → .unitypackage Blob
-  async build(fx, png, cols, rows, cellAspect, dur) {
-    const N = 'FX_' + this.safe(fx.name), dir = `Assets/Flarebox/${N}`;
+  async build(fx, png, cols, rows, cellAspect, dur, paths) {
+    const N = 'FX_' + this.safe(fx.name), P = paths || UnityPaths.resolveAll(UnityPaths.get(), fx), dir = P.prefab;
     const g = k => this.guid(fx.id + '|' + k);
     const gTex = g('tex'), gMat = g('mat'), gPre = g('prefab'), gDir = g('dir'), gRoot = this.guid('Flarebox-root-folder');
     const num = v => (+v).toFixed(4).replace(/\.?0+$/, '');
@@ -864,31 +953,311 @@ TextureImporter:
   assetBundleVariant: 
 `;
     const folderMeta = id => `fileFormatVersion: 2\nguid: ${id}\nfolderAsset: yes\nDefaultImporter:\n  externalObjects: {}\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n`;
+    // No folder entries: Unity creates missing folders on import, and a folder GUID could clash with one the project already has.
+    // Material → texture and prefab → material are linked by GUID, so the three can live in different folders.
     const files = [
-      { name: `${gRoot}/asset.meta`, data: folderMeta(gRoot) }, { name: `${gRoot}/pathname`, data: 'Assets/Flarebox' },
-      { name: `${gDir}/asset.meta`, data: folderMeta(gDir) }, { name: `${gDir}/pathname`, data: dir },
-      { name: `${gTex}/asset`, data: png }, { name: `${gTex}/asset.meta`, data: texMeta }, { name: `${gTex}/pathname`, data: `${dir}/${N}_${cols}x${rows}.png` },
-      { name: `${gMat}/asset`, data: mat }, { name: `${gMat}/asset.meta`, data: `fileFormatVersion: 2\nguid: ${gMat}\nNativeFormatImporter:\n  externalObjects: {}\n  mainObjectFileID: 2100000\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n` }, { name: `${gMat}/pathname`, data: `${dir}/${N}.mat` },
-      { name: `${gPre}/asset`, data: prefab }, { name: `${gPre}/asset.meta`, data: `fileFormatVersion: 2\nguid: ${gPre}\nPrefabImporter:\n  externalObjects: {}\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n` }, { name: `${gPre}/pathname`, data: `${dir}/${N}.prefab` },
+      { name: `${gTex}/asset`, data: png }, { name: `${gTex}/asset.meta`, data: texMeta }, { name: `${gTex}/pathname`, data: `${P.texture}/${N}_${cols}x${rows}.png` },
+      { name: `${gMat}/asset`, data: mat }, { name: `${gMat}/asset.meta`, data: `fileFormatVersion: 2\nguid: ${gMat}\nNativeFormatImporter:\n  externalObjects: {}\n  mainObjectFileID: 2100000\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n` }, { name: `${gMat}/pathname`, data: `${P.material}/${N}.mat` },
+      { name: `${gPre}/asset`, data: prefab }, { name: `${gPre}/asset.meta`, data: `fileFormatVersion: 2\nguid: ${gPre}\nPrefabImporter:\n  externalObjects: {}\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n` }, { name: `${gPre}/pathname`, data: `${P.prefab}/${N}.prefab` },
     ];
-    return { blob: await this.gzip(this.tar(files)), file: N + '.unitypackage', folder: dir };
+    // the same assets as plain files (for writing straight into the open Unity project)
+    const items = [gTex, gMat, gPre].map(g => ({ path: files.find(f => f.name === g + '/pathname').data, meta: files.find(f => f.name === g + '/asset.meta').data, data: files.find(f => f.name === g + '/asset').data }));
+    return { blob: await this.gzip(this.tar(files)), file: N + '.unitypackage', folder: dir, paths: P, items };
   },
   // Every effect that isn't a baked Unity pack: built-in (procedural / flipbook) or an uploaded sprite sheet.
   can(fx) { return !fx.pack && fx.dl && (!fx.upload || (fx.format === 'Sprite sheet' && fx.blob)) && typeof CompressionStream === 'function'; },
-  async forFx(fx) {
+  async forFx(fx, paths) {
     if (fx.upload) {
       const bmp = await createImageBitmap(fx.blob), s = fx.sheet;
       const png = new Uint8Array(await fx.blob.arrayBuffer());
       const isPng = png[0] === 0x89 && png[1] === 0x50;
       let bytes = png;
       if (!isPng) { const c = document.createElement('canvas'); c.width = bmp.width; c.height = bmp.height; c.getContext('2d').drawImage(bmp, 0, 0); bytes = new Uint8Array(await (await new Promise(r => c.toBlob(r, 'image/png'))).arrayBuffer()); }
-      return this.build(fx, bytes, s.cols, s.rows, (bmp.width / s.cols) / (bmp.height / s.rows), s.cols * s.rows / s.fps);
+      return this.build(fx, bytes, s.cols, s.rows, (bmp.width / s.cols) / (bmp.height / s.rows), s.cols * s.rows / s.fps, paths);
     }
     const c = bakeSheet(fx, 8, 8, 256, 256, false);
     const png = new Uint8Array(await (await new Promise(r => c.toBlob(r, 'image/png'))).arrayBuffer());
-    return this.build(fx, png, 8, 8, 1, PRESETS[fx.preset].dur);
+    return this.build(fx, png, 8, 8, 1, PRESETS[fx.preset].dur, paths);
   },
 };
+/* Where a downloaded .unitypackage puts its prefab, material and texture inside the Unity project.
+   Folder templates: {name} = the effect's name, {category} = its category. Remembered in this browser. */
+const UnityPaths = {
+  KEYS: [['prefab', 'Prefab', '.prefab'], ['material', 'Material', '.mat'], ['texture', 'Texture', '.png']],
+  DEF: { prefab: 'Assets/Flarebox/FX_{name}', material: 'Assets/Flarebox/FX_{name}', texture: 'Assets/Flarebox/FX_{name}' },
+  PRESETS: [
+    ['One folder per effect', { prefab: 'Assets/Flarebox/FX_{name}', material: 'Assets/Flarebox/FX_{name}', texture: 'Assets/Flarebox/FX_{name}' }],
+    ['Split by asset type', { prefab: 'Assets/VFX/Prefabs', material: 'Assets/VFX/Materials', texture: 'Assets/VFX/Textures' }],
+    ['By type, then effect', { prefab: 'Assets/VFX/Prefabs/{name}', material: 'Assets/VFX/Materials/{name}', texture: 'Assets/VFX/Textures/{name}' }],
+  ],
+  get() { const v = LS.get('upkgPaths', null); return v && v.prefab && v.material && v.texture ? v : { ...this.DEF }; },
+  set(p) { LS.set('upkgPaths', p); },
+  // → [cleaned template, error | '']
+  clean(t) {
+    let v = String(t || '').trim().replace(/\\/g, '/').replace(/\/{2,}/g, '/').replace(/\/+$/, '');
+    if (!v) return [v, 'Enter a folder, e.g. Assets/VFX/Prefabs'];
+    if (v !== 'Assets' && !v.startsWith('Assets/')) return [v, 'Must be inside the project: start with Assets/'];
+    if (v.split('/').some(seg => seg === '..' || seg === '.' || seg === '')) return [v, 'No empty, “.” or “..” folder names'];
+    if (/[^A-Za-z0-9 _\-.\/{}()]/.test(v)) return [v, 'Use letters, digits, spaces, _ - . ( ) and {name} / {category}'];
+    if (/\{(?!name\}|category\})[^}]*\}/.test(v)) return [v, 'Only {name} and {category} can be used'];
+    return [v, ''];
+  },
+  resolve(t, fx) { return this.clean(t)[0].replace(/\{name\}/g, UPKG.safe(fx.name)).replace(/\{category\}/g, UPKG.safe(fx.cat || 'VFX')); },
+  resolveAll(p, fx) { return { prefab: this.resolve(p.prefab, fx), material: this.resolve(p.material, fx), texture: this.resolve(p.texture, fx) }; },
+  file(k, fx) { if (fx && fx.scanPath && fx.pack) return k === 'prefab' ? fx.scanPath.split('/').pop() : `(its ${k}s)`; const N = 'FX_' + UPKG.safe(fx.name); return k === 'texture' ? `${N}_8x8.png` : N + (k === 'material' ? '.mat' : '.prefab'); },
+  fieldsHTML(p, fx) {
+    return `<div class="up-presets">${this.PRESETS.map(([l], i) => `<button type="button" class="chip-btn" data-upreset="${i}">${esc(l)}</button>`).join('')}</div>
+      ${this.KEYS.map(([k, label]) => `<div class="field up-field"><label for="up_${k}">${label} folder</label>
+        <input class="inp" id="up_${k}" data-upk="${k}" value="${esc(p[k])}" spellcheck="false" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="upm_${k}">
+        <div class="up-menu" id="upm_${k}" data-upmenu="${k}" role="listbox" hidden></div>
+        <small class="up-prev" data-upprev="${k}"></small></div>`).join('')}
+      <p class="up-hint">Use <code>{name}</code> for the effect’s name and <code>{category}</code> for its category. Material and texture stay linked to the prefab wherever they go.</p>`;
+  },
+  // live preview + validation under each field; returns the cleaned templates or null when one is invalid
+  refresh(root, fx) {
+    let ok = true; const out = {};
+    for (const [k] of this.KEYS) {
+      const inp = root.querySelector(`[data-upk="${k}"]`), prev = root.querySelector(`[data-upprev="${k}"]`);
+      const [v, err] = this.clean(inp.value); out[k] = v;
+      inp.classList.toggle('bad', !!err); prev.classList.toggle('bad', !!err);
+      const ex = fx || { name: 'Frost Nova Circle', cat: 'Magic' }, dir = err ? '' : this.resolve(v, ex);
+      const proj = this.proj && this.proj.folders && this.proj.folders.length ? this.proj : null;
+      const note = !proj || err ? '' : this.folderSet.has(dir) ? `  ✓ exists in ${proj.name}` : `  · new folder in ${proj.name}`;
+      prev.textContent = err || (fx ? '→ ' + dir + '/' + this.file(k, fx) : '→ e.g. ' + dir + '/') + note;
+      if (err) ok = false;
+    }
+    return ok ? out : null;
+  },
+  // ---- folder picker: the Assets/ folders of the Unity project you are working in (via the local server)
+  proj: null, folderSet: new Set(), loading: null,
+  loadFolders(force) {
+    if (!Importer.served) { this.proj = { error: 'offline' }; return Promise.resolve(this.proj); }
+    if (this.loading && !force) return this.loading;
+    this.loading = fetch('/api/unity/folders', { cache: 'no-store' }).then(r => r.json()).then(d => {
+      d.folders = (d.folders || []).slice().sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
+      this.proj = d; this.folderSet = new Set(d.folders); return d;
+    }, () => { this.proj = { error: 'Could not reach the Flarebox server.' }; return this.proj; });
+    setTimeout(() => { this.loading = null; }, 15000);  // re-read the project after a while (new folders, another project)
+    return this.loading;
+  },
+  // ---- folder tree (Unity Project-window style): expand/collapse, pick, add sub-folders
+  extra: new Set(),          // folders made with “+” in this dialog (Unity creates them on import / export)
+  exp: {},                   // per-field expanded paths
+  base(v) { v = String(v || '').trim(); const i = v.indexOf('{'); if (i < 0) return v.replace(/\/+$/, ''); return v.slice(0, i).replace(/\/[^/]*$/, '').replace(/\/+$/, ''); },
+  tail(v) { v = String(v || '').trim(); const i = v.indexOf('{'); if (i < 0) return ''; const s = v.slice(0, i).lastIndexOf('/'); return v.slice(s); },
+  tree() {
+    const all = new Set([...(this.proj && this.proj.folders || []), ...this.extra]); all.add('Assets');
+    for (const f of [...all]) { let p = f; while (p.includes('/')) { p = p.slice(0, p.lastIndexOf('/')); all.add(p); } }
+    const kids = new Map();
+    for (const f of all) { if (f === 'Assets') continue; const par = f.slice(0, f.lastIndexOf('/')); if (!kids.has(par)) kids.set(par, []); kids.get(par).push(f); }
+    for (const l of kids.values()) l.sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
+    return kids;
+  },
+  menuHTML(inp) {
+    const d = this.proj, k = inp.dataset.upk;
+    if (!d) return '<div class="up-mhead">Loading Unity project folders…</div>';
+    if (d.error === 'offline') return '<div class="up-mhead">Start <code>python3 tools/flarebox_server.py</code> and open http://localhost:8790 to browse your Unity project’s folders.</div>';
+    if (d.error || !d.project) return `<div class="up-mhead">${esc(d.error || 'No Unity project found.')} <button type="button" class="link-btn" data-upgo="settings">Choose a project</button></div>`;
+    const kids = this.tree(), sel = this.base(inp.value), tail = this.tail(inp.value);
+    const exp = this.exp[k] || (this.exp[k] = new Set(['Assets']));
+    if (!exp.__seeded) { let p = sel; while (p.includes('/')) { p = p.slice(0, p.lastIndexOf('/')); exp.add(p); } exp.__seeded = true; }
+    const typed = inp.dataset.typed === '1'; let q = typed ? this.base(inp.value).toLowerCase() : '';
+    const seg = q.split('/').pop();
+    // filtering: keep nodes whose path contains the typed text, plus their ancestors (auto-expanded)
+    let keep = null;
+    if (q && !this.folderSet.has(sel)) {
+      keep = new Set();
+      const hit = f => f.toLowerCase().includes(q) || f.toLowerCase().split('/').pop().startsWith(seg);
+      for (const f of [...kids.keys(), ...[...kids.values()].flat()]) if (hit(f)) { let p = f; keep.add(p); while (p.includes('/')) { p = p.slice(0, p.lastIndexOf('/')); keep.add(p); } }
+    }
+    const rows = []; let count = 0;
+    const walk = (path, depth) => {
+      if (count > 800) return; if (keep && !keep.has(path)) return;
+      const ch = kids.get(path) || [], open = keep ? true : exp.has(path), isNew = this.extra.has(path) && !this.folderSet.has(path);
+      count++;
+      rows.push(`<div class="tr-row${path === sel ? ' cur' : ''}" role="treeitem" aria-expanded="${ch.length ? open : ''}" data-path="${esc(path)}" style="padding-left:${6 + depth * 16}px">
+        <span class="tr-tog${ch.length ? '' : ' leaf'}" data-tog>${ch.length ? (open ? '▾' : '▸') : ''}</span>${icon('folder')}<span class="tr-name">${esc(path.split('/').pop())}</span>${isNew ? '<span class="tr-new-tag">new</span>' : ''}
+        <button type="button" class="tr-add" data-add title="New sub-folder in ${esc(path)}">+</button></div>`);
+      if (this.adding && this.adding.k === k && this.adding.parent === path)
+        rows.push(`<div class="tr-row tr-adding" style="padding-left:${22 + (depth + 1) * 16}px">${icon('folder')}<input class="tr-input" data-newin placeholder="New folder name — Enter" maxlength="60" spellcheck="false"><span class="tr-hint">Esc to cancel</span></div>`);
+      if (open) for (const c of ch) walk(c, depth + 1);
+    };
+    walk('Assets', 0);
+    const nf = d.folders.length;
+    return `<div class="up-mhead"><b>${esc(d.name)}</b> · ${d.mode === 'auto' ? 'open in Unity' : 'chosen in Settings'} · ${nf} folders
+        <button type="button" class="link-btn" data-upgo="settings">Change</button><span style="flex:1"></span>
+        ${tail ? `<span class="tr-tail" title="Kept at the end of the folder you pick">keeps <code>${esc(tail)}</code> <button type="button" class="link-btn" data-droptail>remove</button></span>` : ''}</div>
+      <div class="tr-list" role="tree">${rows.join('') || '<div class="up-more">No folder matches — keep the name to create it, or pick another one.</div>'}</div>`;
+  },
+  bind(root, fx, onChange) {
+    const field = inp => inp.parentElement, menuOf = inp => field(inp).querySelector('[data-upmenu]');
+    const render = inp => {
+      const m = menuOf(inp), list = m.querySelector('.tr-list'), st = list ? list.scrollTop : 0;
+      m.innerHTML = this.menuHTML(inp); const nl = m.querySelector('.tr-list'); if (nl) nl.scrollTop = st;
+      const ni = m.querySelector('[data-newin]'); if (ni) setTimeout(() => ni.focus(), 0);
+    };
+    const open = inp => {
+      root.querySelectorAll('[data-upmenu]').forEach(m => { if (m !== menuOf(inp)) { m.hidden = true; m.previousElementSibling.setAttribute('aria-expanded', 'false'); } });
+      const m = menuOf(inp), was = m.hidden; render(inp); m.hidden = false; inp.setAttribute('aria-expanded', 'true');
+      if (was) { const cur = m.querySelector('.tr-row.cur'); if (cur) cur.scrollIntoView({ block: 'center' }); }
+    };
+    const close = inp => { menuOf(inp).hidden = true; inp.setAttribute('aria-expanded', 'false'); this.adding = null; };
+    const changed = () => { this.refresh(root, fx); onChange && onChange(); };
+    const pick = (inp, path) => { inp.value = path + this.tail(inp.value); inp.dataset.typed = '0'; changed(); render(inp); };
+    if (!this.proj || this.proj.error === 'offline') this.loadFolders().then(() => { this.refresh(root, fx); const a = document.activeElement; if (a && a.dataset && a.dataset.upk && root.contains(a)) open(a); });
+    root.querySelectorAll('[data-upk]').forEach(i => {
+      i.onfocus = () => { i.dataset.typed = '0'; open(i); };
+      i.onblur = () => setTimeout(() => { if (!field(i).contains(document.activeElement)) close(i); }, 150);
+      i.oninput = () => { i.dataset.typed = '1'; changed(); open(i); };
+      i.onkeydown = e => {
+        const m = menuOf(i); if (e.key === 'Escape' && !m.hidden) { e.preventDefault(); e.stopPropagation(); close(i); return; }
+        if (!['ArrowDown', 'ArrowUp', 'ArrowLeft', 'ArrowRight', 'Enter'].includes(e.key) || m.hidden) return;
+        const rows = [...m.querySelectorAll('.tr-row[data-path]')]; if (!rows.length) return;
+        let n = rows.findIndex(r => r.classList.contains('hi')); if (n < 0) n = rows.findIndex(r => r.classList.contains('cur'));
+        const exp = this.exp[i.dataset.upk] || (this.exp[i.dataset.upk] = new Set(['Assets']));
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); n = Math.max(0, Math.min(rows.length - 1, n + (e.key === 'ArrowDown' ? 1 : -1))); rows.forEach((r, x) => r.classList.toggle('hi', x === n)); rows[n].scrollIntoView({ block: 'nearest' }); return; }
+        if (n < 0) return; const path = rows[n].dataset.path;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); e.key === 'ArrowRight' ? exp.add(path) : exp.delete(path); render(i); const r = menuOf(i).querySelector(`.tr-row[data-path="${CSS.escape(path)}"]`); if (r) r.classList.add('hi'); return; }
+        if (e.key === 'Enter') { e.preventDefault(); pick(i, path); }
+      };
+    });
+    root.querySelectorAll('[data-upmenu]').forEach(m => {
+      const inp = m.previousElementSibling;
+      m.onmousedown = e => { if (!e.target.closest('[data-newin]')) e.preventDefault(); };  // keep focus in the field
+      m.onclick = e => {
+        if (e.target.closest('[data-upgo="settings"]')) { const d = $('#upkgDlg'); if (d.open) d.close(); return setTab('settings'); }
+        if (e.target.closest('[data-droptail]')) { inp.value = this.base(inp.value); changed(); return render(inp); }
+        const row = e.target.closest('.tr-row[data-path]'); if (!row) return;
+        const path = row.dataset.path, exp = this.exp[inp.dataset.upk] || (this.exp[inp.dataset.upk] = new Set(['Assets']));
+        if (e.target.closest('[data-add]')) { exp.add(path); this.adding = { k: inp.dataset.upk, parent: path }; return render(inp); }
+        if (e.target.closest('[data-tog]') && !row.querySelector('.tr-tog.leaf')) { exp.has(path) ? exp.delete(path) : exp.add(path); return render(inp); }
+        pick(inp, path);
+      };
+      m.onkeydown = e => {
+        const ni = e.target.closest('[data-newin]'); if (!ni) return;
+        if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); this.adding = null; render(inp); inp.focus(); return; }
+        if (e.key !== 'Enter') return;
+        e.preventDefault();
+        const name = ni.value.trim();
+        if (!name || /[^A-Za-z0-9 _\-.()]/.test(name) || name === '.' || name === '..') { ni.classList.add('bad'); ni.title = 'Use letters, digits, spaces, _ - . ( )'; return; }
+        const path = this.adding.parent + '/' + name; this.extra.add(path); this.adding = null;
+        inp.focus(); pick(inp, path);
+      };
+      m.addEventListener('focusout', () => setTimeout(() => { if (!field(inp).contains(document.activeElement)) close(inp); }, 150));
+    });
+    root.querySelectorAll('[data-upreset]').forEach(b => { b.onclick = () => { const pr = this.PRESETS[+b.dataset.upreset][1]; for (const [k] of this.KEYS) root.querySelector(`[data-upk="${k}"]`).value = pr[k]; this.refresh(root, fx); onChange && onChange(); }; });
+    this.refresh(root, fx);
+  },
+};
+/* One exporter for every effect: built-in ones are generated (prefab + material + sprite sheet); effects found in a
+   scanned Unity repo export their ORIGINAL prefab and dependencies with the original .meta files (same GUIDs). */
+const Exporter = {
+  isSource(fx) { return !!(fx && fx.pack && fx.scan && fx.scanPath && Importer.served); },
+  can(fx) { return UPKG.can(fx) || this.isSource(fx); },
+  bundles: new Map(),
+  kindOf(name) { return /\.prefab$/i.test(name) ? 'prefab' : /\.mat$/i.test(name) ? 'material' : /\.(fbx|obj|blend|dae|mesh)$/i.test(name) ? 'mesh' : /\.(shader|shadergraph|shadersubgraph|cginc|hlsl)$/i.test(name) ? 'shader' : /\.(anim|controller|overridecontroller)$/i.test(name) ? 'animation' : /\.(png|tga|psd|jpe?g|exr|tiff?|bmp|gif|hdr)$/i.test(name) ? 'texture' : 'other'; },
+  bundle(fx) {
+    if (!this.bundles.has(fx.id)) this.bundles.set(fx.id, fetch('/api/source/bundle', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ scan: fx.scan, prefab: fx.scanPath }) })
+      .then(async r => { const d = await r.json().catch(() => ({})); if (!r.ok) throw new Error(d.error || 'HTTP ' + r.status); d.items.forEach(it => { it.bytes = Uint8Array.from(atob(it.data), c => c.charCodeAt(0)); delete it.data; }); const p = this.bundles.get(fx.id); if (p) p.done = d; return d; })
+      .catch(e => { this.bundles.delete(fx.id); throw e; }));
+    return this.bundles.get(fx.id);
+  },
+  // folders: {prefab, material, texture, mesh?, shader?, animation?, other?}; missing kinds go with the prefab
+  async items(fx, folders) {
+    const at = k => (folders[k] ?? folders.prefab);
+    const join = (dir, n) => dir ? dir + '/' + n : n;
+    if (this.isSource(fx)) {
+      const b = await this.bundle(fx), used = new Set();
+      return b.items.map(it => {
+        let path = join(at(it.kind), it.name), n = 1; const stem = it.name.replace(/(\.[^.]+)$/, ''), ext = (it.name.match(/\.[^.]+$/) || [''])[0];
+        while (used.has(path.toLowerCase())) path = join(at(it.kind), `${stem}_${n++}${ext}`);
+        used.add(path.toLowerCase());
+        return { path, meta: it.meta, data: it.bytes, kind: it.kind, source: it.source };
+      });
+    }
+    const r = await UPKG.forFx(fx, { prefab: at('prefab'), material: at('material'), texture: at('texture') });
+    return r.items.map(it => ({ ...it, kind: this.kindOf(it.path) }));
+  },
+  file(fx) { return 'FX_' + UPKG.safe(fx.name) + '.unitypackage'; },
+  guidOf(meta) { return (String(meta).match(/^guid: ([0-9a-f]{32})/m) || [])[1]; },
+  // Original assets that already live in the open project (same GUIDs, e.g. exporting XP Hero into hb_creative_xp_hero)
+  // become an independent copy: every asset of the bundle gets a fresh GUID and the references inside the copied
+  // prefab / materials / controllers are rewritten to the new ones. The originals are not touched.
+  async freshIfInProject(fx, items) {
+    if (!this.isSource(fx) || !Importer.served) return { items, fresh: false };
+    const guids = items.map(it => this.guidOf(it.meta)).filter(Boolean);
+    let found = {};
+    try { found = (await (await fetch('/api/unity/find?guids=' + guids.join(','))).json()).found || {}; } catch (e) { return { items, fresh: false }; }
+    const clash = Object.entries(found).filter(([, p]) => !items.some(it => it.path === p));
+    if (!clash.length) return { items, fresh: false };
+    const map = new Map(guids.map(g => [g, Array.from(crypto.getRandomValues(new Uint8Array(16)), x => x.toString(16).padStart(2, '0')).join('')]));
+    const swap = txt => txt.replace(/[0-9a-f]{32}/g, g => map.get(g) || g);
+    const textual = /\.(prefab|mat|controller|overridecontroller|anim|asset|shadergraph|shadersubgraph|vfx|playable|mask|physicmaterial|physicsmaterial2d|guiskin|fontsettings|spriteatlas|terrainlayer|lighting|mixer|signal)$/i;
+    const dec = new TextDecoder(), enc = new TextEncoder();
+    return {
+      fresh: true, existing: clash.map(([, p]) => p),
+      items: items.map(it => {
+        const meta = swap(it.meta);
+        let data = it.data;
+        if (textual.test(it.path)) { const t = typeof data === 'string' ? data : dec.decode(data); if (/^%YAML|^\{/.test(t.trimStart())) data = enc.encode(swap(t)); }
+        return { ...it, meta, data };
+      }),
+    };
+  },
+  async unitypackage(fx, folders) {
+    const items = await this.items(fx, folders), files = [];
+    for (const it of items) { const g = (it.meta.match(/^guid: (\w+)/m) || [])[1]; files.push({ name: `${g}/asset`, data: it.data }, { name: `${g}/asset.meta`, data: it.meta }, { name: `${g}/pathname`, data: it.path }); }
+    return { blob: await UPKG.gzip(UPKG.tar(files)), items };
+  },
+  b64(d) { const u = typeof d === 'string' ? new TextEncoder().encode(d) : d; let x = ''; for (let i = 0; i < u.length; i += 0x8000) x += String.fromCharCode.apply(null, u.subarray(i, i + 0x8000)); return btoa(x); },
+  // write into the open Unity project through the local server
+  async toProject(fx, folders) {
+    const raw = await this.items(fx, folders), src = this.isSource(fx), fr = await this.freshIfInProject(fx, raw), items = fr.items;
+    const res = await fetch('/api/unity/export', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ items: items.map(it => ({ path: it.path, meta: it.meta, data: this.b64(it.data) })), onGuid: src ? 'skip' : 'move', onName: src ? 'rename' : 'error' }) });
+    const d = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(d.error || 'HTTP ' + res.status);
+    UnityPaths.loadFolders(true);
+    d.fresh = fr.fresh; d.existing = fr.existing || [];
+    return d;
+  },
+  summary(d, where) {
+    const bits = [`${d.written.length} file${d.written.length === 1 ? '' : 's'} written`];
+    if (d.fresh) bits.push('as an independent copy with new GUIDs (the originals stay where they were)');
+    if (d.skipped && d.skipped.length) bits.push(`${d.skipped.length} already in the project (reused)`);
+    if (d.renamed && d.renamed.length) bits.push(`${d.renamed.length} renamed to avoid a name clash`);
+    if (d.moved && d.moved.length) bits.push('moved from the earlier export');
+    return `Exported to ${where}: ${bits.join(', ')} — switch to Unity, it imports them automatically`;
+  },
+  // all folders for one dialog: the three fields; meshes / shaders / animations / other go with the prefab
+  fieldFolders(tpl, fx) { const P = UnityPaths.resolveAll(tpl, fx); return { ...P, mesh: P.prefab, shader: P.prefab, animation: P.prefab, other: P.prefab }; },
+};
+let upkgFx = null;
+function openUpkgDlg(fx) {
+  upkgFx = fx; UnityPaths.exp = {}; UnityPaths.adding = null; DropExport.reset();
+  const src = Exporter.isSource(fx), info = $('#upkgInfo');
+  $('#upkgDlgT').textContent = `Export “${fx.name}” to Unity`;
+  info.hidden = false;
+  if (!src) info.innerHTML = `${icon('cube')}<div><b>Unity assets · 3 files</b><span>A prefab with a Particle System, its material and an 8×8 sprite-sheet texture, generated from this effect — with .meta files, so the three stay linked wherever they go.</span></div>`;
+  if (src) {
+    info.innerHTML = `${icon('cube')}<div><b>Original Unity assets</b><span>Loading the prefab and its dependencies from ${esc(fx.pack)}…</span></div>`;
+    Exporter.bundle(fx).then(b => {
+      if (upkgFx !== fx) return;
+      const c = {}; b.items.forEach(it => { c[it.kind] = (c[it.kind] || 0) + 1; });
+      const parts = Object.entries(c).map(([k, n]) => `${n} ${k}${n > 1 ? (k === 'mesh' ? 'es' : 's') : ''}`).join(' · ');
+      info.innerHTML = `${icon('cube')}<div><b>Original Unity assets · ${b.items.length} files</b><span>${esc(parts)} from ${esc(fx.pack)} — copied with their .meta files, so GUIDs and links stay exactly as in the source project. If the effect is already in your project, the copy gets new GUIDs so it is independent and lands in the folder you choose.${b.skipped.length ? ` ${b.skipped.filter(x => x.why === 'script').length ? b.skipped.filter(x => x.why === 'script').length + ' script(s) not included.' : ''}${b.skipped.filter(x => x.why !== 'script').length ? ' ' + b.skipped.filter(x => x.why !== 'script').length + ' file(s) missing in the source.' : ''}` : ''} Meshes, shaders and animations go into the prefab folder.</span></div>`;
+      DropExport.render();
+    }, e => { if (upkgFx === fx) info.innerHTML = `${icon('x')}<div><b>Could not load the original assets</b><span class="gh-err">${esc(e.message)}</span></div>`; });
+  }
+  $('#upkgBody').innerHTML = UnityPaths.fieldsHTML(UnityPaths.get(), fx);
+  $('#upkgRemember').checked = true;
+  const sync = () => { const ok = !!UnityPaths.refresh($('#upkgBody'), fx); $('#upkgGo').disabled = !ok; $('#upkgExport').disabled = !ok; };
+  UnityPaths.bind($('#upkgBody'), fx, sync); sync();
+  // “Export into project” only when the local server knows a Unity project
+  const ex = $('#upkgExport'); ex.hidden = true;
+  const showEx = p => { if (p && p.project) { ex.hidden = false; ex.textContent = `Export into ${p.name}`; ex.title = 'Writes the prefab, material and texture straight into ' + p.project; } };
+  if (Importer.served) (UnityPaths.proj && UnityPaths.proj.project ? Promise.resolve(UnityPaths.proj) : UnityPaths.loadFolders()).then(showEx);
+  $('#upkgDlg').showModal();
+}
 function download(blob, name) { const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name; document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 4000); }
 const LS = {
   get(k, d) { try { const v = localStorage.getItem('flarebox.' + k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
@@ -2616,7 +2985,7 @@ const Inspector = {
       if (k === 'undo') this.doUndo(); if (k === 'redo') this.doRedo(); if (k === 'resetall') this.resetAll();
       if (k === 'save') promptName('Save variation', fx.name + ' variation ' + (this.variants.length + 1), name => this.saveVariant(name));
       if (k === 'export') download(new Blob([JSON.stringify(this.variantRecord('export', fx.name), null, 1)], { type: 'application/json' }), slug(fx.name) + '-variation.json');
-      if (k === 'delvar' && this.vsel && confirm('Delete this variation?')) { VariantDB.del(this.vsel).then(async () => { this.variants = await VariantDB.list(fx.id); this.vsel = ''; this.resetAll(); }); }
+      if (k === 'delvar' && this.vsel) { const vid = this.vsel; askConfirm('Delete this variation?', 'The original effect is not affected.', 'Delete', true).then(ok => { if (ok) VariantDB.del(vid).then(async () => { this.variants = await VariantDB.list(fx.id); this.vsel = ''; this.resetAll(); }); }); }
       if (k === 'bridge') toast(FlareboxBridge.unity ? 'Edits are sent to Unity via SendMessage("' + FlareboxBridge.gameObject + '", "OnWebMessage")' : 'Embed a Unity WebGL build and call FlareboxBridge.connect(unityInstance) — see tools/FlareboxWebBridge.cs', 5000);
     };
     h.querySelector('[data-a=variant]').onchange = e => this.loadVariant(e.target.value);
@@ -2948,18 +3317,57 @@ const Settings = {
   async render() {
     const grid = $('#grid'); grid.classList.add('scan-mode');
     $('#rhead').innerHTML = '<span><b>Settings</b></span>';
-    if (!Importer.served) { grid.innerHTML = this.offline(); return; }
+    if (!Importer.served) { grid.innerHTML = this.offline(); this.bindUnity(grid); return; }
     if (!this.data) {
       grid.innerHTML = '<div class="loading" style="position:static;height:200px;grid-column:1/-1"></div>';
-      try { this.data = await this.api('/api/settings'); this.cache = await this.api('/api/cache').catch(() => null); } catch (e) { if (state.tab === 'settings') grid.innerHTML = this.offline(); return; }
+      try { this.data = await this.api('/api/settings'); this.cache = await this.api('/api/cache').catch(() => null); } catch (e) { if (state.tab === 'settings') { grid.innerHTML = this.offline(); this.bindUnity(grid); } return; }
       if (state.tab !== 'settings') return;
     }
     grid.innerHTML = this.html(); this.bind(grid);
   },
   offline() {
-    return `<div class="set-wrap"><section class="set-card"><h3>${icon('sliders')} Settings need the local server</h3>
-      <p class="dim">Settings are stored by the Flarebox server on this computer. Start it and open <b>http://localhost:8790</b>:</p>
+    return `<div class="set-wrap">${this.unityHTML()}<section class="set-card"><h3>${icon('sliders')} GitHub settings need the local server</h3>
+      <p class="dim">The GitHub token and the download cache are kept by the Flarebox server on this computer. Start it and open <b>http://localhost:8790</b>:</p>
       <code class="set-code">python3 tools/flarebox_server.py</code></section></div>`;
+  },
+  unityHTML() {
+    return `<section class="set-card" id="unityCard"><h3>${icon('cube')} Unity export folders</h3>
+      <p class="dim">Where “Download for Unity (.unitypackage)” puts each file inside your Unity project. The download dialog starts from these and lets you change them per effect.</p>
+      ${Importer.served ? '<div class="set-field" id="unityProj"><span>Unity project (its folders are suggested when you click a folder field)</span><p class="dim">Loading…</p></div>' : ''}
+      <div id="unityFields">${UnityPaths.fieldsHTML(UnityPaths.get(), null)}</div>
+      <div class="set-row"><button class="btn primary" type="button" id="unitySave">Save folders</button><button class="btn" type="button" id="unityReset">Reset to default</button></div>
+      <div class="set-ok" id="unityMsg" hidden></div></section>`;
+  },
+  async projectPicker(card) {
+    const box = $('#unityProj', card); if (!box) return;
+    let d; try { d = await this.api('/api/unity/projects'); } catch (e) { box.querySelector('p').textContent = 'Could not read Unity projects: ' + e.message; return; }
+    const name = p => p.replace(/\/+$/, '').split('/').pop(), run = d.running[0];
+    const recent = d.recent.filter(r => r.ok && r.path !== run);
+    const cur = d.mode === 'auto' ? '' : d.chosen;
+    const opts = [['', run ? `Auto — the project open in Unity (${name(run)})` : 'Auto — the project open in Unity (none open now)']];
+    if (run && d.mode === 'manual' && d.chosen !== run) opts.push([run, `${name(run)} — open in Unity now`]);
+    for (const r of recent) opts.push([r.path, `${name(r.path)}${r.version ? ' · ' + r.version : ''}`]);
+    if (cur && !opts.some(o => o[0] === cur)) opts.push([cur, name(cur)]);
+    opts.push(['__other', 'Other folder…']);
+    box.innerHTML = `<span>Unity project — its folders are suggested when you click a folder field</span>
+      <select id="unityProjSel">${opts.map(([v, l]) => `<option value="${esc(v)}" ${v === cur ? 'selected' : ''}>${esc(l)}</option>`).join('')}</select>
+      <div class="set-row" id="unityOther" hidden><input id="unityOtherIn" type="text" placeholder="/path/to/UnityProject (the folder that holds Assets/)" spellcheck="false"><button class="btn" type="button" id="unityOtherGo">Use this folder</button></div>
+      <p class="dim" id="unityProjMsg">${d.active ? 'Using <code>' + esc(d.active) + '</code>' : 'No project yet — open one in Unity or pick one here.'}${d.chosenMissing ? ' <span class="gh-err">The chosen project folder is no longer there.</span>' : ''}</p>`;
+    const sel = $('#unityProjSel', box), other = $('#unityOther', box), msg = $('#unityProjMsg', box);
+    const save = async v => {
+      try { await this.api('/api/settings', { unityProject: v }); const p = await UnityPaths.loadFolders(true); msg.innerHTML = p.project ? `Using <code>${esc(p.project)}</code> · ${p.folders.length} folders` : esc(p.error || ''); UnityPaths.refresh($('#unityFields', card), null); }
+      catch (e) { msg.innerHTML = `<span class="gh-err">${esc(e.message)}</span>`; }
+    };
+    sel.onchange = () => { other.hidden = sel.value !== '__other'; if (sel.value !== '__other') save(sel.value); };
+    $('#unityOtherGo', box).onclick = () => { const v = $('#unityOtherIn', box).value.trim(); if (v) save(v); };
+  },
+  bindUnity(grid) {
+    const card = $('#unityCard', grid); if (!card) return;
+    this.projectPicker(card);
+    const box = $('#unityFields', card), msg = $('#unityMsg', card), save = $('#unitySave', card);
+    UnityPaths.bind(box, null, () => { msg.hidden = true; save.disabled = !UnityPaths.refresh(box, null); });
+    save.onclick = () => { const t = UnityPaths.refresh(box, null); if (!t) return; UnityPaths.set(t); msg.hidden = false; msg.textContent = 'Saved — the next Unity download uses these folders.'; };
+    $('#unityReset', card).onclick = () => { for (const [k] of UnityPaths.KEYS) box.querySelector(`[data-upk="${k}"]`).value = UnityPaths.DEF[k]; UnityPaths.refresh(box, null); save.disabled = false; msg.hidden = true; };
   },
   html() {
     const d = this.data, t = d.token, b = this.busy ? 'disabled' : '';
@@ -2992,6 +3400,7 @@ const Settings = {
           <select id="limSel" ${b}>${opts.map(([v, l]) => `<option value="${esc(v)}" ${v === lim ? 'selected' : ''}>${esc(l)}</option>`).join('')}</select></label>
         <p class="dim">Every VFX is always listed in the scan report; this only limits how many get a realtime 3D preview in the review collection. Large repos with thousands of effects take longer with “All”.</p>
       </section>
+      ${this.unityHTML()}
       ${this.cacheHTML(b)}
       <section class="set-card"><h3>${icon('file')} Where settings are stored</h3>
         <p class="dim"><code>${esc(d.configPath)}</code> — outside the project folder, readable only by your user account, never committed.</p>
@@ -3007,6 +3416,7 @@ const Settings = {
       <p class="dim"><code>${esc(c.path)}</code></p></section>`;
   },
   bind(grid) {
+    this.bindUnity(grid);
     const run = async (fn, okMsg) => {
       this.busy = true; this.err = ''; this.msg = ''; grid.innerHTML = this.html();
       try { await fn(); if (okMsg) this.msg = okMsg; } catch (e) { this.err = e.message === 'NOSERVER' ? 'The local server is not running.' : e.message; }
@@ -3020,10 +3430,34 @@ const Settings = {
     grid.onclick = e => {
       const a = e.target.closest('[data-set]'); if (!a) return;
       if (a.dataset.set === 'test') { const v = $('#tokIn', grid).value.trim(); run(async () => { this.test = await this.api('/api/settings/test', v ? { githubToken: v } : {}); }); }
-      if (a.dataset.set === 'cache-clear') { const repo = a.dataset.repo; if (confirm(repo ? `Clear the download cache of ${repo.replace(/\.git$/, '').replace('__', '/')}?` : 'Clear the whole download cache?')) run(async () => { this.cache = await this.api('/api/cache/clear', { repo }); }, 'Cache cleared.'); return; }
-      if (a.dataset.set === 'clear' && confirm('Remove the saved GitHub token from this computer?')) run(async () => { this.data = await this.api('/api/settings', { githubToken: null }); this.test = null; }, 'Token removed.');
+      if (a.dataset.set === 'cache-clear') { const repo = a.dataset.repo; askConfirm(repo ? `Clear the download cache of ${repo.replace(/\.git$/, '').replace('__', '/')}?` : 'Clear the whole download cache?', 'Safe to do — the next import just downloads again.', 'Clear', true).then(ok => { if (ok) run(async () => { this.cache = await this.api('/api/cache/clear', { repo }); }, 'Cache cleared.'); }); return; }
+      if (a.dataset.set === 'clear') askConfirm('Remove the saved GitHub token?', 'Private repositories cannot be imported until you add a token again.', 'Remove', true).then(ok => { if (ok) run(async () => { this.data = await this.api('/api/settings', { githubToken: null }); this.test = null; }, 'Token removed.'); });
     };
     $('#limSel', grid).onchange = e => run(async () => { this.data = await this.api('/api/settings', { previewLimit: e.target.value }); }, 'Saved.');
+  },
+};
+
+/* Folders for repositories with several scans (one per branch): Projects and Repo scans show one folder card per repo. */
+const RepoGroups = {
+  names() { return { ...(window.FLAREBOX_GROUPS || {}), ...LS.get('groupNames', {}) }; },
+  name(key) { return this.names()[key] || key.split('/').pop(); },
+  async rename(key, name) {
+    if (Importer.served) {
+      try {
+        const r = await fetch('/api/groups', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ key, name }) });
+        const d = await r.json();
+        if (r.ok) { window.FLAREBOX_GROUPS = d.groups; const ls = LS.get('groupNames', {}); delete ls[key]; LS.set('groupNames', ls); return; }
+      } catch (e) { /* fall back to this browser */ }
+    }
+    const ls = LS.get('groupNames', {}); ls[key] = name; LS.set('groupNames', ls);
+  },
+  repoOfScan(r) { return r && r.url ? r.repo : null; },
+  repoOfPack(pk) { const r = pk.scan && (window.FLAREBOX_SCAN_INDEX || []).find(x => x.id === pk.scan); return RepoGroups.repoOfScan(r); },
+  // items → [{key, name, items}] (a folder, when ≥2 items share a repo) or [{key: null, items: [one]}]
+  of(items, keyOf) {
+    const by = new Map();
+    items.forEach((it, i) => { const k = keyOf(it) || '\0' + i; if (!by.has(k)) by.set(k, []); by.get(k).push(it); });
+    return [...by].flatMap(([k, list]) => list.length > 1 && k[0] !== '\0' ? [{ key: k, name: this.name(k), items: list }] : list.map(it => ({ key: null, items: [it] })));
   },
 };
 
@@ -3125,7 +3559,7 @@ const Importer = {
 };
 
 const Scans = {
-  cur: null, view: 'vfx', q: '', type: 'all', cat: 'all', only: 'all', sort: 'name', limit: 150, open: new Set(),
+  group: null, cur: null, view: 'vfx', q: '', type: 'all', cat: 'all', only: 'all', sort: 'name', limit: 150, open: new Set(),
   index() { return window.FLAREBOX_SCAN_INDEX || []; },
   load(id) {
     const have = (window.FLAREBOX_SCANS || {})[id]; if (have) return Promise.resolve(have);
@@ -3135,9 +3569,18 @@ const Scans = {
   render() {
     const grid = $('#grid'); grid.classList.add('scan-mode');
     if (this.cur) return this.renderReport();
-    const list = this.index().filter(r => !state.q || (r.repo + ' ' + (r.url || '')).toLowerCase().includes(state.q.toLowerCase()));
-    $('#rhead').innerHTML = `<span><b>${list.length}</b> scanned repositor${list.length === 1 ? 'y' : 'ies'}</span>`;
-    grid.innerHTML = `${Importer.html()}<div class="scan-cards" style="grid-column:1/-1">${list.map(r => { const st = r.stats || {}; return `
+    const ql = state.q.toLowerCase(), qm = r => !ql || (r.repo + ' ' + (r.url || '') + ' ' + (r.branch || '') + ' ' + (RepoGroups.repoOfScan(r) ? RepoGroups.name(r.repo) : '')).toLowerCase().includes(ql);
+    const all = this.index().filter(qm);
+    let list, shown;
+    if (this.group) {
+      list = all.filter(r => RepoGroups.repoOfScan(r) === this.group); shown = list;
+      $('#rhead').innerHTML = `<div class="crumbs"><button class="link-btn" data-act="sgroup-back">${icon('arrow-left')} Repo scans</button><h2>${esc(RepoGroups.name(this.group))}</h2>
+        <button class="link-btn" data-act="group-rename" data-key="${esc(this.group)}">${icon('edit')} Rename folder</button></div><span style="flex-basis:100%"></span><span><b>${list.length}</b> scans of ${esc(this.group)} (one per branch)</span>`;
+    } else {
+      list = all; shown = RepoGroups.of(all, RepoGroups.repoOfScan).map(g => g.key ? { __group: g } : g.items[0]);
+      $('#rhead').innerHTML = `<span><b>${list.length}</b> scanned repositor${list.length === 1 ? 'y' : 'ies'}${shown.length < list.length ? ` in ${shown.length} cards` : ''}</span>`;
+    }
+    grid.innerHTML = `${this.group ? '' : Importer.html()}<div class="scan-cards" style="grid-column:1/-1">${shown.map(r => { if (r.__group) return this.groupCard(r.__group); const st = r.stats || {}; return `
       <article class="scan-card" data-scan="${esc(r.id)}" tabindex="0">
         <h3>${icon('folder')}${esc(r.repo)}</h3>
         <div class="sub">${esc(r.url || r.path || '')}${r.branch ? ' · ' + esc(r.branch) : ''}${r.commit ? ' · ' + esc(r.commit.slice(0, 8)) : ''}<br>Unity ${esc(r.unity || '?')} · ${esc(r.pipeline || '?')} · scanned ${esc(r.scanned || '')}</div>
@@ -3148,7 +3591,18 @@ const Scans = {
       <div class="scan-howto"><b>Scan a repository</b><br>Run in the project folder (GitHub links are read through the API — only YAML and .meta files are downloaded; set GITHUB_TOKEN for private repos):
         <code>python3 tools/flarebox_scan_repo.py https://github.com/&lt;owner&gt;/&lt;repo&gt; [--collection]</code>Add <b>--collection</b> to preview every particle VFX and put them in a review collection. Other git hosts are shallow-cloned; a local Unity project folder also works. Reload this page afterwards.</div></div>`;
     Importer.bind(grid);
-    grid.onclick = e => { if (e.target.closest('.gh-import')) return; const c = e.target.closest('[data-scan]'); if (c) { this.cur = c.dataset.scan; this.view = 'vfx'; this.open.clear(); this.limit = 150; this.render(); window.scrollTo(0, 0); } };
+    grid.onclick = e => { if (e.target.closest('.gh-import')) return; const sg = e.target.closest('[data-sgroup]'); if (sg) { this.group = sg.dataset.sgroup; this.render(); window.scrollTo(0, 0); return; } const c = e.target.closest('[data-scan]'); if (c) { this.cur = c.dataset.scan; this.view = 'vfx'; this.open.clear(); this.limit = 150; this.render(); window.scrollTo(0, 0); } };
+  },
+  groupCard(g) {
+    const ids = new Set(g.items.map(r => r.id)), fxs = ITEMS.filter(f => ids.has(f.scan));
+    const prev = g.items.reduce((n, r) => n + ((r.preview || {}).exported || 0), 0), latest = g.items.map(r => r.scanned || '').sort().pop();
+    const br = g.items.map(r => r.branch).filter(Boolean);
+    return `<article class="scan-card group-card" data-sgroup="${esc(g.key)}" tabindex="0">
+      <h3>${icon('folder')}${esc(g.name)}<span class="grp-badge">${g.items.length} branches</span></h3>
+      <div class="sub">${esc(g.items[0].url || g.key)}<br>${esc(br.slice(0, 4).join(' · '))}${br.length > 4 ? ` · +${br.length - 4} more` : ''}</div>
+      <div class="scan-kpis"><div><b>${g.items.length}</b><span>scans</span></div><div><b>${prev}</b><span>3D previews</span></div><div><b>${esc((latest || '').slice(0, 10))}</b><span>latest scan</span></div></div>
+      ${fxs.length ? `<div class="sc-cover">${fxs.slice(0, 4).map(f => `<div style="background:${f.bg}">${posterHTML(f)}</div>`).join('')}</div>` : ''}
+      <div class="dim">Folder · open to see every branch</div></article>`;
   },
   async renderReport() {
     const grid = $('#grid');
@@ -3405,9 +3859,19 @@ const CAT_RULES = [
 ];
 const guessCategory = t => { t = t.toLowerCase(); const r = CAT_RULES.find(([re]) => re.test(t)); return r ? r[1] : null; };
 const AUTHOR_COLORS = ['#7c4dff', '#e8663d', '#2fa37a', '#d94a8c', '#1caad9', '#f2a10f', '#5b6cff', '#c2410c'];
+// a pack baked in Unity (no scan of its own) borrows the scan of the same project, e.g. "XP Hero" ↔ hb_creative_xp_hero,
+// so its effects can export their original prefab + dependencies too
+function packScan(pk) {
+  if (pk.scan) return pk.scan;
+  const norm = x => String(x || '').toLowerCase().replace(/[^a-z0-9]/g, ''), n = norm(pk.pack);
+  if (n.length < 4) return null;
+  const hits = (window.FLAREBOX_SCAN_INDEX || []).filter(r => norm(r.repo).includes(n) || (r.path && norm(r.path.split('/').pop()).includes(n)));
+  return hits.length === 1 ? hits[0].id : null;
+}
 function buildPackItems() {
   const out = [], now = Date.now();
   for (const pk of window.FLAREBOX_PACKS || []) {
+    const scanId = packScan(pk);
     const isEtfx = /epic toon/i.test(pk.pack);
     (pk.items || []).forEach((e, i) => {
       const name = e.name.replace(/[_-]+/g, ' ').replace(/([a-z])([A-Z0-9])/g, '$1 $2').replace(/\s+/g, ' ').trim();
@@ -3418,8 +3882,8 @@ function buildPackItems() {
         pal: PAL.blue.map(hex), bg: BG.ink, seed: e.id, tags: [...new Set([...words, pk.pack.toLowerCase(), e.loop ? 'loop' : 'one-shot'])],
         author: pk.pack, authorColor: AUTHOR_COLORS[hash(pk.pack) % AUTHOR_COLORS.length], views: 0, favs: 0, date: now - i * 1000, staff: false, dl: true, loop: !!e.loop,
         source: pk.pack, project: !!pk.project, packBase: pk.base, unity: pk.unity || '', baked: pk.baked || '',
-        format: e.file ? 'Sprite sheet' : 'Realtime 3D', sheet: { cols: e.cols || 1, rows: e.rows || 1, fps: e.fps || 30 }, src: e.file ? pk.base + e.file : null, scan: pk.scan || null,
-        pack: pk.pack, prefab: e.prefab, folder: e.folder, fileName: e.file,
+        format: e.file ? 'Sprite sheet' : 'Realtime 3D', sheet: { cols: e.cols || 1, rows: e.rows || 1, fps: e.fps || 30 }, src: e.file ? pk.base + e.file : null, scan: scanId,
+        pack: pk.pack, prefab: e.prefab, scanPath: e.scanPath || e.prefab, folder: e.folder, fileName: e.file,
         pkg: e.pkg ? pk.base + e.pkg : null, pkgKB: e.pkgKB || 0, deps: e.deps || null,
         orbit: e.orbit && e.orbit.yaw > 1 ? { yaw: e.orbit.yaw, pitch: e.orbit.pitch || [15], stem: pk.base + e.file.replace(/\.png$/i, '') } : null,
         desc: pk.project
@@ -3501,7 +3965,7 @@ function uploadToItem(rec) {
 /* =====================================================================
    App state, filtering, sorting
    ===================================================================== */
-const state = { tab: 'all', q: '', src: 'all', cat: 'all', style: 'all', engine: 'all', type: 'all', dl: false, loop: false, pick: false, sort: 'relevance', col: null, proj: null };
+const state = { pgroup: null, tab: 'all', q: '', src: 'all', cat: 'all', style: 'all', engine: 'all', type: 'all', dl: false, loop: false, pick: false, sort: 'relevance', col: null, proj: null };
 const FILTERS = { src: ['All sources', null], cat: ['All categories', CATS], style: ['All styles', STYLES], engine: ['Any engine', ENGINES], type: ['Any type', TYPES] };
 const FILTER_KEYS = ['src', 'cat', 'style', 'engine', 'type'];
 const sourcesList = () => [...new Set(ITEMS.map(f => f.source))];
@@ -3619,7 +4083,7 @@ function cardEl(fx) {
     <div class="thumb${isLight ? ' light' : ''}" style="background:${fx.bg}">
       <div class="loading"></div>
       ${fx.staff ? `<span class="t-pick" title="Staff pick">${icon('star')}</span>` : ''}
-      <div class="t-icons"><span class="t-fmt">${esc(fmtBadge(fx))}</span>${fx.dl ? `<span class="t-ic" title="Downloadable">${icon('download')}</span>` : ''}</div>
+      <div class="t-icons"><span class="t-fmt">${esc(fmtBadge(fx))}</span>${Exporter.can(fx) ? `<button type="button" class="t-ic t-dl" data-act="export" title="Export to Unity" aria-label="Export ${esc(fx.name)} to Unity">${icon('download')}</button>` : fx.dl ? `<span class="t-ic" title="Downloadable">${icon('download')}</span>` : ''}</div>
       <div class="t-actions">
         <button class="ibtn act-fav${store.favs.has(fx.id) ? ' on' : ''}" type="button" data-act="fav" aria-label="Favorite" aria-pressed="${store.favs.has(fx.id)}">${icon(store.favs.has(fx.id) ? 'heart-f' : 'heart')}</button>
         <button class="ibtn act-col" type="button" data-act="col" aria-label="Save to collection" title="Save to collection">${icon('folder')}</button>
@@ -3688,7 +4152,7 @@ function renderHead() {
   }
   if (state.tab === 'projects' && state.proj) {
     const pk = projectPacks().find(p => p.pack === state.proj);
-    parts.push(`<div class="crumbs"><button class="link-btn" data-act="proj-back">${icon('arrow-left')} Projects</button><h2>${esc(state.proj)}</h2>
+    parts.push(`<div class="crumbs"><button class="link-btn" data-act="${state.pgroup ? 'pgroup-back' : 'proj-back'}">${icon('arrow-left')} Projects</button>${state.pgroup ? `<span class="crumb-sep">/</span><button class="link-btn" data-act="proj-back">${icon('folder')} ${esc(RepoGroups.name(state.pgroup))}</button>` : ''}<h2>${esc(state.pgroup && state.proj.includes(' @ ') ? state.proj.split(' @ ').slice(1).join(' @ ') : state.proj)}</h2>
       ${pk ? `<span class="tags">VFX used by the game · Unity ${esc(pk.unity || '?')} · baked ${esc(pk.baked || '')}</span>` : ''}</div><span style="flex-basis:100%"></span>`);
   }
   const noun = list.length === 1 ? 'effect' : 'effects';
@@ -3699,29 +4163,62 @@ function renderHead() {
 }
 
 const BAKE_HINT = 'Copy FlareboxPreviewBaker.cs into the project’s Assets/Editor, open it in Unity and run Tools › Flarebox › Bake this project’s VFX.';
+function projGroupCard(g) {
+  const names = new Set(g.items.map(pk => pk.pack)), items = ITEMS.filter(f => f.project && names.has(f.source)), cover = items.slice(0, 4);
+  const tiles = [0, 1, 2, 3].map(i => cover[i] ? `<div style="background:${cover[i].bg}">${posterHTML(cover[i])}</div>` : '<div></div>').join('');
+  return `<article class="card col-card group-card" tabindex="0" data-pgroup="${esc(g.key)}" aria-label="${esc(g.name)} folder">
+    <div class="thumb">${tiles}<span class="grp-stack">${icon('folder')} ${g.items.length}</span></div>
+    <div class="meta"><div class="row1"><span class="avatar" style="background:#c99a2e">${icon('folder')}</span><h3 class="name">${esc(g.name)}</h3><div class="stats"><span>${items.length} VFX</span></div></div>
+    <div class="row2"><span class="tags">${g.items.length} projects · ${esc(g.key)}</span></div></div></article>`;
+}
 function renderProjects() {
-  const grid = $('#grid'), q = state.q.toLowerCase();
-  const packs = projectPacks().filter(p => !q || p.pack.toLowerCase().includes(q));
-  $('#rhead').innerHTML = `<span><b>${packs.length}</b> project folder${packs.length === 1 ? '' : 's'}${q ? ` for “${esc(state.q)}”` : ''}</span>`;
-  grid.innerHTML = packs.map(pk => {
+  const grid = $('#grid'), q = state.q.toLowerCase(), all = projectPacks();
+  const match = pk => { if (!q) return true; const k = RepoGroups.repoOfPack(pk); return pk.pack.toLowerCase().includes(q) || (!!k && RepoGroups.name(k).toLowerCase().includes(q)); };
+  let packs, cards;
+  if (state.pgroup) {
+    packs = all.filter(pk => RepoGroups.repoOfPack(pk) === state.pgroup && match(pk)); cards = packs.map(pk => ({ key: null, items: [pk] }));
+    $('#rhead').innerHTML = `<div class="crumbs"><button class="link-btn" data-act="pgroup-back">${icon('arrow-left')} Projects</button><h2>${esc(RepoGroups.name(state.pgroup))}</h2>
+      <button class="link-btn" data-act="group-rename" data-key="${esc(state.pgroup)}">${icon('edit')} Rename folder</button></div><span style="flex-basis:100%"></span><span><b>${packs.length}</b> project${packs.length === 1 ? '' : 's'} from ${esc(state.pgroup)}${q ? ` for “${esc(state.q)}”` : ''}</span>`;
+  } else {
+    packs = all.filter(match); cards = RepoGroups.of(packs, RepoGroups.repoOfPack);
+    $('#rhead').innerHTML = `<span><b>${cards.length}</b> project folder${cards.length === 1 ? '' : 's'}${q ? ` for “${esc(state.q)}”` : ''}</span>`;
+  }
+  grid.innerHTML = cards.map(g => g.key ? projGroupCard(g) : g.items[0]).map(pk => typeof pk === 'string' ? pk : (pk => {
     const items = ITEMS.filter(f => f.project && f.source === pk.pack), cover = items.slice(0, 4);
     const tiles = [0, 1, 2, 3].map(i => cover[i] ? `<div style="background:${cover[i].bg}">${posterHTML(cover[i])}</div>` : '<div></div>').join('');
     const cats = Object.entries(items.reduce((m, f) => (m[f.cat] = (m[f.cat] || 0) + 1, m), {})).sort((a, b) => b[1] - a[1]).slice(0, 4).map(([c]) => c);
     return `<article class="card col-card" tabindex="0" data-proj="${esc(pk.pack)}" aria-label="${esc(pk.pack)} project VFX">
       <div class="thumb">${tiles}</div>
-      <div class="meta"><div class="row1"><span class="avatar" style="background:${AUTHOR_COLORS[hash(pk.pack) % AUTHOR_COLORS.length]}">${esc(initials(pk.pack))}</span><h3 class="name">${esc(pk.pack)}</h3><div class="stats"><span>${items.length} VFX</span></div></div>
+      <div class="meta"><div class="row1"><span class="avatar" style="background:${AUTHOR_COLORS[hash(pk.pack) % AUTHOR_COLORS.length]}">${esc(initials(pk.pack))}</span><h3 class="name" title="${esc(pk.pack)}">${esc(state.pgroup ? (pk.pack.includes(' @ ') ? pk.pack.split(' @ ').slice(1).join(' @ ') : 'Default branch') : pk.pack)}</h3><div class="stats"><span>${items.length} VFX</span></div></div>
       <div class="row2"><span class="tags">${esc(cats.join(' · '))}</span></div></div></article>`;
-  }).join('') + `<div class="card col-new-card" style="cursor:default;padding:20px;text-align:center"><span>${icon('folder')}Add another project<br><small style="font-weight:400;color:var(--muted);display:block;margin-top:6px;line-height:1.5">${esc(BAKE_HINT)}</small></span></div>`;
+  })(pk)).join('') + (state.pgroup ? '' : `<div class="card col-new-card" style="cursor:default;padding:20px;text-align:center"><span>${icon('folder')}Add another project<br><small style="font-weight:400;color:var(--muted);display:block;margin-top:6px;line-height:1.5">${esc(BAKE_HINT)}</small></span></div>`);
+}
+/* Delete one or more collections (the effects stay in the library). Review collections from GitHub imports are
+   remembered as dismissed so they do not come back on reload — importing that repo again recreates them. */
+async function deleteCollections(cols) {
+  if (!cols.length) return;
+  const title = cols.length === 1 ? `Delete “${cols[0].name}”?` : `Delete ${cols.length} collections?`;
+  const list = cols.length === 1 ? '' : cols.map(c => '• ' + c.name).join('\n') + '\n\n';
+  if (!await askConfirm(title, list + 'The effects themselves stay in the library.', 'Delete', true)) return;
+  const gone = LS.get('colsDismissed', {});
+  for (const c of cols) if (c.review) gone[c.id] = c.created;
+  LS.set('colsDismissed', gone);
+  const del = new Set(cols);
+  store.cols = store.cols.filter(x => !del.has(x)); store.save();
+  if (state.col && !store.cols.some(c => c.id === state.col)) state.col = null;
+  applyState(); toast(cols.length === 1 ? 'Collection deleted' : `${cols.length} collections deleted`);
 }
 function renderCollections() {
   const grid = $('#grid'); const q = state.q.toLowerCase();
   const cols = store.cols.filter(c => !q || c.name.toLowerCase().includes(q));
-  $('#rhead').innerHTML = `<span><b>${cols.length}</b> collection${cols.length === 1 ? '' : 's'}${q ? ` for “${esc(state.q)}”` : ''}</span>`;
+  const empty = store.cols.filter(c => !c.ids.some(id => byId(id)));
+  $('#rhead').innerHTML = `<span><b>${cols.length}</b> collection${cols.length === 1 ? '' : 's'}${q ? ` for “${esc(state.q)}”` : ''}</span>`
+    + (empty.length ? `<button class="link-btn danger" data-act="col-delete-empty" type="button">${icon('trash')} Delete ${empty.length} empty collection${empty.length === 1 ? '' : 's'}</button>` : '');
   grid.innerHTML = cols.map(c => {
     const items = c.ids.map(byId).filter(Boolean), cover = items.slice(0, 4);
     const tiles = [0, 1, 2, 3].map(i => cover[i] ? `<div style="background:${cover[i].bg}">${posterHTML(cover[i])}</div>` : '<div></div>').join('');
     return `<article class="card col-card" tabindex="0" data-col="${esc(c.id)}" aria-label="${esc(c.name)} collection">
-      <div class="thumb">${tiles}</div>
+      <div class="thumb">${tiles}<button class="col-del" data-act="col-delete-card" type="button" aria-label="Delete collection ${esc(c.name)}" title="Delete collection">${icon('trash')}</button></div>
       <div class="meta"><div class="row1"><span class="avatar" style="background:#1caad9">${icon('folder')}</span><h3 class="name">${esc(c.name)}</h3><div class="stats"><span>${items.length} effect${items.length === 1 ? '' : 's'}</span></div></div>
       <div class="row2"><span class="tags">${esc([...new Set(items.map(f => f.cat))].slice(0, 4).join(' · ') || 'Empty')}</span></div></div></article>`;
   }).join('') + `<button class="card col-new-card" data-act="col-new" type="button"><span>${icon('plus')}New collection</span></button>`;
@@ -3785,7 +4282,7 @@ function resetAll() { Object.assign(state, { q: '', src: 'all', cat: 'all', styl
 $('#filtersToggle').addEventListener('click', () => { filtersOpen = !filtersOpen; $('#toolbar').hidden = !filtersOpen; $('#filtersToggle').setAttribute('aria-expanded', filtersOpen); });
 
 function setTab(tab) {
-  state.tab = tab; state.col = null; state.proj = null; Scans.cur = null;
+  state.tab = tab; state.col = null; state.proj = null; state.pgroup = null; Scans.cur = null; Scans.group = null;
   $$('.tab').forEach(t => t.setAttribute('aria-selected', t.dataset.tab === tab));
   applyState(); window.scrollTo(0, 0);
 }
@@ -3815,25 +4312,24 @@ $('#main').addEventListener('click', e => {
     e.stopPropagation();
     if (a === 'fav' && card) return toggleFav(card.dataset.id);
     if (a === 'col' && card) return openColDlg(card.dataset.id);
+    if (a === 'export' && card) { const fx = byId(card.dataset.id); if (fx) openUpkgDlg(fx); return; }
     if (a === 'reset') return resetAll();
     if (a === 'browse') return setTab('all');
     if (a === 'cols-back') { state.col = null; return applyState(); }
     if (a === 'proj-back') { state.proj = null; return applyState(); }
+    if (a === 'pgroup-back') { state.pgroup = null; state.proj = null; return applyState(); }
+    if (a === 'sgroup-back') { Scans.group = null; return Scans.render(); }
+    if (a === 'group-rename') { const key = act.dataset.key; return promptName('Rename folder', RepoGroups.name(key), async name => { await RepoGroups.rename(key, name); state.tab === 'scans' ? Scans.render() : applyState(); toast(`Folder renamed to “${name}”`); }); }
     if (a === 'scan-open') { const id = act.dataset.scan; setTab('scans'); Scans.cur = id; Scans.view = 'vfx'; return Scans.render(); }
     if (a === 'col-new') return promptName('New collection', '', name => { const c = { id: 'c-' + Date.now().toString(36), name, ids: [], created: Date.now() }; store.cols.push(c); store.save(); applyState(); toast(`Created “${name}”`); });
     if (a === 'col-rename') { const c = store.cols.find(c => c.id === state.col); return promptName('Rename collection', c.name, name => { c.name = name; store.save(); applyState(); }); }
-    if (a === 'col-delete') {
-      const c = store.cols.find(c => c.id === state.col);
-      if (confirm(`Delete the collection “${c.name}”? The effects themselves stay in the library.`)) {
-        if (c.review) { const gone = LS.get('colsDismissed', {}); gone[c.id] = c.created; LS.set('colsDismissed', gone); }
-        store.cols = store.cols.filter(x => x !== c); store.save(); state.col = null; applyState(); toast('Collection deleted');
-      }
-      return;
-    }
+    if (a === 'col-delete') { const c = store.cols.find(c => c.id === state.col); if (c) deleteCollections([c]); return; }
+    if (a === 'col-delete-card') { const c = store.cols.find(c => c.id === act.closest('.col-card').dataset.col); if (c) deleteCollections([c]); return; }
+    if (a === 'col-delete-empty') return deleteCollections(store.cols.filter(c => !c.ids.some(id => byId(id))));
     return;
   }
   const colCard = e.target.closest('.col-card');
-  if (colCard) { if (colCard.dataset.proj) state.proj = colCard.dataset.proj; else state.col = colCard.dataset.col; applyState(); window.scrollTo(0, 0); return; }
+  if (colCard) { if (colCard.dataset.pgroup) state.pgroup = colCard.dataset.pgroup; else if (colCard.dataset.proj) state.proj = colCard.dataset.proj; else state.col = colCard.dataset.col; applyState(); window.scrollTo(0, 0); return; }
   const card = e.target.closest('.card[data-id]'); if (card) Viewer.open(card.dataset.id);
 });
 $('#main').addEventListener('keydown', e => {
@@ -3913,23 +4409,27 @@ const Viewer = {
     const dur = fxDur(fx) ? fxDur(fx).toFixed(2) + 's' : (this.player && this.player.duration ? this.player.duration.toFixed(2) + 's' : '—');
     const fmtTxt = fx.pack && !fx.src ? 'Realtime 3D (from the Unity prefab)' : fx.src ? (fx.format === 'Sprite sheet' ? `Sprite sheet ${fx.sheet.cols}×${fx.sheet.rows} @ ${fx.sheet.fps} fps` : fx.format) : fx.type === 'Flipbook' ? `Sprite sheet 6×6 @ ${fx.sheet.fps} fps` : 'Realtime (procedural canvas)';
     const d = fx.deps, depTxt = d ? [[d.prefabs, 'prefab'], [d.materials, 'material'], [d.textures, 'texture'], [d.meshes, 'mesh'], [d.shaders, 'shader'], [d.scripts, 'script']].filter(([n]) => n).map(([n, w]) => `${n} ${w}${n > 1 ? (w === 'mesh' ? 'es' : 's') : ''}`).join(' · ') : '';
-    const upkgLi = `<li><button data-dl="upkg"><span class="ico">${icon('cube')}</span><span><b>Unity package · .unitypackage</b><small>Folder Flarebox/FX_${esc(UPKG.safe(fx.name))} with prefab (Particle System), material and sprite-sheet texture<br>Drag into Unity's Project window → Import → drop the prefab in your scene</small></span><span class="go">${icon('download')}</span></button></li>`;
+    // the same two entries for every effect that can go to Unity (generated built-ins and original assets of scanned projects)
+    const isSrc = Exporter.isSource(fx);
+    const expLis = Exporter.can(fx) ? `<li><button data-dl="upkg"><span class="ico">${icon('cube')}</span><span><b>Export to Unity</b><small>${isSrc ? `Original prefab + its materials, textures, meshes… from ${esc(fx.pack)}, with their .meta files` : 'Prefab (Particle System), material and sprite-sheet texture'} — drop a folder, export into your open project, or choose folders</small></span><span class="go">${icon('download')}</span></button></li>
+      <li><button data-dl="upkgdl"><span class="ico">${icon('download')}</span><span><b>Download .unitypackage</b><small>Same assets as one package, into your saved folders (${esc(UnityPaths.resolve(UnityPaths.get().prefab, fx))}…) — drag it into Unity to import</small></span><span class="go">${icon('download')}</span></button></li>` : '';
+    const upkgLi = expLis, srcLi = '';
     const links = fx.pack ? `
-      ${fx.pkg ? `<li><button data-dl="pkg"><span class="ico">${icon('cube')}</span><span><b>Unity package · .unitypackage</b><small>${esc(depTxt)}${fx.pkgKB ? ` · ${fx.pkgKB >= 1024 ? (fx.pkgKB / 1024).toFixed(1) + ' MB' : fx.pkgKB + ' KB'}` : ''}<br>Drag into Unity's Project window → Import → drop the prefab in your scene</small></span><span class="go">${icon('download')}</span></button></li>` : ''}
+      ${upkgLi}${fx.pkg && !Exporter.can(fx) ? `<li><button data-dl="pkg"><span class="ico">${icon('cube')}</span><span><b>Unity package · .unitypackage</b><small>${esc(depTxt)}${fx.pkgKB ? ` · ${fx.pkgKB >= 1024 ? (fx.pkgKB / 1024).toFixed(1) + ' MB' : fx.pkgKB + ' KB'}` : ''}<br>Drag into Unity's Project window → Import → drop the prefab in your scene</small></span><span class="go">${icon('download')}</span></button></li>` : ''}
       <li><div class="src"><span class="ico">${icon('cube')}</span><span><b>Source: ${esc(fx.pack)} (Unity prefab)</b><small>${esc(fx.prefab)}</small></span></div></li>
       ${fx.src ? `<li><button data-dl="file"><span class="ico">${icon('grid')}</span><span><b>Sprite sheet · PNG</b><small>${fx.sheet.cols}×${fx.sheet.rows} frames, transparent · ${esc(fx.fileName)}</small></span><span class="go">${icon('download')}</span></button></li>` : ''}
       <li><button data-dl="path"><span class="ico">${icon('file')}</span><span><b>Copy prefab path</b><small>Paste into Unity's Project search</small></span></button></li>
       <li><button data-dl="json"><span class="ico">${icon('code')}</span><span><b>Metadata · JSON</b><small>Prefab, category, timing, tags</small></span><span class="go">${icon('download')}</span></button></li>
       <li><button data-dl="link"><span class="ico">${icon('link')}</span><span><b>Copy link to this effect</b><small>Opens this preview directly</small></span></button></li>`
       : fx.upload ? `
-      ${UPKG.can(fx) ? upkgLi : ''}
+      ${upkgLi}
       <li><button data-dl="orig"><span class="ico">${icon('file')}</span><span><b>Original file</b><small>${esc(fx.fileName || fx.format)} · ${(fx.blob.size / 1024).toFixed(0)} KB</small></span><span class="go">${icon('download')}</span></button></li>
       <li><button data-dl="json"><span class="ico">${icon('code')}</span><span><b>Metadata · JSON</b><small>Name, category, engines, tags</small></span><span class="go">${icon('download')}</span></button></li>
       <li><button data-dl="link"><span class="ico">${icon('link')}</span><span><b>Copy link to this effect</b><small>Opens this preview directly</small></span></button></li>
       <li class="danger"><button data-dl="remove"><span class="ico">${icon('trash')}</span><span><b>Remove from library</b><small>Uploaded ${ago(fx.date)} · stored on this computer</small></span></button></li>`
       : `
       <li><div class="src"><span class="ico">${icon('cube')}</span><span><b>Source: ${esc(fx.author)}</b><small>Flarebox built-in · generated in your browser</small></span></div></li>
-      ${UPKG.can(fx) ? upkgLi : ''}
+      ${upkgLi}
       <li><button data-dl="sheet" ${fx.dl ? '' : 'disabled'}><span class="ico">${icon('grid')}</span><span><b>Sprite sheet · PNG</b><small>8×8 frames, 2048×2048, transparent</small></span><span class="go">${icon('download')}</span></button></li>
       <li><button data-dl="video" ${fx.dl ? '' : 'disabled'}><span class="ico">${icon('video')}</span><span><b>Preview video · WebM</b><small>1280×720, records ${pre.loop ? 2 : 1} loop${pre.loop ? 's' : ''} on the current background</small></span><span class="go">${icon('download')}</span></button></li>
       <li><button data-dl="json" ${fx.dl ? '' : 'disabled'}><span class="ico">${icon('code')}</span><span><b>Effect preset · JSON</b><small>Palette, timing, engine targets</small></span><span class="go">${icon('download')}</span></button></li>
@@ -3944,8 +4444,7 @@ const Viewer = {
         <button class="btn ${fav ? 'fav-on' : ''}" data-vact="fav" aria-pressed="${fav}">${icon(fav ? 'heart-f' : 'heart')}${fav ? 'Favorited' : 'Favorite'}</button>
         <button class="btn" data-vact="col">${icon('folder')}${inCols.length ? `In ${inCols.length} collection${inCols.length > 1 ? 's' : ''}` : 'Save to collection'}</button>
       </div>
-      ${UPKG.can(fx) ? `<button class="btn primary" style="width:100%;margin:-8px 0 18px" data-dl="upkg">${icon('download')}Download for Unity (.unitypackage)</button>` : ''}
-      ${fx.pkg ? `<button class="btn primary" style="width:100%;margin:-8px 0 18px" data-dl="pkg">${icon('download')}Download for Unity (.unitypackage)</button>` : ''}
+      ${Exporter.can(fx) ? `<div class="d-export"><button class="btn primary" data-dl="upkg">${icon('cube')}Export to Unity</button><button class="btn" data-dl="upkgdl">${icon('download')}Download .unitypackage</button></div>` : fx.pkg ? `<div class="d-export"><button class="btn primary" data-dl="pkg">${icon('download')}Download .unitypackage</button></div>` : ''}
       <p class="d-desc">${esc(fx.desc)}</p>
       <dl class="specs">
         <dt>Category</dt><dd>${esc(fx.cat)}</dd><dt>Art style</dt><dd>${esc(fx.style)}</dd><dt>Type</dt><dd>${esc(fx.type)}</dd>
@@ -4013,9 +4512,22 @@ $('#details').addEventListener('click', async e => {
     if (kind === 'sheet') { toast('Baking 64-frame sprite sheet…'); await new Promise(r => setTimeout(r, 30)); bakeSheet(fx, 8, 8, 256, 256, false).toBlob(b => { download(b, `${base}_spritesheet_8x8.png`); toast('Sprite sheet downloaded'); }, 'image/png'); }
     if (kind === 'video') recordVideo(fx, dl);
     if (kind === 'upkg') {
+      // one click: the folder you exported to last time in this project; otherwise (or with “Change folder”) the dialog
+      const last = LS.get('lastExport', null);
+      if (last && Exporter.can(fx) && Importer.served) {
+        const p = UnityPaths.proj && UnityPaths.proj.project ? UnityPaths.proj : await UnityPaths.loadFolders();
+        if (p && p.project && p.name === last.project && UnityPaths.folderSet.has(last.target)) {
+          upkgFx = fx; DropExport.reset(); await DropExport.setPath(last.target); DropExport.go(true); return;
+        }
+      }
+      openUpkgDlg(fx);
+    }
+    if (kind === 'upkgdl') {  // straight download, into the saved folders
       toast('Building Unity package…'); await new Promise(r => setTimeout(r, 30));
-      try { const r = await UPKG.forFx(fx); download(r.blob, r.file); toast(`Downloaded ${r.file} — drag it into Unity, it imports to ${r.folder}`); }
-      catch (err) { console.error(err); toast('Could not build the Unity package: ' + err.message); }
+      try {
+        const F = Exporter.fieldFolders(UnityPaths.get(), fx), r = await Exporter.unitypackage(fx, F), file = Exporter.file(fx); download(r.blob, file);
+        toast(`Downloaded ${file} — ${r.items.length} assets, imports to ${F.prefab}${F.material !== F.prefab || F.texture !== F.prefab ? ' (+ material / texture folders)' : ''}. Change folders with “Export to Unity”.`, 7000);
+      } catch (err) { console.error(err); toast('Could not build the Unity package: ' + err.message, 7000); }
     }
     if (kind === 'json') {
       const data = { name: fx.name, id: fx.id, category: fx.cat, artStyle: fx.style, type: fx.type, compatibility: fx.engines, tags: fx.tags, author: fx.author, loop: fx.loop,
@@ -4029,7 +4541,7 @@ $('#details').addEventListener('click', async e => {
       const url = location.href.split('#')[0] + '#fx=' + encodeURIComponent(fx.id);
       try { await navigator.clipboard.writeText(url); toast('Link copied'); } catch (err) { prompt('Copy this link:', url); }
     }
-    if (kind === 'remove' && confirm(`Remove “${fx.name}” from your library?`)) {
+    if (kind === 'remove' && await askConfirm(`Remove “${fx.name}” from your library?`, 'The uploaded file is deleted from this computer.', 'Remove', true)) {
       await DB.del(fx.id); URL.revokeObjectURL(fx.src); ITEMS = ITEMS.filter(f => f !== fx);
       store.favs.delete(fx.id); store.cols.forEach(c => { c.ids = c.ids.filter(x => x !== fx.id); }); store.recent = store.recent.filter(x => x !== fx.id); store.save();
       Viewer.dlg.close(); applyState(); toast('Removed from library');
@@ -4087,6 +4599,281 @@ $('#colNewForm').addEventListener('submit', e => {
 });
 $('#colDlg').addEventListener('close', () => { if (Viewer.fx) Viewer.renderDetails(); if (state.tab === 'cols') renderResults(true); });
 let nameCb = null;
+/* askConfirm(title, message, okLabel, danger) → Promise<boolean>, drawn in the page instead of window.confirm() */
+let askResolve = null;
+function askConfirm(title, msg, ok = 'OK', danger = false) {
+  if (askResolve) askResolve(false);
+  $('#askDlgT').textContent = title; $('#askMsg').textContent = msg || '';
+  const b = $('#askOk'); b.textContent = ok; b.classList.toggle('danger-fill', !!danger);
+  $('#askDlg').showModal(); b.focus();
+  return new Promise(res => { askResolve = res; });
+}
+$('#askForm').addEventListener('submit', e => { e.preventDefault(); const r = askResolve; askResolve = null; $('#askDlg').close(); r && r(true); });
+$('#askDlg').addEventListener('close', () => { const r = askResolve; askResolve = null; r && r(false); });
+/* Reading a drop that names a folder. A Finder folder arrives as a file-system handle (no path); Unity, editors and
+   terminals hand over text: "Assets/…", an absolute path or a file:// URL. Paths inside the open Unity project map to Assets/… */
+const FolderDrop = {
+  async read(dt) {
+    const types = [...(dt.types || [])];
+    const text = (dt.getData('text/uri-list') || dt.getData('text/plain') || '').trim();
+    const fileItem = [...(dt.items || [])].find(i => i.kind === 'file');
+    const f0 = dt.files && dt.files[0];
+    console.info('[Flarebox drop]', { types, text: text.slice(0, 300), file: !!fileItem, fileName: f0 && f0.name, filePath: f0 && (f0.path || ''), rel: f0 && f0.webkitRelativePath });
+    if (text) { const p = await this.toProjectPath(text); if (p.path || p.error) return p; }
+    if (fileItem && fileItem.getAsFileSystemHandle) { try { const h = await fileItem.getAsFileSystemHandle(); if (h) return h.kind === 'directory' ? { handle: h } : { error: 'Drop a folder, not a file' }; } catch (e) { /* fall through */ } }
+    return { error: types.length ? `Could not read a folder from that drop (it carried: ${types.join(', ')})` : 'Nothing usable was dropped' };
+  },
+  async toProjectPath(text) {
+    let t = text.split(/\r?\n/).find(l => l && !l.startsWith('#')) || '';
+    if (/^file:\/\//i.test(t)) { try { t = decodeURIComponent(new URL(t).pathname); } catch (e) { return {}; } }
+    t = t.trim().replace(/^["']|["']$/g, '').replace(/\\/g, '/').replace(/\/+$/, '');
+    if (!t) return {};
+    if (t === 'Assets' || t.startsWith('Assets/')) return { path: t };
+    if (t.startsWith('/')) {
+      const p = UnityPaths.proj && UnityPaths.proj.project ? UnityPaths.proj : await UnityPaths.loadFolders();
+      const root = p && p.project ? p.project.replace(/\/+$/, '') : '';
+      if (root && (t === root + '/Assets' || t.startsWith(root + '/Assets/'))) return { path: t.slice(root.length + 1) };
+      return { error: root ? `That folder is not inside ${p.name} (the Unity project that is open) — drop a folder from its Assets` : 'No Unity project is open — open one in Unity or choose one in Settings' };
+    }
+    return {};
+  },
+  // a dropped Finder folder carries no path: look it up by name (several → compare sub-folders)
+  async find(handle) {
+    const p = UnityPaths.proj && UnityPaths.proj.project ? UnityPaths.proj : await UnityPaths.loadFolders(true);
+    if (!p || !p.project) return [];
+    let cands = p.folders.filter(f => f.split('/').pop() === handle.name);
+    if (cands.length > 1) cands = await this.narrow(handle, cands, p);
+    return cands;
+  },
+  // several project folders share the dropped folder's name: compare what is inside (files and folders) → best match
+  async narrow(handle, cands, p) {
+    // 1) exact: a hidden marker placed in each candidate shows up only inside the folder that was actually dropped
+    const token = Array.from(crypto.getRandomValues(new Uint8Array(10)), x => x.toString(16).padStart(2, '0')).join('');
+    const post = (u, b) => fetch(u, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(b) }).then(r => r.json());
+    try {
+      await post('/api/unity/probe', { paths: cands, token });
+      let hit = null;
+      try { const h = await handle.getFileHandle('.flarebox-probe-' + token); hit = await (await h.getFile()).text(); } catch (e) { /* not in this folder, or not readable */ }
+      await post('/api/unity/probe-clear', { paths: cands, token });
+      if (hit && cands.includes(hit.trim())) { this.exact = true; return [hit.trim()]; }
+    } catch (e) { /* server lookup failed — fall back to comparing contents */ }
+    this.exact = false;
+    let readable = true; const mine = new Set(); try { for await (const [n] of handle.entries()) if (!n.endsWith('.meta') && !n.startsWith('.')) mine.add(n); } catch (e) { readable = false; }
+    console.info('[Flarebox drop] probe not seen; folder readable:', readable, '· entries:', mine.size);
+    if (!readable || !mine.size) return cands;  // cannot tell them apart → never guess, the user picks
+    let theirs = {};
+    try { theirs = (await (await fetch('/api/unity/ls', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ paths: cands }) })).json()).entries || {}; } catch (e) { /* server lookup failed */ }
+    // same file names inside = the same folder; only an exact, unique match counts — anything less is the user's call
+    const same = cands.filter(c => { const t = theirs[c] || []; return t.length === mine.size && t.every(x => mine.has(x)); });
+    if (same.length === 1) { this.exact = true; return same; }
+    return cands;
+  },
+};
+/* Blender-style export: drag a folder from Finder onto the dialog (or Choose folder…) and the prefab, material and
+   texture (+ .meta) are written straight into it. Uses the browser's File System Access API (Chrome / Edge). */
+const DropExport = {
+  dir: null, target: null, cands: [], proj: null, matching: false, kids: [], flat: LS.get('dropFlat', false),
+  SUB: { prefab: [/^prefabs?$/i, 'Prefabs'], material: [/^(materials?|mats?)$/i, 'Materials'], texture: [/^(textures?|texs?)$/i, 'Textures'],
+         mesh: [/^(meshes|mesh|models?)$/i, 'Meshes'], shader: [/^shaders?$/i, 'Shaders'], animation: [/^(animations?|anims?|animators?)$/i, 'Animations'], other: [/^others?$/i, 'Other'] },
+  // asset types this export will actually write (all kinds in the original bundle, or the three generated files)
+  kindsFor(fx) {
+    if (!Exporter.isSource(fx)) return ['prefab', 'material', 'texture'];
+    const b = Exporter.bundles.get(fx.id); if (!b || !b.done) return ['prefab', 'material', 'texture'];
+    return Object.keys(this.SUB).filter(k => b.done.items.some(it => it.kind === k));
+  },
+  // sub-folders already inside the dropped folder (from the Unity project listing when we know where it is)
+  children() {
+    if (this.target && UnityPaths.proj && UnityPaths.proj.folders) { const d = this.target.split('/').length; return UnityPaths.proj.folders.filter(f => f.startsWith(this.target + '/') && f.split('/').length === d + 1).map(f => f.split('/').pop()); }
+    return this.kids;
+  },
+  // per asset type: the existing matching sub-folder, or a new Prefabs / Materials / Textures one ('' = straight into the folder)
+  layout() {
+    const kids = this.children(), out = {};
+    for (const k of Object.keys(this.SUB)) {
+      if (this.flat) { out[k] = { name: '', exists: true }; continue; }
+      const [rx, def] = this.SUB[k], hit = kids.find(n => rx.test(n));
+      out[k] = { name: hit || def, exists: !!hit };
+    }
+    return out;
+  },
+  can: typeof window.showDirectoryPicker === 'function' || (typeof DataTransferItem !== 'undefined' && 'getAsFileSystemHandle' in DataTransferItem.prototype),
+  reset() { this.dir = null; this.target = null; this.cands = []; this.kids = []; this.matching = false; this.guessed = false; this.showCands = false; this.render(); },
+  render() {
+    const z = $('#upkgDrop'), go = $('#upkgDropGo'), body = $('#upkgBody');
+    if (!this.can) { z.innerHTML = '<div class="up-drop-empty">Drag-a-folder export needs Chrome or Edge.</div>'; go.hidden = true; return; }
+    z.classList.toggle('set', !!this.dir); body.classList.toggle('dimmed', !!this.dir);
+    const where = !this.dir ? '' : this.matching ? 'Looking for this folder in your Unity project…'
+      : this.target && this.guessed ? `→ <code>${esc(this.target)}</code> in ${esc(this.proj)} — best match of ${this.cands.length} folders called “${esc(this.dir.name)}” <button type="button" class="link-btn" data-showcands>Not this one?</button>`
+      : this.target ? `→ <code>${esc(this.target)}</code> in ${esc(this.proj)} ✓`
+      : this.cands.length > 1 ? `${this.cands.length} folders in ${esc(this.proj)} are called “${esc(this.dir.name)}” and this browser cannot tell which one you dropped — click it to export there:`
+      : 'Not found in the open Unity project — the browser will ask for permission to write into it.';
+    const L = this.dir && !this.matching ? this.layout() : null;
+    const LAB = { prefab: 'Prefab', material: 'Material', texture: 'Texture', mesh: 'Mesh', shader: 'Shader', animation: 'Animation', other: 'Other' };
+    const map = !L ? '' : `<div class="up-map">${this.kindsFor(upkgFx).map(k => [k, LAB[k]]).map(([k, lab]) =>
+        `<span><b>${lab}</b> → ${esc(this.dir.name)}${L[k].name ? '/' + esc(L[k].name) : ''}${L[k].name ? (L[k].exists ? ' <i class="ok">exists</i>' : ' <i class="new">will be created</i>') : ''}</span>`).join('')}</div>
+        <label class="check up-flat"><input type="checkbox" data-flat ${this.flat ? 'checked' : ''}>Put everything straight into ${esc(this.dir.name)} (no sub-folders)</label>`;
+    z.innerHTML = this.dir
+      ? `<div class="up-drop-set">${icon('folder')}<div><b>${esc(this.dir.name)}</b><small>${where}</small>
+          ${(!this.target || this.showCands) && this.cands.length > 1 ? `<div class="up-cands">${this.cands.map(c => `<button type="button" class="chip-btn${c === this.target ? ' on' : ''}" data-cand="${esc(c)}">${esc(c)}</button>`).join('')}</div>` : ''}${this.target ? map : ''}</div>
+          <button type="button" class="link-btn" data-dropclear>Change</button></div>`
+      : `<div class="up-drop-empty">${icon('download')}<div><b>Drop a folder here</b> to export into it — from Finder (Unity › right-click a folder › Reveal in Finder) or a folder path. You can also drop onto a single field below.<br><button type="button" class="link-btn" data-droppick>or choose a folder…</button></div></div>`;
+    const pick = !!this.dir && !this.matching && !this.target && this.cands.length > 1;
+    go.hidden = !this.dir; go.disabled = !!this.dir && (this.matching || pick);
+    if (this.dir) go.textContent = this.matching ? 'Finding the folder…' : pick ? `Pick which “${this.dir.name}” above ↑` : `Export to “${this.dir.name}”`;
+    if (pick) setTimeout(() => z.scrollIntoView({ block: 'nearest', behavior: 'smooth' }), 0);
+    $('#upkgExport').classList.toggle('primary', !this.dir); $('#upkgGo').hidden = false;
+  },
+  // a dropped PATH inside the open Unity project: no browser handle needed, the local server writes there
+  async setPath(rel) {
+    const p = UnityPaths.proj && UnityPaths.proj.project ? UnityPaths.proj : await UnityPaths.loadFolders();
+    if (!p || !p.project) { toast('No Unity project is open — open one in Unity or choose one in Settings', 6000); return; }
+    this.dir = { name: rel.split('/').pop(), kind: 'directory', virtual: true }; this.target = rel; this.cands = [rel]; this.kids = []; this.proj = p.name; this.matching = false; this.render();
+  },
+  async set(handle) {
+    if (!handle || handle.kind !== 'directory') { toast('Drop a folder, not a file'); return; }
+    this.dir = handle; this.target = null; this.cands = []; this.kids = []; this.matching = true; this.render();
+    try { for await (const [n, h] of handle.entries()) if (h.kind === 'directory') this.kids.push(n); } catch (e) { /* listing not allowed */ }
+    if (!Importer.served) { this.matching = false; this.render(); return; }
+    if (Importer.served) { try { await this.match(); } catch (e) { /* fall back to direct writing */ } this.matching = false; this.render(); }
+  },
+  // A dropped folder carries no path. Find it in the open Unity project by name; several with that name → compare sub-folders.
+  async match() {
+    const p = UnityPaths.proj && UnityPaths.proj.project ? UnityPaths.proj : await UnityPaths.loadFolders(true);
+    if (!p || !p.project) return;
+    this.proj = p.name; const name = this.dir.name;
+    let cands = p.folders.filter(f => f.split('/').pop() === name);
+    if (cands.length > 1) cands = await FolderDrop.narrow(this.dir, cands, p);
+    this.cands = cands; this.guessed = false; this.target = cands.length === 1 ? cands[0] : null;  // never guess: several same-named folders → the user picks
+  },
+  fail(msg) {
+    console.warn('[Flarebox export]', msg); toast(msg, 9000);
+    const z = $('#upkgDrop'); let m = z.querySelector('.up-drop-err'); if (!m) { m = document.createElement('div'); m.className = 'gh-err up-drop-err'; z.append(m); } m.textContent = msg;
+  },
+  // export into the dropped / remembered folder; quiet = from the viewer button, without the dialog
+  async go(quiet) {
+    const fx = upkgFx; if (!fx || !this.dir || this.busy) return;
+    const tpl = (!quiet && UnityPaths.refresh($('#upkgBody'), fx)) || UnityPaths.get();
+    const btn = $('#upkgDropGo'), label = btn.textContent; this.busy = true; btn.disabled = true; btn.textContent = 'Exporting…';
+    if (quiet) toast(`Exporting “${fx.name}” to ${this.dir.name}…`, 20000);
+    try {
+      const d = await this.write(fx, tpl);
+      if (d) {
+        const where = '“' + (this.target || this.dir.name) + '”';
+        if ($('#upkgDlg').open) $('#upkgDlg').close();
+        toast(Exporter.summary(d, where), 9000, ['Change folder', () => openUpkgDlg(fx)]);
+      }
+    } catch (err) { console.error(err); if (quiet) toast('Export failed: ' + err.message, 9000, ['Choose folder', () => openUpkgDlg(fx)]); else this.fail('Export failed: ' + err.message); }
+    this.busy = false; btn.disabled = false; btn.textContent = label;
+  },
+  async write(fx, tpl) {
+    const dir = this.dir; if (!dir) return;
+    const L = this.layout(), src = Exporter.isSource(fx), kinds = Object.keys(this.SUB);
+    if (this.target) {  // inside the open Unity project → the local server writes it (no browser permission needed)
+      const F = {}; for (const k of kinds) F[k] = this.target + (L[k].name ? '/' + L[k].name : '');
+      LS.set('lastDropTarget', this.target);
+      const d = await Exporter.toProject(fx, F);
+      LS.set('lastExport', { project: this.proj, target: this.target, at: Date.now() });
+      return d;
+    }
+    if (typeof dir.queryPermission === 'function' && (await dir.queryPermission({ mode: 'readwrite' })) !== 'granted' && (await dir.requestPermission({ mode: 'readwrite' })) !== 'granted') throw new Error('This browser did not allow writing into that folder. Drop a folder from the Unity project that is open, or open http://localhost:8790 in Chrome.');
+    const F = {}; for (const k of kinds) F[k] = L[k].name;  // relative to the dropped folder ('' = straight into it)
+    const fr = await Exporter.freshIfInProject(fx, await Exporter.items(fx, F)), items = fr.items;
+    const dirOf = async (parts, create) => { let d = dir; for (const p of parts) { try { d = await d.getDirectoryHandle(p, { create }); } catch (e) { return null; } } return d; };
+    const exists = async (d, n) => { try { await d.getFileHandle(n); return true; } catch (e) { return false; } };
+    const metaOf = async (d, n) => { try { return await (await (await d.getFileHandle(n + '.meta')).getFile()).text(); } catch (e) { return ''; } };
+    const plan = [], renamed = [];
+    // never replace someone else's file: same name + different GUID → original assets get a new name, generated ones stop
+    for (const it of items) {
+      const parts = it.path.split('/'); let name = parts.pop(); const g = (it.meta.match(/^guid: (\w+)/m) || [])[1], d = await dirOf(parts, false);
+      if (d && await exists(d, name) && !(await metaOf(d, name)).includes('guid: ' + g)) {
+        if (!src) throw new Error(`“${it.path}” already exists in ${dir.name} and is a different asset — pick another folder`);
+        const stem = name.replace(/(\.[^.]+)$/, ''), ext = (name.match(/\.[^.]+$/) || [''])[0]; let n = 1;
+        while (await exists(d, `${stem}_${n}${ext}`)) n++;
+        name = `${stem}_${n}${ext}`; renamed.push([...parts, name].join('/'));
+      }
+      plan.push({ parts, name, it, g });
+    }
+    // a generated effect exported somewhere else in the open Unity project → Unity would see duplicate GUIDs
+    if (!src && Importer.served) {
+      try {
+        const d = await (await fetch('/api/unity/find?guids=' + plan.map(p => p.g).join(','))).json();
+        const elsewhere = Object.values(d.found || {});
+        if (elsewhere.length) {
+          const folders = [...new Set(elsewhere.map(p => p.slice(0, p.lastIndexOf('/'))))];
+          const same = folders.every(fo => fo.split('/').pop() === dir.name || fo.split('/').slice(-2, -1)[0] === dir.name);
+          if (!same && !await askConfirm('This effect is already in your Unity project', `An earlier export is in ${folders.join(', ')} (${d.name}). If that is not the folder you dropped, Unity will find two copies with the same GUID and give the new one fresh GUIDs.\n\nDelete the old copy in Unity first, or use “Export into ${d.name}” which moves it for you.`, 'Export anyway')) return null;
+        }
+      } catch (e) { /* server lookup is only a courtesy check */ }
+    }
+    for (const p of plan) {
+      const d = await dirOf(p.parts, true);
+      for (const [name, data] of [[p.name, p.it.data], [p.name + '.meta', p.it.meta]]) { const w = await (await d.getFileHandle(name, { create: true })).createWritable(); await w.write(data); await w.close(); }
+    }
+    return { written: plan.map(p => [...p.parts, p.name].join('/')), skipped: [], renamed, moved: [], name: dir.name, fresh: fr.fresh };
+  },
+};
+(() => {
+  const dlg = $('#upkgDlg'), zone = $('#upkgDrop');
+  // anything that can name a folder: a real folder (Finder), or a path as text / file:// URL (Unity, editors, terminals)
+  const isDrop = e => { const t = [...(e.dataTransfer && e.dataTransfer.types || [])]; return t.includes('Files') || t.includes('text/uri-list') || t.includes('text/plain'); };
+  dlg.addEventListener('dragover', e => { if (!isDrop(e) || e.target.closest('[data-upk]')) return; e.preventDefault(); e.dataTransfer.dropEffect = 'copy'; zone.classList.add('over'); });
+  dlg.addEventListener('dragleave', e => { if (!dlg.contains(e.relatedTarget)) zone.classList.remove('over'); });
+  dlg.addEventListener('drop', async e => {
+    if (e.target.closest('[data-upk]')) return;  // a field handles its own drop
+    e.preventDefault(); zone.classList.remove('over');
+    const got = await FolderDrop.read(e.dataTransfer);
+    console.info('[Flarebox drop] →', got.path || (got.handle && got.handle.name) || got.error);
+    try {
+      if (got.path) await DropExport.setPath(got.path);
+      else if (got.handle) await DropExport.set(got.handle);
+      else return DropExport.fail(got.error || 'Drop a folder (from Finder) or a folder path');
+    } catch (err) { return DropExport.fail('Could not use that folder: ' + err.message); }
+    if (DropExport.dir && !DropExport.matching && DropExport.target) DropExport.go();  // Blender-style: dropping the folder IS the export (only when it is certain)
+  });
+  // drop straight onto a Prefab / Material / Texture field → that field gets the folder
+  $('#upkgBody').addEventListener('dragover', e => { const i = e.target.closest('[data-upk]'); if (!i || !isDrop(e)) return; e.preventDefault(); e.dataTransfer.dropEffect = 'copy'; i.classList.add('drop-over'); });
+  $('#upkgBody').addEventListener('dragleave', e => { const i = e.target.closest('[data-upk]'); if (i) i.classList.remove('drop-over'); });
+  $('#upkgBody').addEventListener('drop', async e => {
+    const i = e.target.closest('[data-upk]'); if (!i) return;
+    e.preventDefault(); e.stopPropagation(); i.classList.remove('drop-over');
+    const got = await FolderDrop.read(e.dataTransfer); let path = got.path;
+    if (!path && got.handle) { const c = await FolderDrop.find(got.handle); if (c.length === 1) path = c[0]; else if (c.length > 1) toast(`${c.length} folders are called “${got.handle.name}” — pick it in the folder tree, or drop its path`, 7000); else toast(`“${got.handle.name}” is not in the open Unity project`, 6000); }
+    if (!path) { if (got.error) toast(got.error, 6000); return; }
+    i.value = path + UnityPaths.tail(i.value); i.dispatchEvent(new Event('input')); i.focus();
+  });
+  zone.addEventListener('click', async e => {
+    if (e.target.closest('[data-showcands]')) { DropExport.showCands = true; DropExport.render(); return; }
+    const cb = e.target.closest('[data-cand]'); if (cb) { DropExport.target = cb.dataset.cand; DropExport.guessed = false; DropExport.showCands = false; DropExport.render(); DropExport.go(); return; }
+    const fl = e.target.closest('[data-flat]'); if (fl) { DropExport.flat = fl.checked; LS.set('dropFlat', fl.checked); DropExport.render(); return; }
+    if (e.target.closest('[data-dropclear]')) { DropExport.reset(); if (typeof window.showDirectoryPicker !== 'function') return; }
+    if (e.target.closest('[data-droppick]') || e.target.closest('[data-dropclear]')) {
+      try { DropExport.set(await window.showDirectoryPicker({ id: 'flarebox-export', mode: 'readwrite' })); } catch (err) { if (err.name !== 'AbortError') toast('Could not open that folder: ' + err.message); }
+    }
+  });
+  $('#upkgDropGo').addEventListener('click', () => DropExport.go());
+})();
+$('#upkgExport').addEventListener('click', async () => {
+  const fx = upkgFx, tpl = fx && UnityPaths.refresh($('#upkgBody'), fx); if (!tpl) return;
+  if ($('#upkgRemember').checked) UnityPaths.set(tpl);
+  const btn = $('#upkgExport'); btn.disabled = true; const label = btn.textContent; btn.textContent = 'Exporting…';
+  try {
+    const d = await Exporter.toProject(fx, Exporter.fieldFolders(tpl, fx));
+    $('#upkgDlg').close(); UnityPaths.extra.clear();
+    toast(Exporter.summary(d, d.name), 8000);
+  } catch (err) { console.error(err); btn.disabled = false; btn.textContent = label; toast('Export failed: ' + err.message, 7000); return; }
+  btn.disabled = false; btn.textContent = label;
+});
+$('#upkgForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const fx = upkgFx, tpl = fx && UnityPaths.refresh($('#upkgBody'), fx); if (!tpl) return;
+  if ($('#upkgRemember').checked) UnityPaths.set(tpl);
+  $('#upkgDlg').close(); toast('Building Unity package…'); await new Promise(r => setTimeout(r, 30));
+  try {
+    const F = Exporter.fieldFolders(tpl, fx), r = await Exporter.unitypackage(fx, F), file = Exporter.file(fx); download(r.blob, file);
+    const one = F.prefab === F.material && F.prefab === F.texture;
+    toast(one ? `Downloaded ${file} (${r.items.length} assets) — imports to ${F.prefab}` : `Downloaded ${file} (${r.items.length} assets) — prefab → ${F.prefab}, material → ${F.material}, texture → ${F.texture}`, 6000);
+  } catch (err) { console.error(err); toast('Could not build the Unity package: ' + err.message); }
+});
 function promptName(title, val, cb) { $('#nameDlgT').textContent = title; $('#nameInp').value = val; nameCb = cb; $('#nameDlg').showModal(); $('#nameInp').select(); }
 $('#nameForm').addEventListener('submit', e => { e.preventDefault(); const v = $('#nameInp').value.trim(); if (!v) return; $('#nameDlg').close(); nameCb && nameCb(v); });
 $$('dialog.dlg').forEach(d => {
